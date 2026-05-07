@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BlueTex Insulation | ProTapes-Style Homepage Sandbox</title>
+  <style>
+    :root {
+      --blue: #0829c7;
+      --blue-dark: #001c86;
+      --navy: #111044;
+      --orange: #d58a13;
+      --text: #2f3033;
+      --page: #eeeeee;
+      --gutter: #bfbfbf;
+      --rail: 1140px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .page {
+      min-width: 1180px;
+      background:
+        linear-gradient(90deg, var(--gutter) 0, var(--gutter) calc((100vw - var(--rail)) / 2), transparent calc((100vw - var(--rail)) / 2), transparent calc(100vw - (100vw - var(--rail)) / 2), var(--gutter) calc(100vw - (100vw - var(--rail)) / 2));
+    }
+
+    .rail {
+      width: var(--rail);
+      margin: 0 auto;
+    }
+
+    /* Header closely follows the ProTapes reference proportions */
+    .site-header {
+      position: relative;
+      z-index: 20;
+      background: #fff;
+      padding: 38px 0 0;
+    }
+
+    .header-top {
+      display: grid;
+      grid-template-columns: 230px 1fr 175px;
+      gap: 46px;
+      align-items: start;
+      width: var(--rail);
+      margin: 0 auto;
+    }
+
+    .logo {
+      width: 205px;
+      min-height: 138px;
+    }
+
+    .logo img {
+      width: 205px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .tagline {
+      margin-top: 8px;
+      padding-top: 7px;
+      border-top: 2px solid #8b8b8b;
+      color: #1e1e1e;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .search {
+      display: grid;
+      grid-template-columns: 1fr 66px;
+      height: 55px;
+      margin-top: 10px;
+      border: 2px solid #858585;
+      background: #fff;
+    }
+
+    .search input {
+      min-width: 0;
+      border: 0;
+      padding: 0 26px;
+      color: #737373;
+      font-size: 24px;
+      font-weight: 700;
+      outline: 0;
+    }
+
+    .search button {
+      position: relative;
+      border: 0;
+      border-radius: 0 28px 28px 0;
+      background: var(--blue);
+      cursor: pointer;
+    }
+
+    .search button::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 18px;
+      width: 18px;
+      height: 18px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+    }
+
+    .search button::after {
+      content: "";
+      position: absolute;
+      top: 35px;
+      left: 38px;
+      width: 17px;
+      height: 3px;
+      background: #fff;
+      transform: rotate(45deg);
+      transform-origin: left center;
+    }
+
+    .language {
+      display: flex;
+      align-items: center;
+      height: 32px;
+      margin-top: 25px;
+      border: 1px solid #cfcfcf;
+      background: #fafafa;
+      color: #555;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 0 10px;
+    }
+
+    .language span {
+      display: inline-block;
+      width: 24px;
+      height: 16px;
+      margin-right: 7px;
+      background:
+        linear-gradient(#b22234 0 14%, #fff 14% 28%, #b22234 28% 42%, #fff 42% 56%, #b22234 56% 70%, #fff 70% 84%, #b22234 84% 100%);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+    }
+
+    .language::after {
+      content: "";
+      margin-left: auto;
+      width: 9px;
+      height: 9px;
+      border-right: 2px solid #777;
+      border-bottom: 2px solid #777;
+      transform: rotate(45deg) translateY(-3px);
+    }
+
+    .nav-wrap {
+      position: relative;
+      width: var(--rail);
+      margin: 44px auto 0;
+      min-height: 75px;
+    }
+
+    .main-nav {
+      display: grid;
+      grid-template-columns: 215px repeat(5, 1fr);
+      gap: 25px;
+      align-items: center;
+    }
+
+    .nav-item {
+      position: static;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 75px;
+      color: var(--blue);
+      font-size: 26px;
+      line-height: 1;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-item:first-child {
+      justify-content: flex-start;
+    }
+
+    .nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 215px;
+      height: 55px;
+      border-radius: 30px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 21px;
+    }
+
+    .nav-label {
+      display: inline-flex;
+      align-items: center;
+      height: 75px;
+    }
+
+    .mega-panel {
+      position: absolute;
+      z-index: 30;
+      top: 75px;
+      left: 0;
+      display: none;
+      width: var(--rail);
+      min-height: 335px;
+      padding: 26px 62px 42px;
+      background: #fff;
+      color: #000;
+      border-left: 6px solid var(--gutter);
+      box-shadow: 0 2px 0 rgba(0,0,0,.08);
+    }
+
+    .nav-item:hover .mega-panel,
+    .nav-item:focus-within .mega-panel {
+      display: block;
+    }
+
+    .mega-panel::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 100%;
+      left: 0;
+      height: 14px;
+    }
+
+    .mega-layout {
+      display: grid;
+      grid-template-columns: 292px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .mega-preview {
+      width: 292px;
+    }
+
+    .mega-preview img {
+      width: 292px;
+      height: 202px;
+      object-fit: cover;
+      background: #e8e8e8;
+    }
+
+    .mega-preview h3 {
+      margin: 12px 0 1px;
+      color: #000;
+      font-size: 22px;
+      line-height: 1.05;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .mega-preview p {
+      margin: 0;
+      color: #000;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 400;
+    }
+
+    .mega-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 54px;
+      row-gap: 0;
+      padding-top: 0;
+    }
+
+    .mega-link {
+      display: block;
+      min-height: 47px;
+      padding: 2px 0;
+      color: #000;
+      font-size: 22px;
+      line-height: 1.05;
+      font-weight: 900;
+      text-transform: uppercase;
+      outline: 0;
+    }
+
+    .mega-link:hover,
+    .mega-link:focus,
+    .mega-link.is-active {
+      color: var(--blue);
+    }
+
+    .industry-mega .mega-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .industry-grid-mega {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 52px;
+      padding: 0 0 4px;
+    }
+
+    .industry-mega-card img {
+      width: 213px;
+      height: 146px;
+      object-fit: cover;
+      background: #e8e8e8;
+    }
+
+    .industry-mega-card h3 {
+      margin: 28px 0 0;
+      color: #000;
+      font-size: 22px;
+      line-height: 1.05;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    /* Hero and homepage blocks mirror ProTapes rhythm */
+    .hero-shell {
+      background: var(--page);
+    }
+
+    .hero {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      background: var(--blue-dark);
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 84, 205, .72);
+    }
+
+    .hero-copy {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero-copy h1 {
+      max-width: 630px;
+      margin: 0;
+      color: #fff;
+      font-size: 46px;
+      line-height: .98;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,.28);
+    }
+
+    .hero-copy span {
+      display: block;
+      margin-top: 13px;
+      color: #eaf2ff;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .dots {
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      bottom: 23px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .dots i {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.45);
+    }
+
+    .dots i:first-child { background: #fff; }
+
+    .quick {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 6px;
+      padding-bottom: 15px;
+      background: var(--page);
+    }
+
+    .quick a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 62px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .content-zone {
+      padding-bottom: 40px;
+      background: var(--page);
+    }
+
+    .white-box {
+      margin-bottom: 15px;
+      padding: 44px 46px 48px;
+      background: #fff;
+    }
+
+    .white-box h2 {
+      margin: 0 0 25px;
+      color: #333;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .white-box p {
+      max-width: 1045px;
+      margin: 0 0 24px;
+      color: #303030;
+      font-size: 20px;
+      line-height: 1.38;
+    }
+
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 28px;
+    }
+
+    .app-card img {
+      width: 240px;
+      height: 134px;
+      object-fit: cover;
+      background: #eee;
+    }
+
+    .app-card b {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 8px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.1;
+      font-weight: 900;
+      text-align: center;
+      text-transform: none;
+    }
+
+    .product-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 34px;
+      margin-top: 30px;
+      padding: 0 38px;
+      text-align: center;
+    }
+
+    .product-row::before,
+    .product-row::after {
+      position: absolute;
+      top: 66px;
+      color: #333;
+      font-size: 58px;
+      line-height: 1;
+    }
+
+    .product-row::before { content: "‹"; left: 4px; }
+    .product-row::after { content: "›"; right: 4px; }
+
+    .product-tile img {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 16px;
+      object-fit: contain;
+    }
+
+    .product-tile a {
+      color: var(--blue);
+      font-size: 18px;
+      line-height: 1.2;
+      text-decoration: none;
+    }
+
+    .finder {
+      width: 84%;
+      margin: 0 auto;
+      padding: 32px 0 6px;
+    }
+
+    .finder h3 {
+      margin: 0 0 8px;
+      color: #333;
+      font-size: 26px;
+      font-weight: 900;
+      text-transform: none;
+    }
+
+    .finder label {
+      display: block;
+      margin: 20px 0 7px;
+      color: #111;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .finder select {
+      width: 100%;
+      height: 46px;
+      border: 1px solid #aaa;
+      padding: 0 14px;
+      color: #333;
+      font-size: 17px;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="header-top">
+        <a class="logo" href="#">
+          <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/logos/bluetex-logo-med.png" alt="BlueTex Insulation">
+          <div class="tagline">Metal Building Insulation Systems</div>
+        </a>
+
+        <form class="search">
+          <input type="search" placeholder="Search for products, applications...">
+          <button type="button" aria-label="Search"></button>
+        </form>
+
+        <div class="language"><span></span>English</div>
+      </div>
+
+      <div class="nav-wrap">
+        <nav class="main-nav" aria-label="Primary navigation">
+          <div class="nav-item">
+            <a class="nav-button" href="#">Where to Buy</a>
+            <div class="mega-panel">
+              <div class="mega-layout">
+                <aside class="mega-preview">
+                  <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BTCoverRepairSampleBoxComponents.png" alt="Request a quote preview" data-preview-img>
+                  <h3 data-preview-title>Request a Quote</h3>
+                  <p data-preview-text>Send photos and rough dimensions so BlueTex can help size the project.</p>
+                </aside>
+                <div class="mega-list">
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BTCoverRepairSampleBoxComponents.png" data-title="Request a Quote" data-text="Send photos and rough dimensions so BlueTex can help size the project.">Request a Quote</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BlueTexcoverrepairsamplebox.png" data-title="Order Test Kit" data-text="Handle BlueTex, tape, TermBar, screws, and clips before a full order.">Order Test Kit</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/termbars-install-photo.jpg" data-title="Measurement Guide" data-text="Use photos and rough dimensions to make the quote faster.">Measurement Guide</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/final-roof-wall-look.jpg" data-title="Contractor Pricing" data-text="Project help for contractors and larger installs.">Contractor Pricing</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <a class="nav-label" href="#">Our Tape</a>
+            <div class="mega-panel">
+              <div class="mega-layout">
+                <aside class="mega-preview">
+                  <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/CopyofBlueTex2mm62inch700ProductThumbnail.png" alt="2mm Pro preview" data-preview-img>
+                  <h3 data-preview-title>2mm Pro</h3>
+                  <p data-preview-text>The core BlueTex foil/white + foam product path.</p>
+                </aside>
+                <div class="mega-list">
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/CopyofBlueTex2mm62inch700ProductThumbnail.png" data-title="2mm Pro" data-text="The core BlueTex foil/white + foam product path.">2mm Pro</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/Oct2024BlueTex6mm62inchMainThumbnail.png" data-title="6mm Supreme" data-text="Thicker BlueTex roll option for more foam thickness.">6mm Supreme</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BlueTex4FootTermBarsMainImage_1.png" data-title="TermBar Cover System" data-text="Mechanical fastening bars for cover and repair installs.">TermBar Cover System</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BTEasyClipSet_1.png" data-title="EasyClip Hangers" data-text="Purlin clip hangers for selected roofline installs.">EasyClip Hangers</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/3wideBRIGHTWHITEtape.png" data-title="White Seam Tape" data-text="Bright white tape for seams and finished edges.">White Seam Tape</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/IMG_37763.jpg" data-title="Roll Up Door Kits" data-text="BlueTex kit path for hot metal roll-up doors.">Roll Up Door Kits</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BlueTexcoverrepairsamplebox.png" data-title="Sample Box" data-text="Review material and system pieces before a large order.">Sample Box</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BlueTexInsulation_Med.jpg" data-title="All BlueTex Products" data-text="Compare rolls, tapes, fasteners, radiant barrier, and kits.">All Products</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <a class="nav-label" href="#">Services</a>
+            <div class="mega-panel">
+              <div class="mega-layout">
+                <aside class="mega-preview">
+                  <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/installing-termbars.jpg" alt="Install guide preview" data-preview-img>
+                  <h3 data-preview-title>Install Guide</h3>
+                  <p data-preview-text>Owner overview at top, contractor details below.</p>
+                </aside>
+                <div class="mega-list">
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/installing-termbars.jpg" data-title="Install Guide" data-text="Owner overview at top, contractor details below.">Install Guide</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/final-roof-wall-look.jpg" data-title="Cover & Repair System" data-text="Cover old or torn insulation with a clean BlueTex finish.">Cover & Repair System</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/quiz-Existing_Building_Already_Built_Answer.png" data-title="Existing Buildings" data-text="Retrofit shops, warehouses, barns, and hangars.">Existing Buildings</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="Red Iron Install" data-text="Routes for red iron walls, rooflines, and purlins.">Red Iron Install</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/termbars-install-photo.jpg" data-title="TermBar Install" data-text="Mechanically fasten BlueTex across purlins and girts.">TermBar Install</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" data-title="Door Install" data-text="Simple kit path for hot roll-up doors.">Door Install</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BTCoverRepairSampleBoxComponents(1).png" data-title="Supplies Checklist" data-text="Rolls, tape, TermBars, fasteners, clips, and tools.">Supplies Checklist</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/775b3c9bc32f4b92b8ac3aaf5ff733bd.thumbnail.0000000000_800x.jpg" data-title="Video Library" data-text="Watch product and install guidance.">Video Library</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <a class="nav-label" href="#">Industries</a>
+            <div class="mega-panel industry-mega">
+              <div class="industry-grid-mega">
+                <a class="industry-mega-card" href="#">
+                  <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/final-roof-wall-look.jpg" alt="Cover repair system">
+                  <h3>Cover &<br>Repair</h3>
+                </a>
+                <a class="industry-mega-card" href="#">
+                  <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing metal buildings">
+                  <h3>Existing Metal<br>Buildings</h3>
+                </a>
+                <a class="industry-mega-card" href="#">
+                  <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Roll up door insulation">
+                  <h3>Roll Up Door<br>Insulation</h3>
+                </a>
+                <a class="industry-mega-card" href="#">
+                  <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BlueTexcoverrepairsamplebox.png" alt="Samples">
+                  <h3>Samples &<br>Project Help</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <a class="nav-label" href="#">About Us</a>
+            <div class="mega-panel">
+              <div class="mega-layout">
+                <aside class="mega-preview">
+                  <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/complete-wall-finish.jpg" alt="BlueTex history preview" data-preview-img>
+                  <h3 data-preview-title>BlueTex History</h3>
+                  <p data-preview-text>Product-focused insulation help for real metal building projects.</p>
+                </aside>
+                <div class="mega-list">
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/complete-wall-finish.jpg" data-title="BlueTex History" data-text="Product-focused insulation help for real metal building projects.">BlueTex History</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/before_after/BT_blog_case_study_cover_system_after.webp" data-title="What We Do" data-text="Help owners choose products, install paths, samples, and quotes.">What We Do</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/Gemini_Generated_Image_98d8sy98d8sy98d8.jpg" data-title="Project Values" data-text="Practical, direct, installer-friendly guidance.">Project Values</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BTCoverRepairSampleBoxComponents.png" data-title="Contact Us" data-text="Ask a product or project question.">Contact Us</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/installing-termbars.jpg" data-title="Install Support" data-text="Guidance for owners, contractors, and larger projects.">Install Support</a>
+                  <a class="mega-link" href="#" data-img="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BlueTexInsulation_Med.jpg" data-title="Warranty" data-text="Product information and support resources.">Warranty</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <a class="nav-label" href="#">Blog</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero-shell">
+      <div class="rail">
+        <div class="hero">
+          <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/before-sagging-insulation.jpg" alt="BlueTex metal building insulation">
+          <div class="hero-copy">
+            <div>
+              <h1>BlueTex Metal Building Insulation</h1>
+              <span>COVER • REPAIR • RETROFIT</span>
+            </div>
+          </div>
+          <div class="dots"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="quick">
+          <a href="#">Cover/Repair</a>
+          <a href="#">Our Products</a>
+          <a href="#">Applications</a>
+          <a href="#">Project Help</a>
+        </div>
+      </div>
+    </section>
+
+    <main class="content-zone">
+      <section class="rail white-box">
+        <h2>BlueTex Insulation</h2>
+        <p>BlueTex helps metal building owners solve heat, condensation, and damaged insulation problems with practical foil/white foam insulation systems.</p>
+        <p>Use Pro 2mm and Supreme 6mm roll products, reinforced seam tapes, EasyClip hangers, and aluminum TermBars to create a clean, durable system for shops, warehouses, barns, garages, roll-up doors, and cover/repair projects.</p>
+      </section>
+
+      <section class="rail white-box">
+        <h2>Browse Applications</h2>
+        <p>BlueTex products are organized around real metal building projects. Explore by application, product type, or project help path.</p>
+        <div class="app-grid">
+          <a class="app-card" href="#">
+            <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/brand_assets/termbars/final-roof-wall-look.jpg" alt="Cover and repair">
+            <b>Cover &amp; Repair</b>
+          </a>
+          <a class="app-card" href="#">
+            <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing buildings">
+            <b>Existing Buildings</b>
+          </a>
+          <a class="app-card" href="#">
+            <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Roll up doors">
+            <b>Roll Up Doors</b>
+          </a>
+          <a class="app-card" href="#">
+            <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BTCoverRepairSampleBoxComponents.png" alt="Samples">
+            <b>Samples &amp; Quotes</b>
+          </a>
+        </div>
+
+        <h2 style="margin-top:58px;">Browse by Product Type</h2>
+        <div class="product-row">
+          <div class="product-tile">
+            <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/CopyofBlueTex2mm62inch700ProductThumbnail.png" alt="2mm Pro">
+            <a href="#">2mm Pro</a>
+          </div>
+          <div class="product-tile">
+            <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/Oct2024BlueTex6mm62inchMainThumbnail.png" alt="6mm Supreme">
+            <a href="#">6mm Supreme</a>
+          </div>
+          <div class="product-tile">
+            <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BlueTex4FootTermBarsMainImage_1.png" alt="TermBars">
+            <a href="#">TermBars</a>
+          </div>
+          <div class="product-tile">
+            <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/BTEasyClipSet_1.png" alt="EasyClip">
+            <a href="#">EasyClip Hangers</a>
+          </div>
+          <div class="product-tile">
+            <img src="/Users/samsettle/Downloads/BlueTex Insulation/BlueTex-Shopify-Theme/.claude/worktrees/determined-morse-f9cd9b/reference_files/current_bluetex_concept_theme_homepage_files/3wideBRIGHTWHITEtape.png" alt="White tape">
+            <a href="#">White Tape</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="rail white-box">
+        <div class="finder">
+          <h3>Need help choosing insulation?</h3>
+          <p>Answer a question below, and we will help you start with the right BlueTex product, install guide, or quote request.</p>
+          <label for="project">What kind of project are you working on?</label>
+          <select id="project"><option>Choose a project type</option><option>Covering or repairing old insulation</option><option>Insulating an existing metal building</option><option>Insulating a roll-up door</option></select>
+          <label for="product">Which product family do you need?</label>
+          <select id="product"><option>Choose a product</option><option>2mm Pro rolls</option><option>6mm Supreme rolls</option><option>TermBar Cover System</option><option>Tapes and accessories</option></select>
+          <label for="next">What would help most right now?</label>
+          <select id="next"><option>Choose a next step</option><option>Request Free Samples</option><option>Order Test Kit</option><option>See Install Guide</option><option>Request a Quote</option></select>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      document.querySelectorAll('.mega-panel').forEach((panel) => {
+        const img = panel.querySelector('[data-preview-img]');
+        const title = panel.querySelector('[data-preview-title]');
+        const text = panel.querySelector('[data-preview-text]');
+        const links = Array.from(panel.querySelectorAll('.mega-link'));
+
+        const activate = (link) => {
+          links.forEach((item) => item.classList.toggle('is-active', item === link));
+          if (!link) return;
+          if (img && link.dataset.img) img.src = link.dataset.img;
+          if (title) title.textContent = link.dataset.title || link.textContent.trim();
+          if (text) text.textContent = link.dataset.text || '';
+        };
+
+        if (links[0]) activate(links[0]);
+        links.forEach((link) => {
+          link.addEventListener('mouseenter', () => activate(link));
+          link.addEventListener('focus', () => activate(link));
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
