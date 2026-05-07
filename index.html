@@ -4,16 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BlueTex Insulation | Mega Menu Sandbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #0829c7;
-      --blue-dark: #071676;
+      --blue: #0011a7;
+      --blue-2: #3f62c5;
+      --navy: #15235c;
       --orange: #d58a13;
-      --text: #24262a;
-      --muted: #5f6065;
+      --text: #1b1b1b;
+      --muted: #65636a;
+      --line: #e6e6e7;
+      --panel: #ffffff;
+      --soft: #fafafa;
       --page: #eeeeee;
-      --gutter: #bfbfbf;
-      --rail: 1400px;
+      --rail: 1180px;
     }
 
     * { box-sizing: border-box; }
@@ -22,210 +28,231 @@
       margin: 0;
       background: var(--page);
       color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 18px;
+      font-family: Lato, Arial, Helvetica, sans-serif;
+      font-size: 16px;
       line-height: 1.45;
     }
 
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
+    img, video { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
 
-    .page {
-      min-width: 1440px;
-      background:
-        linear-gradient(90deg, var(--gutter) 0, var(--gutter) calc((100vw - var(--rail)) / 2), transparent calc((100vw - var(--rail)) / 2), transparent calc(100vw - (100vw - var(--rail)) / 2), var(--gutter) calc(100vw - (100vw - var(--rail)) / 2));
-    }
-
-    .rail {
-      width: var(--rail);
-      margin: 0 auto;
-    }
+    .page { min-width: 1180px; }
+    .rail { width: var(--rail); margin: 0 auto; }
 
     .site-header {
       position: relative;
-      z-index: 10;
+      z-index: 20;
       background: #fff;
-      padding: 38px 0 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .header-top {
-      display: grid;
-      grid-template-columns: 230px 1fr 176px;
-      gap: 46px;
-      align-items: start;
-      width: var(--rail);
-      margin: 0 auto;
+    .announce {
+      height: 32px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 32px;
+      text-align: center;
     }
 
-    .logo {
-      width: 205px;
-      min-height: 138px;
-    }
-
-    .logo img {
-      width: 205px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .tagline {
-      margin-top: 8px;
-      padding-top: 7px;
-      border-top: 2px solid #8b8b8b;
-      color: #1e1e1e;
-      font-size: 11px;
-      font-weight: 800;
-      line-height: 1.2;
+    .announce a {
+      color: var(--orange);
+      margin-left: 8px;
       white-space: nowrap;
     }
 
+    .utility {
+      display: grid;
+      grid-template-columns: 178px 1fr 34px 136px 156px 28px;
+      gap: 18px;
+      align-items: center;
+      min-height: 78px;
+    }
+
+    .logo img { width: 168px; height: auto; }
+
     .search {
       display: grid;
-      grid-template-columns: 1fr 68px;
-      height: 58px;
-      margin-top: 10px;
-      border: 2px solid #858585;
+      grid-template-columns: 1fr 98px;
+      height: 44px;
+      border: 2px solid #828186;
       background: #fff;
     }
 
     .search input {
       min-width: 0;
       border: 0;
-      padding: 0 28px;
-      color: #737373;
-      font-size: 24px;
-      font-weight: 800;
+      padding: 0 18px;
+      color: var(--text);
+      font: 700 15px/1 Lato, Arial, sans-serif;
       outline: 0;
     }
 
-    .search button {
-      position: relative;
+    .search button,
+    .phone,
+    .quote {
       border: 0;
-      border-radius: 0 30px 30px 0;
-      background: var(--blue);
-      cursor: pointer;
+      background: var(--navy);
+      color: #fff;
+      font: 900 13px/1 Lato, Arial, sans-serif;
+      letter-spacing: .06em;
+      text-transform: uppercase;
     }
 
-    .search button::before {
+    .search button { cursor: pointer; }
+
+    .icon-btn {
+      position: relative;
+      width: 34px;
+      height: 44px;
+      color: var(--navy);
+    }
+
+    .icon-btn--search::before {
       content: "";
       position: absolute;
-      top: 15px;
-      left: 18px;
-      width: 19px;
-      height: 19px;
-      border: 3px solid #fff;
+      top: 13px;
+      left: 8px;
+      width: 14px;
+      height: 14px;
+      border: 1.8px solid currentColor;
       border-radius: 50%;
     }
 
-    .search button::after {
+    .icon-btn--search::after {
       content: "";
       position: absolute;
-      top: 37px;
-      left: 39px;
-      width: 18px;
-      height: 3px;
-      background: #fff;
+      top: 28px;
+      left: 22px;
+      width: 10px;
+      height: 1.8px;
+      background: currentColor;
       transform: rotate(45deg);
       transform-origin: left center;
     }
 
-    .language {
-      display: flex;
-      align-items: center;
-      height: 34px;
-      margin-top: 25px;
-      border: 1px solid #cfcfcf;
-      background: #fafafa;
-      color: #555;
-      font-size: 16px;
-      font-weight: 600;
-      padding: 0 10px;
-    }
-
-    .language span {
-      display: inline-block;
-      width: 25px;
-      height: 16px;
-      margin-right: 8px;
-      background:
-        linear-gradient(#b22234 0 14%, #fff 14% 28%, #b22234 28% 42%, #fff 42% 56%, #b22234 56% 70%, #fff 70% 84%, #b22234 84% 100%);
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-    }
-
-    .language::after {
+    .icon-btn--account::before {
       content: "";
-      margin-left: auto;
-      width: 9px;
-      height: 9px;
-      border-right: 2px solid #777;
-      border-bottom: 2px solid #777;
-      transform: rotate(45deg) translateY(-3px);
+      position: absolute;
+      top: 10px;
+      left: 13px;
+      width: 8px;
+      height: 8px;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .icon-btn--account::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      bottom: 10px;
+      left: 8px;
+      height: 11px;
+      border: 1.5px solid currentColor;
+      border-radius: 10px 10px 3px 3px;
+    }
+
+    .cart {
+      position: relative;
+      width: 28px;
+      height: 44px;
+      color: var(--navy);
+    }
+
+    .cart::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 5px;
+      width: 17px;
+      height: 18px;
+      border: 1.6px solid currentColor;
+      border-radius: 3px 3px 7px 7px;
+    }
+
+    .cart::after {
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    .phone,
+    .quote {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      border-radius: 4px;
     }
 
     .nav-wrap {
       position: relative;
       width: var(--rail);
-      margin: 42px auto 0;
-      min-height: 86px;
+      margin: 0 auto;
     }
 
     .main-nav {
       display: grid;
-      grid-template-columns: 330px 205px 215px 300px 270px;
-      gap: 20px;
-      align-items: center;
+      grid-template-columns: 270px 150px 160px 210px 210px;
+      gap: 8px;
+      align-items: stretch;
+      height: 60px;
     }
 
     .nav-item {
       position: static;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 86px;
-      color: var(--blue);
-      font-size: 26px;
-      line-height: .96;
-      font-weight: 900;
-      text-align: center;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .nav-item--wide {
-      font-size: 22px;
-      white-space: nowrap;
+      min-width: 0;
     }
 
     .nav-label {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      height: 86px;
-      width: 100%;
+      height: 60px;
+      padding: 0 10px;
+      color: var(--blue);
+      border-bottom: 3px solid transparent;
+      font-size: 14px;
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: .03em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .nav-item:hover .nav-label,
+    .nav-item:focus-within .nav-label {
+      background: #fafafa;
+      border-color: var(--orange);
     }
 
     .mega-panel {
       position: absolute;
       z-index: 30;
-      top: 86px;
+      top: 60px;
       left: 0;
       display: none;
       width: var(--rail);
-      min-height: 390px;
-      padding: 30px 62px 46px;
-      background: #fff;
-      color: #000;
-      border-left: 6px solid var(--gutter);
-      box-shadow: 0 2px 0 rgba(0,0,0,.08);
+      min-height: 326px;
+      padding: 24px 30px 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 38px rgba(0,0,0,.12);
+      color: var(--text);
       text-align: left;
-      text-transform: none;
-      white-space: normal;
     }
 
     .nav-item:hover .mega-panel,
-    .nav-item:focus-within .mega-panel {
-      display: block;
-    }
+    .nav-item:focus-within .mega-panel { display: block; }
 
     .mega-panel::before {
       content: "";
@@ -233,32 +260,34 @@
       right: 0;
       bottom: 100%;
       left: 0;
-      height: 16px;
+      height: 10px;
     }
 
-    .mega-layout {
+    .system-layout,
+    .faq-layout {
       display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 42px;
+      grid-template-columns: 360px 1fr;
+      gap: 32px;
       align-items: start;
     }
 
     .mega-preview {
       display: block;
-      width: 380px;
+      min-width: 0;
     }
 
-    .mega-preview img {
-      width: 380px;
-      height: 260px;
+    .preview-media {
+      width: 360px;
+      height: 203px;
       object-fit: cover;
-      background: #e8e8e8;
+      background: var(--soft);
+      border: 1px solid var(--line);
     }
 
     .mega-preview h3 {
-      margin: 14px 0 2px;
-      color: #000;
-      font-size: 25px;
+      margin: 12px 0 3px;
+      color: var(--text);
+      font-size: 18px;
       line-height: 1.05;
       font-weight: 900;
       text-transform: uppercase;
@@ -266,27 +295,27 @@
 
     .mega-preview p {
       margin: 0;
-      color: #111;
-      font-size: 19px;
-      line-height: 1.28;
-      font-weight: 400;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 600;
     }
 
-    .mega-link-grid {
+    .link-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 60px;
-      row-gap: 0;
+      column-gap: 34px;
+      row-gap: 8px;
       padding-top: 2px;
     }
 
     .mega-link {
       display: block;
-      min-height: 54px;
-      padding: 4px 0;
-      color: #000;
-      font-size: 23px;
-      line-height: 1.05;
+      padding: 8px 0;
+      color: var(--text);
+      border-bottom: 1px solid var(--line);
+      font-size: 16px;
+      line-height: 1.12;
       font-weight: 900;
       text-transform: uppercase;
       outline: 0;
@@ -294,54 +323,49 @@
 
     .mega-link:hover,
     .mega-link:focus,
-    .mega-link.is-active {
-      color: var(--blue);
-    }
-
-    .applications-panel,
-    .products-panel {
-      padding-right: 54px;
-      padding-left: 54px;
-    }
+    .mega-link.is-active { color: var(--blue); }
 
     .application-columns {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 42px;
+      gap: 30px;
     }
 
     .mega-heading {
-      margin: 0 0 22px;
-      color: #000;
-      font-size: 27px;
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 18px;
       line-height: 1;
       font-weight: 900;
       text-transform: uppercase;
     }
 
-    .app-stack {
-      display: grid;
-      gap: 18px;
-    }
+    .app-stack { display: grid; gap: 10px; }
 
-    .app-card,
-    .product-card {
-      display: block;
+    .app-card {
+      display: grid;
+      grid-template-columns: 104px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-height: 78px;
+      padding: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
     }
 
     .app-card img {
-      width: 100%;
-      height: 138px;
+      width: 104px;
+      height: 62px;
       object-fit: cover;
-      background: #e8e8e8;
+      background: var(--soft);
     }
 
     .app-card h4,
     .product-card h4 {
-      margin: 14px 0 4px;
-      color: #000;
-      font-size: 20px;
-      line-height: 1.06;
+      margin: 0 0 3px;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.08;
       font-weight: 900;
       text-transform: uppercase;
     }
@@ -350,59 +374,51 @@
     .product-card p {
       margin: 0;
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.24;
+      font-size: 12px;
+      line-height: 1.25;
       font-weight: 600;
     }
 
-    .guide-panel {
-      min-height: 426px;
-      padding: 0;
-      overflow: hidden;
-    }
+    .guide-panel { min-height: 326px; padding: 0; overflow: hidden; }
 
     .guide-shell {
       display: grid;
-      grid-template-columns: 390px 1fr;
-      min-height: 426px;
+      grid-template-columns: 330px 1fr;
+      min-height: 326px;
     }
 
     .guide-menu {
-      padding: 32px 36px 36px 56px;
+      padding: 20px 24px;
       background: #fff;
+      border-right: 1px solid var(--line);
     }
 
-    .guide-item {
-      position: static;
-      display: block;
-      color: #000;
-    }
+    .guide-item { position: static; }
 
     .guide-main {
       display: flex;
       align-items: center;
-      min-height: 58px;
-      color: #000;
-      font-size: 23px;
-      line-height: 1.05;
+      min-height: 46px;
+      color: var(--text);
+      border-bottom: 1px solid var(--line);
+      font-size: 16px;
+      line-height: 1.08;
       font-weight: 900;
       text-transform: uppercase;
     }
 
     .guide-main::after {
       content: "";
-      width: 12px;
-      height: 12px;
+      width: 9px;
+      height: 9px;
       margin-left: auto;
-      border-top: 3px solid currentColor;
-      border-right: 3px solid currentColor;
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
       transform: rotate(45deg);
     }
 
     .guide-item:hover .guide-main,
-    .guide-item:focus-within .guide-main {
-      color: var(--blue);
-    }
+    .guide-item:focus-within .guide-main { color: var(--blue); }
 
     .guide-flyout {
       position: absolute;
@@ -410,22 +426,19 @@
       right: 0;
       bottom: 0;
       display: none;
-      width: calc(var(--rail) - 390px);
-      padding: 32px 54px 42px;
-      background: #f8f8f8;
-      border-left: 1px solid #d8d8d8;
+      width: calc(var(--rail) - 330px);
+      padding: 22px 30px;
+      background: #fafafa;
     }
 
     .guide-item:first-child .guide-flyout,
     .guide-item:hover .guide-flyout,
-    .guide-item:focus-within .guide-flyout {
-      display: block;
-    }
+    .guide-item:focus-within .guide-flyout { display: block; }
 
     .flyout-title {
-      margin: 0 0 21px;
-      color: #000;
-      font-size: 28px;
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 20px;
       line-height: 1;
       font-weight: 900;
       text-transform: uppercase;
@@ -433,263 +446,241 @@
 
     .flyout-grid {
       display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 34px;
+      grid-template-columns: 230px 1fr;
+      gap: 24px;
       align-items: start;
     }
 
     .flyout-grid img {
-      width: 260px;
-      height: 180px;
+      width: 230px;
+      height: 142px;
       object-fit: cover;
-      background: #e8e8e8;
+      border: 1px solid var(--line);
     }
 
-    .flyout-links {
-      display: grid;
-      gap: 14px;
-    }
+    .flyout-links { display: grid; gap: 8px; }
 
     .section-label {
       display: block;
-      margin: 6px 0 3px;
+      margin-top: 4px;
       color: var(--orange);
-      font-size: 16px;
+      font-size: 12px;
       line-height: 1;
       font-weight: 900;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
 
     .flyout-links a {
       display: block;
-      color: #000;
-      font-size: 21px;
-      line-height: 1.08;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.15;
       font-weight: 900;
       text-transform: uppercase;
     }
 
     .flyout-links a:hover,
-    .flyout-links a:focus {
-      color: var(--blue);
-    }
+    .flyout-links a:focus { color: var(--blue); }
 
     .product-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 32px 36px;
+      gap: 14px 18px;
+    }
+
+    .product-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 94px 1fr;
+      gap: 12px;
+      min-height: 100px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
     }
 
     .product-card img {
-      width: 100%;
-      height: 128px;
+      width: 94px;
+      height: 76px;
       object-fit: cover;
-      background: #e8e8e8;
-    }
-
-    .product-card--popular {
-      position: relative;
+      background: var(--soft);
     }
 
     .product-card--popular::before {
       content: "Most Popular";
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 8px;
+      left: 8px;
       display: inline-flex;
       align-items: center;
-      height: 25px;
-      padding: 0 10px;
+      height: 20px;
+      padding: 0 8px;
       background: var(--orange);
       color: #fff;
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 900;
       text-transform: uppercase;
     }
 
     .product-actions {
       display: flex;
-      gap: 8px;
-      margin-top: 12px;
+      gap: 6px;
+      margin-top: 8px;
     }
 
     .product-actions a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 58px;
-      height: 34px;
-      padding: 0 12px;
+      height: 26px;
+      min-width: 48px;
+      padding: 0 8px;
       background: var(--blue);
       color: #fff;
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 900;
       text-transform: uppercase;
     }
 
-    .faq-panel .mega-layout {
-      grid-template-columns: 380px 1fr;
-    }
+    .faq-layout { grid-template-columns: 330px 1fr; }
+    .faq-layout .preview-media { width: 330px; height: 186px; }
+    .faq-layout .link-grid { grid-template-columns: 1fr; row-gap: 4px; }
+    .faq-layout .mega-link { padding: 6px 0; font-size: 15px; }
 
-    .faq-panel .mega-link-grid {
-      grid-template-columns: 1fr;
-      column-gap: 0;
-    }
-
-    .faq-panel .mega-link {
-      min-height: 38px;
-      font-size: 21px;
-    }
-
-    .hero-shell {
-      background: var(--page);
-    }
+    .hero-shell { background: var(--page); padding: 18px 0 0; }
 
     .hero {
-      position: relative;
-      height: 300px;
-      overflow: hidden;
-      background: var(--blue-dark);
+      display: grid;
+      grid-template-columns: 1fr 520px;
+      gap: 28px;
+      align-items: center;
+      padding: 28px 32px;
+      background: #fff;
+      border: 1px solid var(--line);
     }
 
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .hero h1 {
+      max-width: 520px;
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 34px;
+      line-height: 1.06;
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(4, 84, 205, .72);
+    .hero p {
+      max-width: 560px;
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 600;
     }
 
-    .hero-copy {
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-      display: flex;
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .cta {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      min-height: 42px;
+      padding: 0 18px;
+      background: var(--blue);
       color: #fff;
-    }
-
-    .hero-copy h1 {
-      max-width: 690px;
-      margin: 0;
-      color: #fff;
-      font-size: 47px;
-      line-height: .98;
+      font-size: 13px;
       font-weight: 900;
-      text-transform: uppercase;
-      text-shadow: 0 2px 10px rgba(0,0,0,.28);
-    }
-
-    .hero-copy span {
-      display: block;
-      margin-top: 13px;
-      color: #eaf2ff;
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: .12em;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
 
-    .dots {
-      position: absolute;
-      z-index: 2;
-      left: 0;
-      right: 0;
-      bottom: 23px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
+    .cta--secondary {
+      background: #fff;
+      color: var(--blue);
+      border: 2px solid var(--blue);
     }
 
-    .dots i {
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.45);
+    .hero-video {
+      width: 520px;
+      height: 292px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: var(--soft);
     }
-
-    .dots i:first-child { background: #fff; }
 
     .quick {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 6px;
-      padding-bottom: 15px;
-      background: var(--page);
+      gap: 10px;
+      margin-top: 12px;
     }
 
     .quick a {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 62px;
+      min-height: 48px;
       background: var(--blue);
       color: #fff;
-      font-size: 21px;
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: .08em;
+      letter-spacing: .04em;
+      text-align: center;
       text-transform: uppercase;
     }
 
-    .content-zone {
-      padding-bottom: 40px;
-      background: var(--page);
-    }
+    .content-zone { padding: 16px 0 42px; }
 
     .white-box {
-      margin-bottom: 15px;
-      padding: 44px 46px 48px;
+      margin-bottom: 14px;
+      padding: 32px 34px;
       background: #fff;
+      border: 1px solid var(--line);
     }
 
     .white-box h2 {
-      margin: 0 0 25px;
-      color: #333;
-      font-size: 34px;
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 26px;
       line-height: 1;
       font-weight: 900;
       text-transform: uppercase;
     }
 
     .white-box p {
-      max-width: 1045px;
-      margin: 0 0 24px;
-      color: #303030;
-      font-size: 20px;
-      line-height: 1.38;
+      max-width: 980px;
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 600;
     }
 
-    .app-grid {
+    .mini-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-      margin-top: 28px;
+      gap: 16px;
+      margin-top: 20px;
     }
 
-    .app-card-home img {
+    .mini-card {
+      display: block;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .mini-card img {
       width: 100%;
-      height: 150px;
+      height: 120px;
       object-fit: cover;
-      background: #eee;
     }
 
-    .app-card-home b {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 8px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 18px;
+    .mini-card b {
+      display: block;
+      padding: 12px;
+      color: var(--blue);
+      font-size: 14px;
       line-height: 1.1;
       font-weight: 900;
       text-align: center;
@@ -700,38 +691,39 @@
 <body>
   <div class="page">
     <header class="site-header">
-      <div class="header-top">
+      <div class="announce">Free shipping on orders $100+ in the contiguous USA <a href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box">Order the $100 Test Kit</a></div>
+      <div class="rail utility">
         <a class="logo" href="https://bluetexinsulation.com/">
           <img src="images/bluetex-logo-med.png" alt="BlueTex Insulation">
-          <div class="tagline">Metal Building Insulation Systems</div>
         </a>
-
         <form class="search" role="search">
-          <input type="search" placeholder="Search for products, applications...">
-          <button type="button" aria-label="Search"></button>
+          <input type="search" placeholder="Search BlueTex products, guides, and help">
+          <button type="button">Search</button>
         </form>
-
-        <div class="language"><span></span>English</div>
+        <a class="icon-btn icon-btn--search" href="https://bluetexinsulation.com/search" aria-label="Search"></a>
+        <a class="phone" href="tel:18005958772">1-800-595-8772</a>
+        <a class="quote" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers">Request A Quote</a>
+        <a class="cart" href="https://bluetexinsulation.com/cart" aria-label="Cart"></a>
       </div>
 
       <div class="nav-wrap">
         <nav class="main-nav" aria-label="Primary navigation">
-          <div class="nav-item nav-item--wide">
+          <div class="nav-item">
             <a class="nav-label" href="large-metal-building-repair-cover-system.html">Large Metal Building Repair<br>&amp; Cover System</a>
             <div class="mega-panel">
-              <div class="mega-layout">
+              <div class="system-layout">
                 <a class="mega-preview" href="large-metal-building-repair-cover-system.html" data-preview-link>
-                  <img src="images/final-roof-wall-look.jpg" alt="System overview" data-preview-img>
+                  <img class="preview-media" src="images/final-roof-wall-look.jpg" alt="System preview" data-preview-img>
                   <h3 data-preview-title>System Overview</h3>
-                  <p data-preview-text>See the clean BlueTex cover system for large metal building walls and rooflines.</p>
+                  <p data-preview-text>See the cover system for old, stained, or torn insulation in large metal buildings.</p>
                 </a>
-                <div class="mega-link-grid">
-                  <a class="mega-link" href="large-metal-building-repair-cover-system.html" data-img="images/final-roof-wall-look.jpg" data-title="System Overview" data-text="See the clean BlueTex cover system for large metal building walls and rooflines.">System Overview</a>
+                <div class="link-grid">
+                  <a class="mega-link" href="large-metal-building-repair-cover-system.html" data-img="images/final-roof-wall-look.jpg" data-title="System Overview" data-text="See the cover system for old, stained, or torn insulation in large metal buildings.">System Overview</a>
                   <a class="mega-link" href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings" data-img="images/installing-termbars.jpg" data-title="Install Guide" data-text="TermBar and retrofit install details for covering old insulation.">Install Guide</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box" data-img="images/BTCoverRepairSampleBoxComponents.png" data-title="Order Test Kit" data-text="Fully redeemable sample box for previewing the cover and repair system.">Order Test Kit<br>(Fully Refundable)</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers" data-img="images/BTCoverRepairSampleBoxComponents-1-.png" data-title="Request A Quote" data-text="Send project dimensions and photos for help sizing a large building job.">Request A Quote</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real projects showing old insulation covered with a cleaner finished surface.">Case Studies</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/blogs/case-studies/case-study-covering-up-damaged-warehouse-insulation-with-bluetex" data-img="images/before-sagging-insulation.jpg" data-title="Before/After Pictures" data-text="Before and after examples for damaged warehouse and metal building insulation.">Before/After Pictures</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box" data-img="images/BTCoverRepairSampleBoxComponents.png" data-title="Order Test Kit" data-text="Sample the system before a large order. The kit cost can be applied to a qualifying order.">Order Test Kit</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers" data-img="images/BTCoverRepairSampleBoxComponents-1-.png" data-title="Request A Quote" data-text="Send project photos and dimensions for help sizing a larger job.">Request A Quote</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real BlueTex applications and finished project examples.">Case Studies</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/blogs/case-studies/case-study-covering-up-damaged-warehouse-insulation-with-bluetex" data-img="images/before-sagging-insulation.jpg" data-title="Before/After Pictures" data-text="Before and after examples for damaged warehouse insulation.">Before/After Pictures</a>
                   <a class="mega-link" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="Other Install Methods" data-text="Compare retrofit choices for red iron, tubular steel, wood frame, roof, and wall projects.">Other Install Methods</a>
                 </div>
               </div>
@@ -740,58 +732,28 @@
 
           <div class="nav-item">
             <a class="nav-label" href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation">Applications</a>
-            <div class="mega-panel applications-panel">
+            <div class="mega-panel">
               <div class="application-columns">
                 <section>
                   <h3 class="mega-heading">Metal Buildings</h3>
                   <div class="app-stack">
-                    <a class="app-card" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation">
-                      <img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing metal building retrofit">
-                      <h4>Existing Metal Building Retrofit</h4>
-                      <p>Tubular steel and metal-frame buildings with BlueTex installed over framing.</p>
-                    </a>
-                    <a class="app-card" href="large-metal-building-repair-cover-system.html">
-                      <img src="images/BT_blog_case_study_cover_system_after.webp" alt="Large building wall and roof repair">
-                      <h4>Large Building Wall And Roof Repair</h4>
-                      <p>TermBar cover system overview for old, stained, or torn insulation.</p>
-                    </a>
+                    <a class="app-card" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation"><img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing metal building retrofit"><span><h4>Existing Metal Building Retrofit</h4><p>Tubular steel and metal-frame retrofit path.</p></span></a>
+                    <a class="app-card" href="large-metal-building-repair-cover-system.html"><img src="images/BT_blog_case_study_cover_system_after.webp" alt="Large building wall and roof repair"><span><h4>Large Building Wall And Roof Repair</h4><p>TermBar cover system overview.</p></span></a>
                   </div>
                 </section>
-
                 <section>
                   <h3 class="mega-heading">Doors</h3>
                   <div class="app-stack">
-                    <a class="app-card" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">
-                      <img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Roll up doors">
-                      <h4>Roll Up Doors</h4>
-                      <p>Commercial roll-up door guide with future calculator/product layout space.</p>
-                    </a>
-                    <a class="app-card" href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit">
-                      <img src="images/IMG_37763.jpg" alt="Residential garage doors">
-                      <h4>Residential Doors</h4>
-                      <p>Panel-style garage door kit path for residential doors.</p>
-                    </a>
+                    <a class="app-card" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation"><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Roll up doors"><span><h4>Roll Up Doors</h4><p>Commercial door install guide.</p></span></a>
+                    <a class="app-card" href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit"><img src="images/IMG_37763.jpg" alt="Residential garage doors"><span><h4>Residential Doors</h4><p>Panel-style residential kits.</p></span></a>
                   </div>
                 </section>
-
                 <section>
                   <h3 class="mega-heading">Other Applications</h3>
                   <div class="app-stack">
-                    <a class="app-card" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">
-                      <img src="images/complete-wall-finish.jpg" alt="Existing buildings">
-                      <h4>Existing Buildings</h4>
-                      <p>Retrofit choice page with metal building path intended to move to the top.</p>
-                    </a>
-                    <a class="app-card" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type">
-                      <img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction">
-                      <h4>New Construction</h4>
-                      <p>Choose the right install path before metal panels go on.</p>
-                    </a>
-                    <a class="app-card" href="https://bluetexinsulation.com/blogs/case-studies">
-                      <img src="images/BT_blog_case_study_cover_system_after.webp" alt="Case studies">
-                      <h4>Case Studies</h4>
-                      <p>Real BlueTex applications and finished project examples.</p>
-                    </a>
+                    <a class="app-card" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling"><img src="images/complete-wall-finish.jpg" alt="Existing buildings"><span><h4>Existing Buildings</h4><p>Choose the right retrofit method.</p></span></a>
+                    <a class="app-card" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type"><img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction"><span><h4>New Construction</h4><p>Pick the path before panels go on.</p></span></a>
+                    <a class="app-card" href="https://bluetexinsulation.com/blogs/case-studies"><img src="images/before-sagging-insulation.jpg" alt="Case studies"><span><h4>Case Studies</h4><p>See real application examples.</p></span></a>
                   </div>
                 </section>
               </div>
@@ -803,71 +765,10 @@
             <div class="mega-panel guide-panel">
               <div class="guide-shell">
                 <div class="guide-menu">
-                  <div class="guide-item">
-                    <a class="guide-main" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Garage Door Insulation</a>
-                    <div class="guide-flyout">
-                      <h3 class="flyout-title">Garage Door Insulation</h3>
-                      <div class="flyout-grid">
-                        <img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation">
-                        <div class="flyout-links">
-                          <a href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Commercial Roll Up Door Install</a>
-                          <a href="https://bluetexinsulation.com/products/bluetex-2mm-pro-roll-up-garage-door-kit">Roll Up Door Kits</a>
-                          <a href="garage-door-insulation.html">New Garage Door Overview Page</a>
-                          <a href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit">Residential Door Kits</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="guide-item">
-                    <a class="guide-main" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Existing / Retrofit</a>
-                    <div class="guide-flyout">
-                      <h3 class="flyout-title">Existing / Retrofit</h3>
-                      <div class="flyout-grid">
-                        <img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing retrofit">
-                        <div class="flyout-links">
-                          <a href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Choose Existing Building Type</a>
-                          <a href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation">Existing Metal Building Retrofit</a>
-                          <a href="https://bluetexinsulation.com/pages/existing-construction-wood-framed-buildings-installation">Existing Wood Frame / Pole Barn</a>
-                          <a href="https://bluetexinsulation.com/pages/insulating-non-conditioned-buildings-vs-conditioned-buildings">Conditioned Vs. Non-Conditioned</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="guide-item">
-                    <a class="guide-main" href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Covering / Repairing Old Insulation</a>
-                    <div class="guide-flyout">
-                      <h3 class="flyout-title">Covering / Repairing Old Insulation</h3>
-                      <div class="flyout-grid">
-                        <img src="images/installing-termbars.jpg" alt="TermBar system">
-                        <div class="flyout-links">
-                          <span class="section-label">TermBar System</span>
-                          <a href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Covering Old Wall Insulation - Girts Visible</a>
-                          <a href="https://bluetexinsulation.com/pages/repair-old-torn-ceiling-insulation-in-red-iron-metal-buildings">Covering Old Roof Insulation - Girts Visible</a>
-                          <span class="section-label">Girts Hidden</span>
-                          <a href="https://bluetexinsulation.com/pages/easyclip-roof-system-covers-hides-purlins">EasyClip Roof System - Covers/Hides Purlins</a>
-                          <a href="https://bluetexinsulation.com/pages/covering-wall-insulation-girts-hidden">Covering Wall Insulation - Girts Hidden</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="guide-item">
-                    <a class="guide-main" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type">New Construction</a>
-                    <div class="guide-flyout">
-                      <h3 class="flyout-title">New Construction</h3>
-                      <div class="flyout-grid">
-                        <img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction guide">
-                        <div class="flyout-links">
-                          <a href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type">Choose Building Type</a>
-                          <a href="https://bluetexinsulation.com/pages/new-construction-metal-framed-buildings-installation">Metal Framed Buildings</a>
-                          <a href="https://bluetexinsulation.com/pages/new-construction-wood-framed-buildings-installation">Wood Framed Buildings</a>
-                          <a href="https://bluetexinsulation.com/pages/resource-page-installation-supplies">Installation Supplies</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <div class="guide-item"><a class="guide-main" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Garage Door Insulation</a><div class="guide-flyout"><h3 class="flyout-title">Garage Door Insulation</h3><div class="flyout-grid"><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation"><div class="flyout-links"><a href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Commercial Roll Up Door</a><a href="https://bluetexinsulation.com/products/bluetex-2mm-pro-roll-up-garage-door-kit">Roll Up Door Kits</a><a href="garage-door-insulation.html">Garage Door Overview</a><a href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit">Residential Panel Door Kits</a></div></div></div></div>
+                  <div class="guide-item"><a class="guide-main" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Existing / Retrofit</a><div class="guide-flyout"><h3 class="flyout-title">Existing / Retrofit</h3><div class="flyout-grid"><img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing retrofit"><div class="flyout-links"><a href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Choose Existing Building Type</a><a href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation">Existing Metal Building Retrofit</a><a href="https://bluetexinsulation.com/pages/existing-construction-wood-framed-buildings-installation">Existing Wood Frame / Pole Barn</a><a href="https://bluetexinsulation.com/pages/insulating-non-conditioned-buildings-vs-conditioned-buildings">Conditioned Vs. Non-Conditioned</a></div></div></div></div>
+                  <div class="guide-item"><a class="guide-main" href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Covering / Repairing Old Insulation</a><div class="guide-flyout"><h3 class="flyout-title">Covering / Repairing Old Insulation</h3><div class="flyout-grid"><img src="images/installing-termbars.jpg" alt="TermBar system"><div class="flyout-links"><span class="section-label">TermBar System</span><a href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Covering Old Wall Insulation - Girts Visible</a><a href="https://bluetexinsulation.com/pages/repair-old-torn-ceiling-insulation-in-red-iron-metal-buildings">Covering Old Roof Insulation - Girts Visible</a><span class="section-label">Girts Hidden</span><a href="https://bluetexinsulation.com/pages/easyclip-roof-system-covers-hides-purlins">EasyClip Roof System - Covers/Hides Purlins</a><a href="https://bluetexinsulation.com/pages/covering-wall-insulation-girts-hidden">Covering Wall Insulation - Girts Hidden</a></div></div></div></div>
+                  <div class="guide-item"><a class="guide-main" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type">New Construction</a><div class="guide-flyout"><h3 class="flyout-title">New Construction</h3><div class="flyout-grid"><img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction guide"><div class="flyout-links"><a href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type">Choose Building Type</a><a href="https://bluetexinsulation.com/pages/new-construction-metal-framed-buildings-installation">Metal Framed Buildings</a><a href="https://bluetexinsulation.com/pages/new-construction-wood-framed-buildings-installation">Wood Framed Buildings</a><a href="https://bluetexinsulation.com/pages/resource-page-installation-supplies">Installation Supplies</a></div></div></div></div>
                 </div>
               </div>
             </div>
@@ -875,79 +776,39 @@
 
           <div class="nav-item">
             <a class="nav-label" href="https://bluetexinsulation.com/collections/all">Shop All Products</a>
-            <div class="mega-panel products-panel">
+            <div class="mega-panel">
               <div class="product-grid">
-                <a class="product-card" href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation">
-                  <img src="images/BTCoverRepairSampleBoxComponents.png" alt="Help me decide">
-                  <h4>Help Me Decide</h4>
-                  <p>Start with the right product or system path.</p>
-                </a>
-                <a class="product-card" href="garage-door-insulation.html">
-                  <img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation">
-                  <h4>Garage Door Insulation</h4>
-                  <p>New chooser page for roll up and residential doors.</p>
-                </a>
-                <div class="product-card product-card--popular">
-                  <img src="images/CopyofBlueTex2mm62inch700ProductThumbnail.png" alt="Pro 2mm foil white">
-                  <h4>Pro 2mm Foil/White</h4>
-                  <p>Core foil/white foam insulation roll.</p>
-                  <div class="product-actions">
-                    <a href="https://bluetexinsulation.com/collections/frontpage/products/bluetex-pro-2mm-50-wide-foil-white-foam-insulation">50 inch</a>
-                    <a href="https://bluetexinsulation.com/products/bluetex-pro-2mm-super-wide-62-inch">62 inch</a>
-                  </div>
-                </div>
-                <div class="product-card">
-                  <img src="images/Oct2024BlueTex6mm62inchMainThumbnail.png" alt="Supreme 6mm foil white">
-                  <h4>Supreme 6mm Foil/White</h4>
-                  <p>Thicker foam option for stronger moisture control.</p>
-                  <div class="product-actions">
-                    <a href="https://bluetexinsulation.com/products/bluetex-6mm-supreme-50-wide">50 inch</a>
-                    <a href="https://bluetexinsulation.com/products/bluetex%E2%84%A2-supreme-6mm-62-wide-foil-white-foam-insulation-300-sq-ft">62 inch</a>
-                  </div>
-                </div>
-                <a class="product-card" href="https://bluetexinsulation.com/pages/bluetex-vapor-barrier-white-tapes">
-                  <img src="images/3wideBRIGHTWHITEtape.png" alt="Tapes">
-                  <h4>Tapes</h4>
-                  <p>White vapor barrier seam and repair tapes.</p>
-                </a>
-                <a class="product-card" href="https://bluetexinsulation.com/collections/fasteners?&view=ls">
-                  <img src="images/BlueTex4FootTermBarsMainImage_1.png" alt="Fasteners">
-                  <h4>Fasteners</h4>
-                  <p>Screws, washers, TermBars, and install hardware.</p>
-                </a>
-                <a class="product-card" href="https://bluetexinsulation.com/products/double-sided-tape">
-                  <img src="images/BTEasyClipSet_1.png" alt="Double sided tape">
-                  <h4>Double Sided Tape</h4>
-                  <p>Future 4, 8, and 16 count pack support.</p>
-                </a>
-                <a class="product-card" href="radiant-barrier-products.html">
-                  <img src="images/BlueTexInsulation_Med.jpg" alt="Radiant barrier products">
-                  <h4>Radiant Barrier Products</h4>
-                  <p>New page for foil/foil, foil/white, and Thermal Wrap.</p>
-                </a>
+                <a class="product-card" href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation"><img src="images/BTCoverRepairSampleBoxComponents.png" alt="Help me decide"><span><h4>Help Me Decide</h4><p>Start with the right product path.</p></span></a>
+                <a class="product-card" href="garage-door-insulation.html"><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation"><span><h4>Garage Door Insulation</h4><p>Roll up and residential doors.</p></span></a>
+                <div class="product-card product-card--popular"><img src="images/CopyofBlueTex2mm62inch700ProductThumbnail.png" alt="Pro 2mm foil white"><span><h4>Pro 2mm Foil/White</h4><p>Core foam roll.</p><span class="product-actions"><a href="https://bluetexinsulation.com/collections/frontpage/products/bluetex-pro-2mm-50-wide-foil-white-foam-insulation">50 in</a><a href="https://bluetexinsulation.com/products/bluetex-pro-2mm-super-wide-62-inch">62 in</a></span></span></div>
+                <div class="product-card"><img src="images/Oct2024BlueTex6mm62inchMainThumbnail.png" alt="Supreme 6mm foil white"><span><h4>Supreme 6mm Foil/White</h4><p>Thicker foam option.</p><span class="product-actions"><a href="https://bluetexinsulation.com/products/bluetex-6mm-supreme-50-wide">50 in</a><a href="https://bluetexinsulation.com/products/bluetex%E2%84%A2-supreme-6mm-62-wide-foil-white-foam-insulation-300-sq-ft">62 in</a></span></span></div>
+                <a class="product-card" href="https://bluetexinsulation.com/pages/bluetex-vapor-barrier-white-tapes"><img src="images/3wideBRIGHTWHITEtape.png" alt="Tapes"><span><h4>Tapes</h4><p>White seam and repair tapes.</p></span></a>
+                <a class="product-card" href="https://bluetexinsulation.com/collections/fasteners?&view=ls"><img src="images/BlueTex4FootTermBarsMainImage_1.png" alt="Fasteners"><span><h4>Fasteners</h4><p>Screws, washers, TermBars.</p></span></a>
+                <a class="product-card" href="https://bluetexinsulation.com/products/double-sided-tape"><img src="images/BTEasyClipSet_1.png" alt="Double sided tape"><span><h4>Double Sided Tape</h4><p>Future 4, 8, and 16 counts.</p></span></a>
+                <a class="product-card" href="radiant-barrier-products.html"><img src="images/BlueTexInsulation_Med.jpg" alt="Radiant barrier products"><span><h4>Radiant Barrier Products</h4><p>Foil/Foil, Foil/White, Thermal Wrap.</p></span></a>
               </div>
             </div>
           </div>
 
           <div class="nav-item">
             <a class="nav-label" href="https://bluetexinsulation.com/a/detective-faq">Common Questions</a>
-            <div class="mega-panel faq-panel">
-              <div class="mega-layout">
+            <div class="mega-panel">
+              <div class="faq-layout">
                 <a class="mega-preview" href="https://bluetexinsulation.com/pages/r-value-of-bluetex-insulation" data-preview-link>
-                  <img src="images/BlueTexInsulation_Med.jpg" alt="R-value FAQ" data-preview-img>
-                  <h3 data-preview-title>R-Value - All About It</h3>
-                  <p data-preview-text>Plain-English explanation of what BlueTex does and does not claim for R-value.</p>
+                  <img class="preview-media" src="images/BlueTexInsulation_Med.jpg" alt="R-value FAQ" data-preview-img>
+                  <h3 data-preview-title>R-Value</h3>
+                  <p data-preview-text>Simple explanation of what R-value means for thin foil/foam products.</p>
                 </a>
-                <div class="mega-link-grid">
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/r-value-of-bluetex-insulation" data-img="images/BlueTexInsulation_Med.jpg" data-title="R-Value - All About It" data-text="Plain-English explanation of what BlueTex does and does not claim for R-value.">R-Value - All About It</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/moisture-in-metal-buildings-causes/1000" data-img="images/before-sagging-insulation.jpg" data-title="Moisture/Condensation Causes - Part 1" data-text="Why metal buildings sweat and what conditions create moisture problems.">Moisture/Condensation Causes - Part 1</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/moisture-in-metal-buildings-prevention/1000" data-img="images/final-roof-wall-look.jpg" data-title="Moisture/Condensation Prevention - Part 2" data-text="How to prevent or eliminate condensation with the right system.">Moisture/Condensation Prevention - Part 2</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/insulating-non-conditioned-buildings-vs-conditioned-buildings" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="Conditioned Vs. Non-Conditioned Buildings" data-text="Match the install method to how the building is actually used.">Conditioned Vs. Non-Conditioned Buildings</a>
+                <div class="link-grid">
+                  <a class="mega-link" href="https://bluetexinsulation.com/pages/r-value-of-bluetex-insulation" data-img="images/BlueTexInsulation_Med.jpg" data-title="R-Value" data-text="Simple explanation of what R-value means for thin foil/foam products.">R-Value - All About It</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/pages/moisture-in-metal-buildings-causes/1000" data-img="images/before-sagging-insulation.jpg" data-title="Moisture Causes" data-text="Why metal buildings sweat and what conditions create moisture problems.">Moisture/Condensation Causes - Part 1</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/pages/moisture-in-metal-buildings-prevention/1000" data-img="images/final-roof-wall-look.jpg" data-title="Moisture Prevention" data-text="How to prevent or eliminate condensation with the right system.">Moisture/Condensation Prevention - Part 2</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/pages/insulating-non-conditioned-buildings-vs-conditioned-buildings" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="Conditioned Vs. Non-Conditioned" data-text="Match the install method to how the building is actually used.">Conditioned Vs. Non-Conditioned Buildings</a>
                   <a class="mega-link" href="https://bluetexinsulation.com/pages/bubble-foil-fails" data-img="images/Gemini_Generated_Image_98d8sy98d8sy98d8.jpg" data-title="Bubble Foil vs. BlueTex" data-text="Durability and material differences between BlueTex and bubble foil.">Bubble Foil vs. BlueTex</a>
                   <a class="mega-link" href="https://bluetexinsulation.com/pages/existing-construction-wood-framed-buildings-installation" data-img="images/complete-wall-finish.jpg" data-title="Can I Paint Or Cover BlueTex?" data-text="See finish options, exposed interiors, and ways to cover fasteners.">Can I Paint Or Cover BlueTex?</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers" data-img="images/BTCoverRepairSampleBoxComponents-1-.png" data-title="Contractor/Installer Pricing" data-text="Contractor tiers, larger projects, local pickup, and bulk-order support.">Contractor/Installer Pricing</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers" data-img="images/BTCoverRepairSampleBoxComponents-1-.png" data-title="Contractor/Installer Pricing" data-text="Contractor tiers and larger-project support.">Contractor/Installer Pricing</a>
                   <a class="mega-link" href="https://bluetexinsulation.com/pages/warranty" data-img="images/BlueTex4FootTermBarsMainImage_1.png" data-title="Lifetime Warranty" data-text="BlueTex roll warranty information for metal building applications.">Lifetime Warranty</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/a/detective-faq" data-img="images/BTCoverRepairSampleBoxComponents.png" data-title="Other FAQ - Searchable" data-text="Search across the full FAQ library for product, install, and ordering questions.">Other FAQ - Searchable</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/a/detective-faq" data-img="images/BTCoverRepairSampleBoxComponents.png" data-title="Other FAQ" data-text="Search the full FAQ library for product, install, and ordering questions.">Other FAQ - Searchable</a>
                 </div>
               </div>
             </div>
@@ -959,20 +820,18 @@
     <section class="hero-shell">
       <div class="rail">
         <div class="hero">
-          <img src="images/before-sagging-insulation.jpg" alt="BlueTex metal building insulation">
-          <div class="hero-copy">
-            <div>
-              <h1>BlueTex Metal Building Insulation</h1>
-              <span>Cover / Repair / Retrofit</span>
-            </div>
+          <div>
+            <h1>Cover old insulation with a clean finished interior</h1>
+            <p>BlueTex helps metal building owners choose the right product and install process for heat, condensation, and repair projects.</p>
+            <div class="hero-actions"><a class="cta" href="large-metal-building-repair-cover-system.html">See The System</a><a class="cta cta--secondary" href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box">Order Test Kit</a></div>
           </div>
-          <div class="dots"><i></i><i></i><i></i><i></i></div>
+          <video class="hero-video" src="media/BlueTexHorizontalAd-cropped.mp4" autoplay muted loop playsinline></video>
         </div>
         <div class="quick">
           <a href="large-metal-building-repair-cover-system.html">Cover / Repair</a>
-          <a href="https://bluetexinsulation.com/collections/all">Shop Products</a>
-          <a href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation">Applications</a>
-          <a href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box">Test Kit</a>
+          <a href="https://bluetexinsulation.com/collections/all">Browse All Products</a>
+          <a href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation">Help Me Choose</a>
+          <a href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers">Request A Quote</a>
         </div>
       </div>
     </section>
@@ -980,29 +839,16 @@
     <main class="content-zone">
       <section class="rail white-box">
         <h2>BlueTex Mega Menu Prototype</h2>
-        <p>This sandbox uses the ProTapes-style menu scale: oversized blue navigation, white mega panels, bold uppercase links, and preview imagery that changes as the user hovers each item.</p>
-        <p>The five menu sections are organized around the requested BlueTex structure: Large Metal Building Repair &amp; Cover System, Applications, Install Guide, Shop All Products, and Common Questions.</p>
+        <p>This version follows the BlueTex brand references: Lato typography, #0011a7 action blue, white/gray structure, compact product cards, and direct installer-focused language.</p>
+        <p>The five navigation buckets keep the structure from your original notes while reducing the height of each mega menu so users do not have to scroll to see the full Applications or Shop All Products panels.</p>
       </section>
-
       <section class="rail white-box">
-        <h2>Browse Applications</h2>
-        <div class="app-grid">
-          <a class="app-card-home" href="large-metal-building-repair-cover-system.html">
-            <img src="images/BT_blog_case_study_cover_system_after.webp" alt="Cover and repair">
-            <b>Cover &amp; Repair</b>
-          </a>
-          <a class="app-card-home" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation">
-            <img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing metal buildings">
-            <b>Existing Metal Buildings</b>
-          </a>
-          <a class="app-card-home" href="garage-door-insulation.html">
-            <img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation">
-            <b>Garage Doors</b>
-          </a>
-          <a class="app-card-home" href="radiant-barrier-products.html">
-            <img src="images/BlueTexInsulation_Med.jpg" alt="Radiant barrier products">
-            <b>Radiant Barrier</b>
-          </a>
+        <h2>Common Starting Points</h2>
+        <div class="mini-grid">
+          <a class="mini-card" href="large-metal-building-repair-cover-system.html"><img src="images/BT_blog_case_study_cover_system_after.webp" alt="Cover and repair"><b>Cover &amp; Repair</b></a>
+          <a class="mini-card" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation"><img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing metal buildings"><b>Existing Metal Buildings</b></a>
+          <a class="mini-card" href="garage-door-insulation.html"><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation"><b>Garage Doors</b></a>
+          <a class="mini-card" href="radiant-barrier-products.html"><img src="images/BlueTexInsulation_Med.jpg" alt="Radiant barrier products"><b>Radiant Barrier</b></a>
         </div>
       </section>
     </main>
