@@ -780,6 +780,1103 @@
     </main>
   </div>
 
+  <!-- ============================================================
+       HYBRID CONCEPT STYLES
+       ============================================================ -->
+  <style>
+    /* ── Concept Divider ── */
+    .concept-divider {
+      padding: 64px 0;
+      background: #0b0f3a;
+    }
+    .concept-divider__inner {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      width: 1140px;
+      margin: 0 auto;
+    }
+    .concept-divider__line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d58a13, transparent);
+    }
+    .concept-divider__label {
+      flex-shrink: 0;
+      text-align: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      line-height: 1.4;
+      padding: 20px 32px;
+      border: 2px solid #d58a13;
+      background: rgba(213,138,19,.1);
+    }
+    .concept-divider__icon {
+      display: block;
+      color: #d58a13;
+      font-size: 13px;
+      letter-spacing: 0;
+      margin: 3px 0;
+    }
+
+    /* ── Hybrid root ── */
+    .hc {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1e1e1e;
+      background: #fff;
+      min-width: 1180px;
+    }
+    .hc * { box-sizing: border-box; }
+    .hc a { color: inherit; text-decoration: none; }
+    .hc img { display: block; max-width: 100%; }
+
+    .hc-rail {
+      width: 1140px;
+      margin: 0 auto;
+    }
+
+    /* ── Utility bar ── */
+    .hc-util-bar {
+      background: #111044;
+      color: #c8d0e8;
+      font-size: 14px;
+      letter-spacing: .03em;
+    }
+    .hc-util-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1140px;
+      margin: 0 auto;
+      height: 38px;
+    }
+    .hc-util-links { display: flex; gap: 26px; }
+    .hc-util-links a { color: #c8d0e8; transition: color .15s; }
+    .hc-util-links a:hover { color: #d58a13; }
+
+    /* ── Main header ── */
+    .hc-header { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+    .hc-header-main { padding: 30px 0 26px; }
+    .hc-header-inner {
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      gap: 50px;
+      align-items: center;
+      width: 1140px;
+      margin: 0 auto;
+    }
+    .hc-logo img { width: 200px; height: auto; }
+    .hc-logo-tagline {
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #666;
+      border-top: 2px solid #d0d0d0;
+      padding-top: 7px;
+    }
+    .hc-search {
+      display: flex;
+      height: 58px;
+      border: 2.5px solid #111044;
+    }
+    .hc-search input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      padding: 0 22px;
+      font-size: 17px;
+      color: #333;
+      outline: 0;
+      background: transparent;
+    }
+    .hc-search input::placeholder { color: #aaa; }
+    .hc-search button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      border: 0;
+      background: #111044;
+      color: #fff;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .hc-search button:hover { background: #0829c7; }
+    .hc-header-ctas { display: flex; flex-direction: column; gap: 10px; }
+    .hc-btn-quote,
+    .hc-btn-samples {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      padding: 0 22px;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: all .15s;
+    }
+    .hc-btn-quote { background: #d58a13; color: #fff; }
+    .hc-btn-quote:hover { background: #b87510; }
+    .hc-btn-samples { border: 2.5px solid #111044; color: #111044; }
+    .hc-btn-samples:hover { background: #111044; color: #fff; }
+
+    /* ── Primary nav ── */
+    .hc-nav {
+      background: #111044;
+      border-top: 3px solid #d58a13;
+    }
+    .hc-nav-inner {
+      display: flex;
+      align-items: center;
+      width: 1140px;
+      margin: 0 auto;
+    }
+    .hc-nav-link {
+      display: flex;
+      align-items: center;
+      height: 68px;
+      padding: 0 30px;
+      color: #fff;
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      border-right: 1px solid rgba(255,255,255,.1);
+      transition: background .15s, color .15s;
+    }
+    .hc-nav-link:first-child { border-left: 1px solid rgba(255,255,255,.1); }
+    .hc-nav-link:hover { background: rgba(255,255,255,.08); color: #d58a13; }
+    .hc-nav-link--featured {
+      background: #d58a13;
+      color: #fff !important;
+      border-right: 1px solid rgba(255,255,255,.15);
+    }
+    .hc-nav-link--featured:hover { background: #b87510 !important; }
+
+    /* ── Hero ── */
+    .hc-hero {
+      position: relative;
+      height: 540px;
+      overflow: hidden;
+      background: #0d1b4b;
+    }
+    .hc-hero-bg { position: absolute; inset: 0; }
+    .hc-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .hc-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        108deg,
+        rgba(8,23,68,.92) 0%,
+        rgba(8,23,68,.72) 45%,
+        rgba(8,23,68,.35) 72%,
+        transparent 100%
+      );
+    }
+    .hc-hero-rail {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .hc-hero-content { max-width: 600px; }
+    .hc-hero-eyebrow {
+      color: #d58a13;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hc-hero-title {
+      margin: 0 0 18px;
+      color: #fff;
+      font-size: 56px;
+      line-height: 1.01;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-shadow: 0 2px 18px rgba(0,0,0,.32);
+    }
+    .hc-hero-sub {
+      margin: 0 0 34px;
+      color: rgba(255,255,255,.85);
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 480px;
+    }
+    .hc-hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hc-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      height: 56px;
+      padding: 0 32px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      transition: all .15s;
+    }
+    .hc-hero-btn--primary { background: #d58a13; color: #fff; }
+    .hc-hero-btn--primary:hover { background: #b87510; }
+    .hc-hero-btn--secondary {
+      background: transparent;
+      color: #fff;
+      border: 2.5px solid rgba(255,255,255,.6);
+    }
+    .hc-hero-btn--secondary:hover {
+      background: rgba(255,255,255,.12);
+      border-color: #fff;
+    }
+    .hc-hero-dots {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 2;
+    }
+    .hc-dot {
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.32);
+    }
+    .hc-dot--active { background: #fff; transform: scale(1.2); }
+
+    /* ── Quick nav ── */
+    .hc-quicknav {
+      background: #f4f4f6;
+      border-bottom: 1px solid #ddd;
+    }
+    .hc-quicknav-inner {
+      display: flex;
+      width: 1140px;
+      margin: 0 auto;
+    }
+    .hc-quicknav-inner a {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 58px;
+      color: #111044;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      border-right: 1px solid #ddd;
+      transition: background .15s, color .15s;
+    }
+    .hc-quicknav-inner a:last-child { border-right: 0; }
+    .hc-quicknav-inner a:hover { background: #fff; color: #d58a13; }
+
+    /* ── Sections ── */
+    .hc-section { padding: 82px 0; }
+    .hc-section--gray { background: #f4f4f6; }
+    .hc-section--white { background: #fff; }
+    .hc-section--navy { background: #111044; }
+
+    .hc-section-header { margin-bottom: 50px; }
+    .hc-section-title {
+      margin: 0 0 14px;
+      color: #111044;
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .hc-section-sub {
+      margin: 0;
+      color: #555;
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 660px;
+    }
+    .hc-text-center { text-align: center; }
+    .hc-text-center .hc-section-sub { margin: 0 auto; }
+
+    /* ── Intro ── */
+    .hc-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 80px;
+      align-items: start;
+    }
+    .hc-intro-lead {
+      font-size: 20px;
+      line-height: 1.55;
+      color: #1e1e1e;
+      margin: 0 0 18px;
+    }
+    .hc-intro-text p {
+      font-size: 17px;
+      line-height: 1.65;
+      color: #444;
+      margin: 0 0 26px;
+    }
+    .hc-link-arrow {
+      color: #0829c7;
+      font-size: 16px;
+      font-weight: 700;
+      border-bottom: 2px solid transparent;
+      transition: border-color .15s;
+    }
+    .hc-link-arrow:hover { border-bottom-color: #0829c7; }
+
+    .hc-intro-features { display: flex; flex-direction: column; gap: 28px; }
+    .hc-feat { display: flex; gap: 18px; align-items: flex-start; }
+    .hc-feat-icon { font-size: 28px; line-height: 1; min-width: 38px; }
+    .hc-feat strong {
+      display: block;
+      color: #111044;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 5px;
+    }
+    .hc-feat span { color: #555; font-size: 15px; line-height: 1.5; }
+
+    /* ── Applications (image-led) ── */
+    .hc-app-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .hc-app-card { display: block; overflow: hidden; }
+    .hc-app-img-wrap {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+      background: #e0e0e0;
+    }
+    .hc-app-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+    .hc-app-card:hover .hc-app-img-wrap img { transform: scale(1.05); }
+    .hc-app-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 26px 22px 22px;
+      background: linear-gradient(
+        0deg,
+        rgba(11,17,68,.9) 0%,
+        rgba(11,17,68,.48) 50%,
+        transparent 100%
+      );
+      transition: background .3s;
+    }
+    .hc-app-card:hover .hc-app-overlay {
+      background: linear-gradient(
+        0deg,
+        rgba(11,17,68,.96) 0%,
+        rgba(11,17,68,.7) 60%,
+        rgba(11,17,68,.18) 100%
+      );
+    }
+    .hc-app-label {
+      display: block;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hc-app-desc {
+      display: block;
+      color: rgba(255,255,255,.72);
+      font-size: 14px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .hc-app-cta {
+      display: inline-block;
+      color: #d58a13;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      opacity: 0;
+      transform: translateY(7px);
+      transition: opacity .25s, transform .25s;
+    }
+    .hc-app-card:hover .hc-app-cta { opacity: 1; transform: translateY(0); }
+
+    /* ── Product type grid ── */
+    .hc-product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .hc-product-tile {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1.5px solid #e4e4e4;
+      overflow: hidden;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .hc-product-tile:hover {
+      border-color: #0829c7;
+      box-shadow: 0 4px 20px rgba(8,41,199,.11);
+    }
+    .hc-product-img {
+      height: 195px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: #fafafa;
+    }
+    .hc-product-img img {
+      max-height: 155px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .hc-product-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 10px 12px;
+      background: #111044;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      line-height: 1.1;
+      transition: background .15s;
+    }
+    .hc-product-tile:hover .hc-product-label { background: #0829c7; }
+
+    /* ── Feature strip (3-col, ProTapes rhythm) ── */
+    .hc-feature-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 52px;
+    }
+    .hc-feature-img {
+      height: 240px;
+      overflow: hidden;
+      background: #ddd;
+      margin-bottom: 28px;
+    }
+    .hc-feature-img img { width: 100%; height: 100%; object-fit: cover; }
+    .hc-feature-block h3 {
+      margin: 0 0 13px;
+      color: #111044;
+      font-size: 21px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+    .hc-feature-block p {
+      margin: 0 0 20px;
+      color: #444;
+      font-size: 16px;
+      line-height: 1.62;
+    }
+
+    /* ── Finder ── */
+    .hc-finder-wrap {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .hc-finder-copy .hc-section-title { color: #fff; margin-bottom: 18px; }
+    .hc-finder-copy p {
+      color: rgba(255,255,255,.7);
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .hc-finder-form { display: flex; flex-direction: column; gap: 20px; }
+    .hc-finder-field label {
+      display: block;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .hc-finder-field select {
+      width: 100%;
+      height: 50px;
+      border: 1.5px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.07);
+      color: #fff;
+      font-size: 16px;
+      padding: 0 16px;
+      cursor: pointer;
+    }
+    .hc-finder-submit {
+      align-self: flex-start;
+      height: 54px;
+      padding: 0 40px;
+      background: #d58a13;
+      border: 0;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .hc-finder-submit:hover { background: #b87510; }
+
+    /* ── Trust cards ── */
+    .hc-trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 34px;
+      margin-top: 54px;
+    }
+    .hc-trust-card {
+      text-align: center;
+      padding: 48px 34px;
+      border: 1.5px solid #e6e6e6;
+      background: #fafafa;
+    }
+    .hc-trust-icon { font-size: 42px; margin-bottom: 18px; }
+    .hc-trust-card h3 {
+      margin: 0 0 12px;
+      color: #111044;
+      font-size: 21px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .hc-trust-card p {
+      margin: 0 0 28px;
+      color: #555;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .hc-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      height: 46px;
+      padding: 0 24px;
+      border: 2.5px solid #111044;
+      color: #111044;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: all .15s;
+    }
+    .hc-btn-outline:hover { background: #111044; color: #fff; }
+
+    /* ── Footer ── */
+    .hc-footer {
+      background: #0b0f3a;
+      padding: 70px 0 0;
+      color: rgba(255,255,255,.65);
+      font-size: 15px;
+    }
+    .hc-footer-grid {
+      display: grid;
+      grid-template-columns: 260px repeat(3, 1fr);
+      gap: 50px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .hc-footer-logo {
+      width: 160px;
+      margin-bottom: 14px;
+      filter: brightness(0) invert(1);
+    }
+    .hc-footer-brand p {
+      margin: 0 0 6px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+    .hc-footer-phone {
+      font-size: 20px !important;
+      font-weight: 900;
+      color: #d58a13 !important;
+      letter-spacing: .08em;
+    }
+    .hc-footer-col h4 {
+      margin: 0 0 18px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-bottom: 2px solid #d58a13;
+      padding-bottom: 10px;
+    }
+    .hc-footer-col a {
+      display: block;
+      color: rgba(255,255,255,.55);
+      font-size: 14px;
+      padding: 5px 0;
+      transition: color .15s;
+    }
+    .hc-footer-col a:hover { color: #d58a13; }
+    .hc-footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 54px;
+      color: rgba(255,255,255,.35);
+      font-size: 13px;
+    }
+    .hc-footer-links { display: flex; gap: 24px; }
+    .hc-footer-links a { color: rgba(255,255,255,.35); font-size: 13px; transition: color .15s; }
+    .hc-footer-links a:hover { color: rgba(255,255,255,.75); }
+  </style>
+
+  <!-- ============================================================
+       CONCEPT DIVIDER
+       ============================================================ -->
+  <div class="concept-divider">
+    <div class="concept-divider__inner">
+      <div class="concept-divider__line"></div>
+      <div class="concept-divider__label">
+        <span class="concept-divider__icon">&#9660;</span>
+        Hybrid Concept &mdash; ProTapes Structure / BlueTex Theme Blend
+        <span class="concept-divider__icon">&#9660;</span>
+      </div>
+      <div class="concept-divider__line"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       HYBRID CONCEPT
+       ============================================================ -->
+  <div class="hc">
+
+    <!-- ── HEADER ── -->
+    <header class="hc-header">
+
+      <!-- utility bar -->
+      <div class="hc-util-bar">
+        <div class="hc-util-inner">
+          <span>&#128222; 1&#8209;800&#8209;BLUETEX &nbsp;&bull;&nbsp; Free Shipping on Orders $500+</span>
+          <div class="hc-util-links">
+            <a href="#">Contractor Pricing</a>
+            <a href="#">Video Library</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- main header -->
+      <div class="hc-header-main">
+        <div class="hc-header-inner">
+          <a class="hc-logo" href="#">
+            <img src="images/bluetex-logo-med.png" alt="BlueTex Insulation">
+            <div class="hc-logo-tagline">Metal Building Insulation Systems</div>
+          </a>
+          <form class="hc-search" role="search">
+            <input type="search" placeholder="Search products, applications, install guides&hellip;">
+            <button type="button" aria-label="Search">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+            </button>
+          </form>
+          <div class="hc-header-ctas">
+            <a class="hc-btn-quote" href="#">Get a Quote</a>
+            <a class="hc-btn-samples" href="#">Order Samples</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- primary nav -->
+      <nav class="hc-nav" aria-label="Hybrid primary navigation">
+        <div class="hc-nav-inner">
+          <a class="hc-nav-link hc-nav-link--featured" href="#">Where to Buy</a>
+          <a class="hc-nav-link" href="#">Our Insulation</a>
+          <a class="hc-nav-link" href="#">Install Guides</a>
+          <a class="hc-nav-link" href="#">Applications</a>
+          <a class="hc-nav-link" href="#">About Us</a>
+          <a class="hc-nav-link" href="#">Blog</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ── HERO ── -->
+    <section class="hc-hero" aria-label="Homepage hero">
+      <div class="hc-hero-bg">
+        <img src="images/before-sagging-insulation.jpg" alt="BlueTex metal building insulation installed on roof and walls">
+      </div>
+      <div class="hc-hero-overlay" aria-hidden="true"></div>
+      <div class="hc-rail hc-hero-rail">
+        <div class="hc-hero-content">
+          <div class="hc-hero-eyebrow">Trusted Metal Building Insulation</div>
+          <h1 class="hc-hero-title">Stop Heat.<br>Fix Damaged Insulation.<br>Finish Clean.</h1>
+          <p class="hc-hero-sub">Foil/white foam systems built for shops, warehouses, barns, garages, and roll-up doors. Cover old insulation or start fresh.</p>
+          <div class="hc-hero-btns">
+            <a class="hc-hero-btn hc-hero-btn--primary" href="#">See Cover &amp; Repair System</a>
+            <a class="hc-hero-btn hc-hero-btn--secondary" href="#">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+      <div class="hc-hero-dots" aria-hidden="true">
+        <span class="hc-dot hc-dot--active"></span>
+        <span class="hc-dot"></span>
+        <span class="hc-dot"></span>
+      </div>
+    </section>
+
+    <!-- ── QUICK NAV ── -->
+    <div class="hc-quicknav">
+      <div class="hc-quicknav-inner">
+        <a href="#">Cover / Repair</a>
+        <a href="#">Our Products</a>
+        <a href="#">Applications</a>
+        <a href="#">Install Guides</a>
+      </div>
+    </div>
+
+    <!-- ── INTRO ── -->
+    <section class="hc-section hc-section--white">
+      <div class="hc-rail">
+        <div class="hc-intro-grid">
+          <div class="hc-intro-text">
+            <h2 class="hc-section-title">BlueTex Insulation</h2>
+            <p class="hc-intro-lead">BlueTex helps metal building owners solve heat, condensation, and damaged insulation problems with practical foil/white foam systems.</p>
+            <p>Use Pro 2mm and Supreme 6mm roll products with reinforced seam tapes, EasyClip hangers, and aluminum TermBars to build a clean, durable system for any metal building.</p>
+            <a class="hc-link-arrow" href="#">Learn more about our system &rarr;</a>
+          </div>
+          <div class="hc-intro-features">
+            <div class="hc-feat">
+              <div class="hc-feat-icon">&#9889;</div>
+              <div>
+                <strong>Fast Installation</strong>
+                <span>Owner or contractor-installed systems for new builds and retrofit projects.</span>
+              </div>
+            </div>
+            <div class="hc-feat">
+              <div class="hc-feat-icon">&#128295;</div>
+              <div>
+                <strong>Complete Systems</strong>
+                <span>Rolls, tapes, TermBars, clips, and accessories &mdash; all from one source.</span>
+              </div>
+            </div>
+            <div class="hc-feat">
+              <div class="hc-feat-icon">&#128208;</div>
+              <div>
+                <strong>Project Guidance</strong>
+                <span>Install guides, video library, quote support, and sample kits available.</span>
+              </div>
+            </div>
+            <div class="hc-feat">
+              <div class="hc-feat-icon">&#127942;</div>
+              <div>
+                <strong>Proven Results</strong>
+                <span>Hundreds of completed shops, warehouses, barns, and cover/repair jobs.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BROWSE APPLICATIONS (image-led, ProTapes-scale) ── -->
+    <section class="hc-section hc-section--gray">
+      <div class="hc-rail">
+        <div class="hc-section-header">
+          <h2 class="hc-section-title">Browse Applications</h2>
+          <p class="hc-section-sub">BlueTex products are organized around real metal building projects. Find your install path below.</p>
+        </div>
+        <div class="hc-app-grid">
+          <a class="hc-app-card" href="#">
+            <div class="hc-app-img-wrap">
+              <img src="images/final-roof-wall-look.jpg" alt="Cover and repair system">
+              <div class="hc-app-overlay">
+                <span class="hc-app-label">Cover &amp; Repair</span>
+                <span class="hc-app-desc">Replace or cover torn, sagging, or damaged insulation with a clean BlueTex finish</span>
+                <span class="hc-app-cta">Shop Products &rarr;</span>
+              </div>
+            </div>
+          </a>
+          <a class="hc-app-card" href="#">
+            <div class="hc-app-img-wrap">
+              <img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing metal buildings">
+              <div class="hc-app-overlay">
+                <span class="hc-app-label">Existing Buildings</span>
+                <span class="hc-app-desc">Retrofit shops, warehouses, barns, and hangars with a foil/foam system</span>
+                <span class="hc-app-cta">Shop Products &rarr;</span>
+              </div>
+            </div>
+          </a>
+          <a class="hc-app-card" href="#">
+            <div class="hc-app-img-wrap">
+              <img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Roll up door insulation">
+              <div class="hc-app-overlay">
+                <span class="hc-app-label">Roll Up Doors</span>
+                <span class="hc-app-desc">Simple kit path for hot metal roll-up doors &mdash; owner-installed</span>
+                <span class="hc-app-cta">Shop Products &rarr;</span>
+              </div>
+            </div>
+          </a>
+          <a class="hc-app-card" href="#">
+            <div class="hc-app-img-wrap">
+              <img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New metal building construction">
+              <div class="hc-app-overlay">
+                <span class="hc-app-label">New Construction</span>
+                <span class="hc-app-desc">Red iron installs, new pre-engineered structures, walls, and rooflines</span>
+                <span class="hc-app-cta">Shop Products &rarr;</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BROWSE BY PRODUCT TYPE ── -->
+    <section class="hc-section hc-section--white">
+      <div class="hc-rail">
+        <div class="hc-section-header">
+          <h2 class="hc-section-title">Browse by Product Type</h2>
+          <p class="hc-section-sub">Compare rolls, tapes, fasteners, and kits &mdash; or view the full product catalog.</p>
+        </div>
+        <div class="hc-product-grid">
+          <a class="hc-product-tile" href="#">
+            <div class="hc-product-img">
+              <img src="images/CopyofBlueTex2mm62inch700ProductThumbnail.png" alt="2mm Pro">
+            </div>
+            <span class="hc-product-label">2mm Pro</span>
+          </a>
+          <a class="hc-product-tile" href="#">
+            <div class="hc-product-img">
+              <img src="images/Oct2024BlueTex6mm62inchMainThumbnail.png" alt="6mm Supreme">
+            </div>
+            <span class="hc-product-label">6mm Supreme</span>
+          </a>
+          <a class="hc-product-tile" href="#">
+            <div class="hc-product-img">
+              <img src="images/BlueTex4FootTermBarsMainImage_1.png" alt="TermBar Cover System">
+            </div>
+            <span class="hc-product-label">TermBar Cover System</span>
+          </a>
+          <a class="hc-product-tile" href="#">
+            <div class="hc-product-img">
+              <img src="images/BTEasyClipSet_1.png" alt="EasyClip Hangers">
+            </div>
+            <span class="hc-product-label">EasyClip Hangers</span>
+          </a>
+          <a class="hc-product-tile" href="#">
+            <div class="hc-product-img">
+              <img src="images/3wideBRIGHTWHITEtape.png" alt="Seam Tape">
+            </div>
+            <span class="hc-product-label">Seam Tape</span>
+          </a>
+          <a class="hc-product-tile" href="#">
+            <div class="hc-product-img">
+              <img src="images/IMG_37763.jpg" alt="Roll Up Door Kits">
+            </div>
+            <span class="hc-product-label">Roll Up Door Kits</span>
+          </a>
+          <a class="hc-product-tile" href="#">
+            <div class="hc-product-img">
+              <img src="images/BlueTexcoverrepairsamplebox.png" alt="Sample Box">
+            </div>
+            <span class="hc-product-label">Sample Box</span>
+          </a>
+          <a class="hc-product-tile" href="#">
+            <div class="hc-product-img">
+              <img src="images/BlueTexInsulation_Med.jpg" alt="All Products">
+            </div>
+            <span class="hc-product-label">All Products</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THREE-COLUMN FEATURE STRIP (ProTapes feature section rhythm) ── -->
+    <section class="hc-section hc-section--gray">
+      <div class="hc-rail">
+        <div class="hc-section-header hc-text-center">
+          <h2 class="hc-section-title">Why Choose BlueTex</h2>
+          <p class="hc-section-sub">A complete, installer-friendly system for every kind of metal building project.</p>
+        </div>
+        <div class="hc-feature-strip">
+          <div class="hc-feature-block">
+            <div class="hc-feature-img">
+              <img src="images/installing-termbars.jpg" alt="TermBar installation">
+            </div>
+            <h3>Complete Cover &amp; Repair Systems</h3>
+            <p>The TermBar Cover System lets you mechanically fasten BlueTex over old insulation with clean, professional results &mdash; no tear-down needed.</p>
+            <a class="hc-link-arrow" href="#">See Cover System &rarr;</a>
+          </div>
+          <div class="hc-feature-block">
+            <div class="hc-feature-img">
+              <img src="images/final-roof-wall-look.jpg" alt="Completed BlueTex install">
+            </div>
+            <h3>End-to-End Product System</h3>
+            <p>From foil/foam rolls and reinforced tapes to TermBars, EasyClip hangers, and vapor barrier accessories &mdash; BlueTex is a complete system, not just a product.</p>
+            <a class="hc-link-arrow" href="#">Browse All Products &rarr;</a>
+          </div>
+          <div class="hc-feature-block">
+            <div class="hc-feature-img">
+              <img src="images/BTCoverRepairSampleBoxComponents.png" alt="Sample box and project help">
+            </div>
+            <h3>Project Help from Real Experts</h3>
+            <p>Our team helps you measure, choose the right product, and plan the install. Request a quote, order a test kit, or reach us directly by phone.</p>
+            <a class="hc-link-arrow" href="#">Get Project Help &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRODUCT FINDER (ProTapes "Need help finding?" style) ── -->
+    <section class="hc-section hc-section--navy">
+      <div class="hc-rail">
+        <div class="hc-finder-wrap">
+          <div class="hc-finder-copy">
+            <h2 class="hc-section-title">Need Help Choosing Insulation?</h2>
+            <p>Answer a couple quick questions and we&rsquo;ll point you to the right product, install path, or project help option.</p>
+          </div>
+          <div class="hc-finder-form">
+            <div class="hc-finder-field">
+              <label for="hc-project">What kind of project are you working on?</label>
+              <select id="hc-project">
+                <option>Choose a project type</option>
+                <option>Covering or repairing old insulation</option>
+                <option>Insulating an existing metal building</option>
+                <option>Insulating a roll-up door</option>
+                <option>New metal building construction</option>
+              </select>
+            </div>
+            <div class="hc-finder-field">
+              <label for="hc-product">Which product family do you need?</label>
+              <select id="hc-product">
+                <option>Choose a product</option>
+                <option>2mm Pro rolls</option>
+                <option>6mm Supreme rolls</option>
+                <option>TermBar Cover System</option>
+                <option>Roll Up Door Kit</option>
+                <option>Tapes and accessories</option>
+              </select>
+            </div>
+            <div class="hc-finder-field">
+              <label for="hc-next">What would help most right now?</label>
+              <select id="hc-next">
+                <option>Choose a next step</option>
+                <option>Request Free Samples</option>
+                <option>Order Test Kit</option>
+                <option>See Install Guide</option>
+                <option>Request a Quote</option>
+              </select>
+            </div>
+            <button class="hc-finder-submit" type="button">Find My Solution &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TRUST / CUSTOMER SUCCESS (ProTapes "Committed to Success" section) ── -->
+    <section class="hc-section hc-section--white">
+      <div class="hc-rail">
+        <div class="hc-text-center">
+          <h2 class="hc-section-title">BlueTex Is Committed to Your Project&rsquo;s Success</h2>
+          <p class="hc-section-sub">Real support from a product-focused team. Get samples, a quote, or hands-on project guidance.</p>
+        </div>
+        <div class="hc-trust-grid">
+          <div class="hc-trust-card">
+            <div class="hc-trust-icon">&#128222;</div>
+            <h3>Product Questions?</h3>
+            <p>Our team is here to help. Call <strong>1&#8209;800&#8209;BLUETEX</strong> or fill out a contact form for project assistance.</p>
+            <a class="hc-btn-outline" href="#">Contact Us</a>
+          </div>
+          <div class="hc-trust-card">
+            <div class="hc-trust-icon">&#127959;</div>
+            <h3>Contractor Pricing</h3>
+            <p>BlueTex supports contractors and larger installs. Fill out our project form to get pricing and project help.</p>
+            <a class="hc-btn-outline" href="#">Get Contractor Pricing</a>
+          </div>
+          <div class="hc-trust-card">
+            <div class="hc-trust-icon">&#128230;</div>
+            <h3>Order Samples</h3>
+            <p>Handle the material before you order. Request a sample box with BlueTex, tapes, TermBars, screws, and clips.</p>
+            <a class="hc-btn-outline" href="#">Request Sample Box</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="hc-footer">
+      <div class="hc-rail">
+        <div class="hc-footer-grid">
+          <div class="hc-footer-brand">
+            <img src="images/bluetex-logo-med.png" alt="BlueTex Insulation" class="hc-footer-logo">
+            <p>Metal Building Insulation Systems</p>
+            <p class="hc-footer-phone">1&#8209;800&#8209;BLUETEX</p>
+          </div>
+          <div class="hc-footer-col">
+            <h4>Products</h4>
+            <a href="#">2mm Pro</a>
+            <a href="#">6mm Supreme</a>
+            <a href="#">TermBar Cover System</a>
+            <a href="#">EasyClip Hangers</a>
+            <a href="#">Seam Tape</a>
+            <a href="#">All Products</a>
+          </div>
+          <div class="hc-footer-col">
+            <h4>Applications</h4>
+            <a href="#">Cover &amp; Repair</a>
+            <a href="#">Existing Buildings</a>
+            <a href="#">Roll Up Doors</a>
+            <a href="#">New Construction</a>
+            <a href="#">Red Iron Install</a>
+          </div>
+          <div class="hc-footer-col">
+            <h4>Project Help</h4>
+            <a href="#">Request a Quote</a>
+            <a href="#">Order Test Kit</a>
+            <a href="#">Install Guides</a>
+            <a href="#">Video Library</a>
+            <a href="#">Contact Us</a>
+          </div>
+        </div>
+        <div class="hc-footer-bar">
+          <span>&copy; 2026 BlueTex Insulation. All rights reserved.</span>
+          <div class="hc-footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.hc (end hybrid concept) -->
+
   <script>
     (() => {
       document.querySelectorAll('.mega-panel').forEach((panel) => {
