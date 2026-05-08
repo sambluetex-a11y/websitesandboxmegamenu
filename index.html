@@ -99,7 +99,7 @@
       color: #fff;
       font: 900 13px/1 Lato, Arial, sans-serif;
       letter-spacing: .06em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .search button { cursor: pointer; }
@@ -233,7 +233,7 @@
       font-weight: 900;
       letter-spacing: .03em;
       text-align: center;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .nav-item:hover .nav-label,
@@ -297,7 +297,7 @@
       font-size: 18px;
       line-height: 1.05;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .mega-preview p {
@@ -324,7 +324,7 @@
       font-size: 16px;
       line-height: 1.12;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
       outline: 0;
     }
 
@@ -393,13 +393,13 @@
       font-size: 12px;
       font-weight: 900;
       letter-spacing: .04em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .application-layout {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr)) 280px;
-      gap: 26px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
       align-items: start;
     }
 
@@ -413,7 +413,7 @@
       font-size: 18px;
       line-height: 1;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .app-stack { display: grid; gap: 12px; }
@@ -440,47 +440,15 @@
       font-size: 14px;
       line-height: 1.08;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .app-card h4 { color: var(--blue); font-size: 15px; }
 
     .app-card p,
-    .product-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.25;
-      font-weight: 600;
-      text-transform: none;
-    }
-
-    .app-preview {
-      display: block;
-      min-width: 0;
-      padding-top: 2px;
-    }
-
-    .app-preview .preview-media {
-      width: 280px;
-      height: 176px;
-    }
-
-    .app-preview h3 {
-      margin: 11px 0 4px;
-      color: var(--text);
-      font-size: 18px;
-      line-height: 1.05;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .app-preview p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.3;
-      font-weight: 700;
+    .product-card p,
+    .faq-layout .mega-preview p {
+      display: none;
     }
 
     .guide-panel { min-height: 326px; padding: 0; overflow: hidden; }
@@ -508,7 +476,7 @@
       font-size: 16px;
       line-height: 1.08;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .guide-main::after {
@@ -545,7 +513,7 @@
       font-size: 20px;
       line-height: 1;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .flyout-grid {
@@ -572,7 +540,7 @@
       line-height: 1;
       font-weight: 900;
       letter-spacing: .04em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .flyout-links a {
@@ -581,7 +549,7 @@
       font-size: 15px;
       line-height: 1.15;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .flyout-links a:hover,
@@ -627,13 +595,14 @@
       color: #fff;
       font-size: 10px;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .product-actions {
       display: flex;
-      gap: 6px;
-      margin-top: 9px;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
       padding: 0;
     }
 
@@ -642,13 +611,14 @@
       align-items: center;
       justify-content: center;
       height: 26px;
-      min-width: 48px;
-      padding: 0 8px;
+      min-width: 56px;
+      padding: 0 10px;
       background: var(--blue);
+      border: 2px solid var(--blue);
       color: #fff;
       font-size: 11px;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .faq-layout { grid-template-columns: 330px 1fr; }
@@ -666,7 +636,7 @@
 
     .hero {
       position: relative;
-      min-height: 455px;
+      min-height: 382px;
       overflow: hidden;
       background: #111;
       border: 1px solid var(--line);
@@ -684,17 +654,17 @@
       position: relative;
       z-index: 2;
       width: 520px;
-      padding: 86px 0 0 34px;
+      padding: 58px 0 0 34px;
     }
 
     .hero h1 {
       max-width: 520px;
       margin: 0 0 12px;
       color: var(--text);
-      font-size: 39px;
+      font-size: 36px;
       line-height: 1.06;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .hero p {
@@ -719,7 +689,7 @@
       font-size: 13px;
       font-weight: 900;
       letter-spacing: .04em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .cta--secondary {
@@ -763,7 +733,7 @@
       font-weight: 900;
       letter-spacing: .04em;
       text-align: center;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .case-study-cta {
@@ -779,7 +749,7 @@
       line-height: 1;
       font-weight: 900;
       letter-spacing: .03em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .content-zone { padding: 26px 0 46px; background: #fff; }
@@ -795,7 +765,7 @@
       line-height: 1;
       font-weight: 900;
       letter-spacing: .03em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .section-intro {
@@ -844,7 +814,7 @@
       line-height: 1.25;
       font-weight: 900;
       letter-spacing: .13em;
-      text-transform: uppercase;
+      text-transform: none;
       text-shadow: 0 2px 10px rgba(0,0,0,.45);
     }
 
@@ -859,7 +829,7 @@
       font-size: 24px;
       line-height: 1.08;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .topic-body p {
@@ -888,7 +858,7 @@
       font-size: 13px;
       font-weight: 900;
       letter-spacing: .05em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .topic-actions a.secondary {
@@ -924,7 +894,7 @@
       line-height: 1;
       font-weight: 900;
       letter-spacing: .08em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .review-summary h2 {
@@ -933,7 +903,7 @@
       font-size: 27px;
       line-height: 1.06;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .review-summary p {
@@ -965,7 +935,7 @@
       font-size: 13px;
       font-weight: 900;
       letter-spacing: .05em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .review-grid {
@@ -1003,7 +973,7 @@
       color: var(--muted);
       font-size: 13px;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .tape-section {
@@ -1017,7 +987,7 @@
       font-size: 38px;
       line-height: 1;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .tape-intro {
@@ -1051,7 +1021,7 @@
       font-size: 26px;
       line-height: 1.05;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .tape-info-card p {
@@ -1097,19 +1067,21 @@
     }
 
     .compare-card {
-      padding: 18px;
+      padding: 0;
       background: #fff;
-      border: 1px solid var(--line);
-      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+      border: 0;
     }
 
     .before-after {
       --split: 50%;
       position: relative;
       overflow: hidden;
-      aspect-ratio: 887 / 576;
-      background: #eee;
-      border: 1px solid var(--line);
+      aspect-ratio: 16 / 9;
+      background: #ddd;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.13), 0 1px 4px rgba(0,0,0,.08);
+      cursor: col-resize;
+      user-select: none;
     }
 
     .before-after img {
@@ -1128,15 +1100,17 @@
       position: absolute;
       top: 0;
       bottom: 0;
+      z-index: 3;
       left: var(--split);
-      width: 2px;
+      width: 3px;
       background: #fff;
-      box-shadow: 0 0 0 1px rgba(0,0,0,.18);
-      transform: translateX(-1px);
+      box-shadow: 0 0 8px rgba(0,0,0,.35);
+      pointer-events: none;
+      transform: translateX(-50%);
     }
 
     .slider-line::after {
-      content: "<>";
+      content: "< >";
       position: absolute;
       top: 50%;
       left: 50%;
@@ -1147,8 +1121,9 @@
       height: 42px;
       background: #fff;
       color: var(--text);
+      border: 3px solid #fff;
       border-radius: 50%;
-      box-shadow: 0 2px 12px rgba(0,0,0,.18);
+      box-shadow: 0 2px 12px rgba(0,0,0,.30);
       font-size: 14px;
       font-weight: 900;
       transform: translate(-50%, -50%);
@@ -1157,24 +1132,30 @@
     .ba-label {
       position: absolute;
       top: 12px;
-      z-index: 2;
+      z-index: 4;
       padding: 5px 9px;
-      background: rgba(21,35,92,.82);
+      background: rgba(0,0,0,.45);
       color: #fff;
-      border-radius: 3px;
+      border-radius: 5px;
+      backdrop-filter: blur(4px);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: .06em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .ba-label--before { left: 12px; }
     .ba-label--after { right: 12px; }
 
     .compare-range {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
       width: 100%;
-      margin: 14px 0 0;
-      accent-color: var(--blue);
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: col-resize;
     }
 
     .compare-help {
@@ -1186,9 +1167,18 @@
       text-align: center;
     }
 
+    .compare-product-note {
+      margin: 10px 0 0;
+      color: var(--blue);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 900;
+      text-align: center;
+    }
+
     .tape-group {
       display: grid;
-      grid-template-rows: auto 1fr auto;
+      grid-template-rows: auto auto 1fr auto;
       min-height: 310px;
       padding: 26px;
       background: #fff;
@@ -1197,12 +1187,12 @@
 
     .tape-group strong {
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       color: var(--blue);
       font-size: 28px;
       line-height: 1;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .tape-group span {
@@ -1211,6 +1201,17 @@
       font-size: 17px;
       line-height: 1.4;
       font-weight: 800;
+    }
+
+    .tape-badge {
+      justify-self: start;
+      margin: 0 0 14px;
+      padding: 4px 9px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 900;
     }
 
     .tape-group em {
@@ -1240,7 +1241,7 @@
       line-height: 1.15;
       font-weight: 900;
       text-align: center;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .tape-group--featured {
@@ -1261,7 +1262,7 @@
       font-size: 26px;
       line-height: 1;
       font-weight: 900;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .white-box p {
@@ -1300,7 +1301,7 @@
       line-height: 1.1;
       font-weight: 900;
       text-align: center;
-      text-transform: uppercase;
+      text-transform: none;
     }
   </style>
 </head>
@@ -1355,7 +1356,7 @@
                   <h3 class="mega-heading">Metal Buildings</h3>
                   <div class="app-stack">
                     <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation" data-img="images/quiz-Existing_Building_Already_Built_Answer.png" data-title="Existing Metal Building Retrofit" data-text="Tubular steel and metal-frame retrofit path with partial BlueTex coverage."><img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Tubular steel building with BlueTex partial coverage"><span><h4>Existing Metal Building Retrofit</h4><p>Tubular steel and metal-frame retrofit path.</p></span></a>
-                    <a class="app-card mega-link" href="large-metal-building-repair-cover-system.html" data-img="images/before-sagging-insulation.jpg" data-title="Large Building Wall And Roof Repair" data-text="System overview page for the TermBar cover and repair system."><img src="images/before-sagging-insulation.jpg" alt="Wall insulation before and after repair"><span><h4>Large Building Wall And Roof Repair</h4><p>TermBar system overview.</p></span></a>
+                    <a class="app-card mega-link" href="large-metal-building-repair-cover-system.html" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Large Building Wall And Roof Repair" data-text="System overview page for the TermBar cover and repair system."><img src="images/BT_blog_case_study_cover_system_after.webp" alt="Wall insulation after cover and repair system"><span><h4>Large Building Wall And Roof Repair</h4><p>TermBar system overview.</p></span></a>
                   </div>
                 </section>
                 <section class="application-column">
@@ -1370,13 +1371,9 @@
                   <div class="app-stack">
                     <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling" data-img="images/complete-wall-finish.jpg" data-title="Existing Buildings" data-text="Choose the right retrofit method for an existing building."><img src="images/complete-wall-finish.jpg" alt="Existing building retrofit"><span><h4>Existing Buildings</h4><p>Choose the right retrofit method.</p></span></a>
                     <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="New Construction" data-text="Pick the install path before panels go on."><img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction metal building"><span><h4>New Construction</h4><p>Pick the path before panels go on.</p></span></a>
+                    <a class="app-card mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real BlueTex applications and finished project examples."><img src="images/BT_blog_case_study_cover_system_after.webp" alt="BlueTex case study finished wall"><span><h4>Case Studies</h4><p>Real project examples.</p></span></a>
                   </div>
                 </section>
-                <a class="app-preview" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation" data-preview-link>
-                  <img class="preview-media" src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Application preview" data-preview-img>
-                  <h3 data-preview-title>Existing Metal Building Retrofit</h3>
-                  <p data-preview-text>Tubular steel and metal-frame retrofit path with partial BlueTex coverage.</p>
-                </a>
               </div>
             </div>
           </div>
@@ -1429,7 +1426,7 @@
                   <a class="mega-link" href="https://bluetexinsulation.com/pages/existing-construction-wood-framed-buildings-installation" data-img="images/complete-wall-finish.jpg" data-title="Can I Paint Or Cover BlueTex?" data-text="See finish options, exposed interiors, and ways to cover fasteners.">Can I Paint Or Cover BlueTex?</a>
                   <a class="mega-link" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers" data-img="images/BTCoverRepairSampleBoxComponents-1-.png" data-title="Contractor/Installer Pricing" data-text="Contractor tiers and larger-project support.">Contractor/Installer Pricing</a>
                   <a class="mega-link" href="https://bluetexinsulation.com/pages/warranty" data-img="images/BlueTex4FootTermBarsMainImage_1.png" data-title="Lifetime Warranty" data-text="BlueTex roll warranty information for metal building applications.">Lifetime Warranty</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/a/detective-faq" data-img="images/BTCoverRepairSampleBoxComponents.png" data-title="Other FAQ" data-text="Search the full FAQ library for product, install, and ordering questions.">Other FAQ - Searchable</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/a/detective-faq" data-img="images/BTCoverRepairSampleBoxComponents.png" data-title="Other FAQ" data-text="Search the full FAQ library for product, install, and ordering questions.">Other FAQ</a>
                 </div>
               </div>
             </div>
@@ -1512,9 +1509,10 @@
               <span class="ba-label ba-label--before">Before</span>
               <span class="ba-label ba-label--after">After</span>
               <span class="slider-line" aria-hidden="true"></span>
+              <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after 6 inch repair tape comparison">
             </div>
-            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after repair tape comparison">
-            <p class="compare-help">Drag left or right to compare the 6&quot; repair tape patch.</p>
+            <p class="compare-product-note">6&quot; white repair tape shown.</p>
+            <p class="compare-help">Drag left or right to compare the repair patch.</p>
           </div>
           <div class="tape-info-card">
             <h3>Choose by problem, not by roll width</h3>
@@ -1529,15 +1527,16 @@
         <div class="tape-product-grid">
           <div class="tape-group tape-group--featured">
             <strong>Repair Tape</strong>
+            <span class="tape-badge">Most Popular</span>
             <span>Use 6&quot; tape for larger holes, torn facing, and visible repairs where more coverage helps. Use 4&quot; tape for smaller patches, multi-use repairs, stucco prep, and masking-style jobs.</span>
-            <em>The 6&quot; white repair tape is the high-priority, unique product in this group.</em>
+            <em>6&quot; white tape gives larger damaged areas more coverage. 4&quot; white tape is a handy repair width for smaller patches and multi-use jobs.</em>
             <div class="tape-products"><a href="https://bluetexinsulation.com/collections/new-collection/products/6-white-tape">6&quot; Repair Tape</a><a href="https://bluetexinsulation.com/products/4-white-tape">4&quot; Multi-Use Tape</a></div>
           </div>
           <div class="tape-group">
             <strong>Seam Tape</strong>
             <span>Use seam tape when the insulation is already in place and you need to join seams, seal overlaps, finish edges, or keep the vapor barrier continuous across a clean joint.</span>
             <em>3&quot; white seam tape is the main interior seam tape. 2&quot; foil seam tape supports foil-side seams and narrower detail work.</em>
-            <div class="tape-products"><a href="https://bluetexinsulation.com/products/white-tape">3&quot; Seam Tape</a><a href="https://bluetexinsulation.com/collections/tape-and-fasteners/foil-tape">2&quot; Foil Seam Tape</a></div>
+            <div class="tape-products"><a href="https://bluetexinsulation.com/products/white-tape">3&quot; Seam Tape</a><a href="https://bluetexinsulation.com/products/2-foil-seam-tape">2&quot; Foil Seam Tape</a></div>
           </div>
         </div>
       </section>
