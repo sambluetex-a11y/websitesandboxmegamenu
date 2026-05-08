@@ -14,12 +14,16 @@
     main { padding: 18px 0 48px; }
     section { padding: 42px 46px 48px; background: #fff; }
     h1 { margin: 0 0 16px; color: #0829c7; font-size: 42px; line-height: 1; font-weight: 900; text-transform: uppercase; }
-    p { max-width: 980px; margin: 0 0 28px; font-size: 20px; line-height: 1.4; }
+    p { max-width: 980px; margin: 0 0 28px; font-size: 20px; line-height: 1.4; font-weight: 700; color: #56575f; }
     .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 34px; }
-    a.card { display: block; color: #000; text-decoration: none; }
-    .card img { width: 100%; height: 320px; object-fit: cover; background: #e8e8e8; }
-    .card h2 { margin: 20px 0 8px; font-size: 30px; line-height: 1; font-weight: 900; text-transform: uppercase; }
-    .button { display: inline-flex; align-items: center; justify-content: center; height: 42px; margin-top: 12px; padding: 0 18px; background: #0829c7; color: #fff; font-size: 15px; font-weight: 900; text-transform: uppercase; }
+    .card { display: grid; grid-template-rows: 340px 1fr; color: #000; text-decoration: none; border: 1px solid #e1e1e3; background: #fff; }
+    .card img { width: 100%; height: 100%; object-fit: cover; background: #e8e8e8; }
+    .card-body { padding: 26px 28px 30px; border-top: 4px solid #d58a13; }
+    .card h2 { margin: 0 0 10px; color: #15235c; font-size: 30px; line-height: 1; font-weight: 900; text-transform: uppercase; }
+    .card p { margin-bottom: 18px; font-size: 18px; line-height: 1.45; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 18px; background: #0829c7; color: #fff; font-size: 14px; font-weight: 900; text-transform: uppercase; text-decoration: none; }
+    .button.secondary { background: #fff; color: #0829c7; border: 2px solid #0829c7; }
   </style>
 </head>
 <body>
@@ -29,20 +33,24 @@
   <main class="rail">
     <section>
       <h1>Garage Door Insulation</h1>
-      <p>Placeholder page for the future garage-door chooser. The mega menu routes here so the finished navigation can split shoppers into the two main door paths.</p>
+      <p>Choose the door style first. Roll-up doors and residential panel doors use different kit paths, so this page separates the information before sending customers to the right product.</p>
       <div class="cards">
-        <a class="card" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">
+        <article class="card">
           <img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Roll up door insulation">
-          <h2>Roll Up Doors</h2>
-          <p>Commercial roll-up door overview, install guide, and product path.</p>
-          <span class="button">View Roll Up Doors</span>
-        </a>
-        <a class="card" href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit">
+          <div class="card-body">
+            <h2>Roll Up Doors</h2>
+            <p>Best for commercial shops, warehouses, storage buildings, and metal roll-up doors that get hot in direct sun.</p>
+            <div class="actions"><a class="button" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Install Guide</a><a class="button secondary" href="https://bluetexinsulation.com/products/bluetex-50-wide-roll-up-garage-door-kit">Shop Roll-Up Kits</a></div>
+          </div>
+        </article>
+        <article class="card">
           <img src="images/IMG_37763.jpg" alt="Residential garage door insulation">
-          <h2>Residential Doors</h2>
-          <p>Panel-style garage door kit path for residential garages.</p>
-          <span class="button">View Residential Kits</span>
-        </a>
+          <div class="card-body">
+            <h2>Residential Doors</h2>
+            <p>For panel-style residential garage doors where a pre-sized kit is easier than cutting from a full roll.</p>
+            <div class="actions"><a class="button" href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit">Shop Residential Kits</a></div>
+          </div>
+        </article>
       </div>
     </section>
   </main>

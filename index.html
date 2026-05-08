@@ -396,6 +396,17 @@
       text-transform: uppercase;
     }
 
+    .application-layout {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) 280px;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .application-column {
+      min-width: 0;
+    }
+
     .mega-heading {
       margin: 0 0 12px;
       color: var(--text);
@@ -405,23 +416,20 @@
       text-transform: uppercase;
     }
 
-    .app-stack { display: grid; gap: 10px; }
+    .app-stack { display: grid; gap: 12px; }
 
     .app-card {
       display: grid;
-      grid-template-columns: 104px 1fr;
-      gap: 12px;
-      align-items: center;
-      min-height: 78px;
-      padding: 8px;
-      border: 1px solid var(--line);
-      background: #fff;
+      gap: 8px;
+      min-height: 0;
+      color: var(--text);
     }
 
     .app-card img {
-      width: 104px;
-      height: 62px;
+      width: 100%;
+      height: 92px;
       object-fit: cover;
+      border: 1px solid var(--line);
       background: var(--soft);
     }
 
@@ -435,6 +443,8 @@
       text-transform: uppercase;
     }
 
+    .app-card h4 { color: var(--blue); font-size: 15px; }
+
     .app-card p,
     .product-card p {
       margin: 0;
@@ -442,6 +452,35 @@
       font-size: 12px;
       line-height: 1.25;
       font-weight: 600;
+      text-transform: none;
+    }
+
+    .app-preview {
+      display: block;
+      min-width: 0;
+      padding-top: 2px;
+    }
+
+    .app-preview .preview-media {
+      width: 280px;
+      height: 176px;
+    }
+
+    .app-preview h3 {
+      margin: 11px 0 4px;
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.05;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .app-preview p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.3;
+      font-weight: 700;
     }
 
     .guide-panel { min-height: 326px; padding: 0; overflow: hidden; }
@@ -556,27 +595,30 @@
 
     .product-card {
       position: relative;
-      display: grid;
-      grid-template-columns: 94px 1fr;
-      gap: 12px;
-      min-height: 100px;
-      padding: 10px;
+      display: block;
+      min-height: 0;
       border: 1px solid var(--line);
       background: #fff;
+      color: var(--text);
     }
 
     .product-card img {
-      width: 94px;
-      height: 76px;
+      width: 100%;
+      height: 120px;
       object-fit: cover;
       background: var(--soft);
+    }
+
+    .product-card span {
+      display: block;
+      padding: 12px 12px 14px;
     }
 
     .product-card--popular::before {
       content: "Most Popular";
       position: absolute;
-      top: 8px;
-      left: 8px;
+      top: 0;
+      left: 0;
       display: inline-flex;
       align-items: center;
       height: 20px;
@@ -591,7 +633,8 @@
     .product-actions {
       display: flex;
       gap: 6px;
-      margin-top: 8px;
+      margin-top: 9px;
+      padding: 0;
     }
 
     .product-actions a {
@@ -610,8 +653,14 @@
 
     .faq-layout { grid-template-columns: 330px 1fr; }
     .faq-layout .preview-media { width: 330px; height: 186px; }
-    .faq-layout .link-grid { grid-template-columns: 1fr; row-gap: 4px; }
-    .faq-layout .mega-link { padding: 6px 0; font-size: 15px; }
+    .faq-layout .link-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-flow: column;
+      grid-template-rows: repeat(5, auto);
+      column-gap: 32px;
+      row-gap: 4px;
+    }
+    .faq-layout .mega-link { padding: 7px 0; font-size: 15px; }
 
     .hero-shell { background: #fff; padding: 22px 0 0; }
 
@@ -963,7 +1012,7 @@
     }
 
     .tape-section h2 {
-      margin: 0 0 22px;
+      margin: 0 0 10px;
       color: var(--text);
       font-size: 38px;
       line-height: 1;
@@ -971,11 +1020,79 @@
       text-transform: uppercase;
     }
 
-    .tape-layout {
+    .tape-intro {
+      max-width: 860px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .tape-graphic {
+      display: grid;
+      grid-template-columns: 540px 1fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .tape-info-card {
+      padding: 28px;
+      background: #f7f7f8;
+      border: 1px solid var(--line);
+    }
+
+    .tape-info-card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 26px;
+      line-height: 1.05;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .tape-info-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .tape-info-card ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tape-info-card li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .tape-info-card li::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      background: var(--orange);
+    }
+
+    .tape-product-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 28px;
-      align-items: start;
       text-align: left;
     }
 
@@ -1069,24 +1186,20 @@
       text-align: center;
     }
 
-    .tape-copy {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
     .tape-group {
-      min-height: 250px;
-      padding: 24px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 310px;
+      padding: 26px;
       background: #fff;
       border: 1px solid var(--line);
     }
 
     .tape-group strong {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: var(--blue);
-      font-size: 25px;
+      font-size: 28px;
       line-height: 1;
       font-weight: 900;
       text-transform: uppercase;
@@ -1095,9 +1208,39 @@
     .tape-group span {
       display: block;
       color: var(--text);
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.4;
       font-weight: 800;
+    }
+
+    .tape-group em {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .tape-products {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tape-products a {
+      display: block;
+      padding: 13px;
+      background: #f7f7f8;
+      border: 1px solid var(--line);
+      color: var(--blue);
+      font-size: 14px;
+      line-height: 1.15;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
     }
 
     .tape-group--featured {
@@ -1207,20 +1350,33 @@
           <div class="nav-item">
             <a class="nav-label" href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation">Applications</a>
             <div class="mega-panel">
-              <div class="hover-preview-layout">
-                <a class="mega-preview" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation" data-preview-link>
-                  <img class="preview-media" src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing metal building retrofit" data-preview-img>
+              <div class="application-layout">
+                <section class="application-column">
+                  <h3 class="mega-heading">Metal Buildings</h3>
+                  <div class="app-stack">
+                    <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation" data-img="images/quiz-Existing_Building_Already_Built_Answer.png" data-title="Existing Metal Building Retrofit" data-text="Tubular steel and metal-frame retrofit path with partial BlueTex coverage."><img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Tubular steel building with BlueTex partial coverage"><span><h4>Existing Metal Building Retrofit</h4><p>Tubular steel and metal-frame retrofit path.</p></span></a>
+                    <a class="app-card mega-link" href="large-metal-building-repair-cover-system.html" data-img="images/before-sagging-insulation.jpg" data-title="Large Building Wall And Roof Repair" data-text="System overview page for the TermBar cover and repair system."><img src="images/before-sagging-insulation.jpg" alt="Wall insulation before and after repair"><span><h4>Large Building Wall And Roof Repair</h4><p>TermBar system overview.</p></span></a>
+                  </div>
+                </section>
+                <section class="application-column">
+                  <h3 class="mega-heading">Doors</h3>
+                  <div class="app-stack">
+                    <a class="app-card mega-link" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation" data-img="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" data-title="Roll Up Doors" data-text="Commercial roll-up door install guide and product path."><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Roll up door insulation"><span><h4>Roll Up Doors</h4><p>Commercial door install guide.</p></span></a>
+                    <a class="app-card mega-link" href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit" data-img="images/IMG_37763.jpg" data-title="Residential Doors" data-text="Residential panel-door kit path."><img src="images/IMG_37763.jpg" alt="Residential garage door insulation"><span><h4>Residential Doors</h4><p>Panel-style residential kits.</p></span></a>
+                  </div>
+                </section>
+                <section class="application-column">
+                  <h3 class="mega-heading">Other Applications</h3>
+                  <div class="app-stack">
+                    <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling" data-img="images/complete-wall-finish.jpg" data-title="Existing Buildings" data-text="Choose the right retrofit method for an existing building."><img src="images/complete-wall-finish.jpg" alt="Existing building retrofit"><span><h4>Existing Buildings</h4><p>Choose the right retrofit method.</p></span></a>
+                    <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="New Construction" data-text="Pick the install path before panels go on."><img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction metal building"><span><h4>New Construction</h4><p>Pick the path before panels go on.</p></span></a>
+                  </div>
+                </section>
+                <a class="app-preview" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation" data-preview-link>
+                  <img class="preview-media" src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Application preview" data-preview-img>
                   <h3 data-preview-title>Existing Metal Building Retrofit</h3>
-                  <p data-preview-text>Tubular steel and metal-frame retrofit path.</p>
+                  <p data-preview-text>Tubular steel and metal-frame retrofit path with partial BlueTex coverage.</p>
                 </a>
-                <div class="hover-link-grid">
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation" data-img="images/quiz-Existing_Building_Already_Built_Answer.png" data-title="Existing Metal Building Retrofit" data-text="Tubular steel and metal-frame retrofit path.">Existing Metal Building Retrofit<span class="menu-copy">Tubular steel and metal-frame retrofit path.</span></a>
-                  <a class="mega-link" href="large-metal-building-repair-cover-system.html" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Large Building Wall And Roof Repair" data-text="TermBar cover system overview for old, stained, or torn insulation.">Large Building Wall And Roof Repair<span class="menu-copy">TermBar cover system overview.</span></a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation" data-img="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" data-title="Roll Up Doors" data-text="Commercial roll up door install guide.">Roll Up Doors<span class="menu-copy">Commercial door install guide.</span></a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit" data-img="images/IMG_37763.jpg" data-title="Residential Doors" data-text="Panel-style residential door kits.">Residential Doors<span class="menu-copy">Panel-style residential kits.</span></a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="New Construction" data-text="Pick the path before panels go on.">New Construction<span class="menu-copy">Pick the path before panels go on.</span></a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/before-sagging-insulation.jpg" data-title="Case Studies" data-text="See real application examples and finished project proof.">Case Studies<span class="menu-copy">See real application examples.</span></a>
-                </div>
               </div>
             </div>
           </div>
@@ -1242,22 +1398,15 @@
           <div class="nav-item">
             <a class="nav-label" href="https://bluetexinsulation.com/collections/all">Shop All Products</a>
             <div class="mega-panel">
-              <div class="hover-preview-layout">
-                <a class="mega-preview" href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation" data-preview-link>
-                  <img class="preview-media" src="images/BTCoverRepairSampleBoxComponents.png" alt="Help me decide" data-preview-img>
-                  <h3 data-preview-title>Help Me Decide</h3>
-                  <p data-preview-text>Start with the right product path.</p>
-                </a>
-                <div class="hover-link-grid hover-link-grid--products">
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation" data-img="images/BTCoverRepairSampleBoxComponents.png" data-title="Help Me Decide" data-text="Start with the right product path.">Help Me Decide<span class="menu-copy">Start with the right product path.</span></a>
-                  <a class="mega-link" href="garage-door-insulation.html" data-img="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" data-title="Garage Door Insulation" data-text="Roll up and residential doors.">Garage Door Insulation<span class="menu-copy">Roll up and residential doors.</span></a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/products/bluetex-pro-2mm-super-wide-62-inch" data-img="images/CopyofBlueTex2mm62inch700ProductThumbnail.png" data-title="Pro 2mm Foil/White" data-text="Core foam roll available in 50 in and 62 in widths.">Pro 2mm Foil/White<span class="menu-note">Most popular</span><span class="menu-copy">Core foam roll. 50 in and 62 in.</span></a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/products/bluetex%E2%84%A2-supreme-6mm-62-wide-foil-white-foam-insulation-300-sq-ft" data-img="images/Oct2024BlueTex6mm62inchMainThumbnail.png" data-title="Supreme 6mm Foil/White" data-text="Thicker foam option available in 50 in and 62 in widths.">Supreme 6mm Foil/White<span class="menu-copy">Thicker foam option. 50 in and 62 in.</span></a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/bluetex-vapor-barrier-white-tapes" data-img="images/3wideBRIGHTWHITEtape.png" data-title="Repair And Seam Tape" data-text="White repair and seam tapes for finishing, patching, and sealing BlueTex projects.">Repair And Seam Tape<span class="menu-copy">6 in and 4 in repair. 3 in and 2 in seam.</span></a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/collections/fasteners?&view=ls" data-img="images/BlueTex4FootTermBarsMainImage_1.png" data-title="Fasteners" data-text="Screws, washers, TermBars, and support parts.">Fasteners<span class="menu-copy">Screws, washers, TermBars.</span></a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/products/double-sided-tape" data-img="images/BTEasyClipSet_1.png" data-title="Double Sided Tape" data-text="Future 4, 8, and 16 counts.">Double Sided Tape<span class="menu-copy">Future 4, 8, and 16 counts.</span></a>
-                  <a class="mega-link" href="radiant-barrier-products.html" data-img="images/BlueTexInsulation_Med.jpg" data-title="Radiant Barrier Products" data-text="Foil/Foil, Foil/White, and Thermal Wrap options.">Radiant Barrier Products<span class="menu-copy">Foil/Foil, Foil/White, Thermal Wrap.</span></a>
-                </div>
+              <div class="product-grid">
+                <a class="product-card" href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation"><img src="images/BTCoverRepairSampleBoxComponents.png" alt="Help me decide"><span><h4>Help Me Decide</h4><p>Start with the right product path.</p></span></a>
+                <a class="product-card" href="garage-door-insulation.html"><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation"><span><h4>Garage Door Insulation</h4><p>Roll up and residential doors.</p></span></a>
+                <div class="product-card product-card--popular"><img src="images/CopyofBlueTex2mm62inch700ProductThumbnail.png" alt="Pro 2mm foil white"><span><h4>Pro 2mm Foil/White</h4><p>Core foam roll.</p><span class="product-actions"><a href="https://bluetexinsulation.com/collections/frontpage/products/bluetex-pro-2mm-50-wide-foil-white-foam-insulation">50 in</a><a href="https://bluetexinsulation.com/products/bluetex-pro-2mm-super-wide-62-inch">62 in</a></span></span></div>
+                <div class="product-card"><img src="images/Oct2024BlueTex6mm62inchMainThumbnail.png" alt="Supreme 6mm foil white"><span><h4>Supreme 6mm Foil/White</h4><p>Thicker foam option.</p><span class="product-actions"><a href="https://bluetexinsulation.com/products/bluetex-6mm-supreme-50-wide">50 in</a><a href="https://bluetexinsulation.com/products/bluetex%E2%84%A2-supreme-6mm-62-wide-foil-white-foam-insulation-300-sq-ft">62 in</a></span></span></div>
+                <a class="product-card" href="https://bluetexinsulation.com/pages/bluetex-vapor-barrier-white-tapes"><img src="images/3wideBRIGHTWHITEtape.png" alt="BlueTex tapes"><span><h4>Tapes</h4><p>Repair and seam tapes.</p></span></a>
+                <a class="product-card" href="https://bluetexinsulation.com/collections/fasteners?&view=ls"><img src="images/BlueTex4FootTermBarsMainImage_1.png" alt="Fasteners"><span><h4>Fasteners</h4><p>Screws, washers, TermBars.</p></span></a>
+                <a class="product-card" href="https://bluetexinsulation.com/products/double-sided-tape"><img src="images/BTEasyClipSet_1.png" alt="Double sided tape"><span><h4>Double Sided Tape</h4><p>4, 8, and 16 count options.</p></span></a>
+                <a class="product-card" href="radiant-barrier-products.html"><img src="images/BlueTexInsulation_Med.jpg" alt="Radiant barrier products"><span><h4>Radiant Barrier Products</h4><p>Foil/Foil, Foil/White, Thermal Wrap.</p></span></a>
               </div>
             </div>
           </div>
@@ -1354,7 +1503,8 @@
 
       <section class="rail tape-section" id="repair-seam-tape">
         <h2>Repair And Seam Tape</h2>
-        <div class="tape-layout">
+        <p class="tape-intro">Start with the job. If the insulation facing is torn, punctured, or needs a larger patch, use repair tape. If the insulation is intact and you are joining edges or overlaps, use seam tape.</p>
+        <div class="tape-graphic">
           <div class="compare-card">
             <div class="before-after" data-before-after>
               <img src="images/repair-tape-before.png" alt="Before using 6 inch repair tape">
@@ -1366,9 +1516,28 @@
             <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after repair tape comparison">
             <p class="compare-help">Drag left or right to compare the 6&quot; repair tape patch.</p>
           </div>
-          <div class="tape-copy">
-            <div class="tape-group tape-group--featured"><strong>Repair Tape</strong><span>6&quot; tape is the popular, unique repair-page product. 4&quot; tape supports smaller patches and repair coverage.</span></div>
-            <div class="tape-group"><strong>Seam Tape</strong><span>3&quot; and 2&quot; tapes are grouped for clean seams, joints, overlap lines, and finish details.</span></div>
+          <div class="tape-info-card">
+            <h3>Choose by problem, not by roll width</h3>
+            <p>The goal is to help the customer diagnose what they are fixing first, then send them to the tape that matches the job.</p>
+            <ul>
+              <li>Large rips, holes, and damaged vapor barrier areas need a wider repair surface.</li>
+              <li>Clean overlaps and install seams need a narrower tape that is easy to run straight.</li>
+              <li>BlueTex white tapes are pressure activated, so firm pressure during install matters.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tape-product-grid">
+          <div class="tape-group tape-group--featured">
+            <strong>Repair Tape</strong>
+            <span>Use 6&quot; tape for larger holes, torn facing, and visible repairs where more coverage helps. Use 4&quot; tape for smaller patches, multi-use repairs, stucco prep, and masking-style jobs.</span>
+            <em>The 6&quot; white repair tape is the high-priority, unique product in this group.</em>
+            <div class="tape-products"><a href="https://bluetexinsulation.com/collections/new-collection/products/6-white-tape">6&quot; Repair Tape</a><a href="https://bluetexinsulation.com/products/4-white-tape">4&quot; Multi-Use Tape</a></div>
+          </div>
+          <div class="tape-group">
+            <strong>Seam Tape</strong>
+            <span>Use seam tape when the insulation is already in place and you need to join seams, seal overlaps, finish edges, or keep the vapor barrier continuous across a clean joint.</span>
+            <em>3&quot; white seam tape is the main interior seam tape. 2&quot; foil seam tape supports foil-side seams and narrower detail work.</em>
+            <div class="tape-products"><a href="https://bluetexinsulation.com/products/white-tape">3&quot; Seam Tape</a><a href="https://bluetexinsulation.com/collections/tape-and-fasteners/foil-tape">2&quot; Foil Seam Tape</a></div>
           </div>
         </div>
       </section>
