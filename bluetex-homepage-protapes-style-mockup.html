@@ -209,9 +209,10 @@
 
     .main-nav {
       display: grid;
-      grid-template-columns: 270px 150px 160px 210px 210px;
-      gap: 8px;
+      grid-template-columns: 255px 145px 145px 185px 185px;
+      gap: 4px;
       align-items: stretch;
+      justify-content: center;
       height: 60px;
     }
 
@@ -225,13 +226,13 @@
       align-items: center;
       justify-content: center;
       height: 60px;
-      padding: 0 10px;
+      padding: 0 6px;
       color: var(--blue);
       border-bottom: 3px solid transparent;
-      font-size: 14px;
-      line-height: 1.12;
+      font-size: 16px;
+      line-height: 1.04;
       font-weight: 900;
-      letter-spacing: .03em;
+      letter-spacing: .01em;
       text-align: center;
       text-transform: none;
     }
@@ -249,8 +250,8 @@
       left: 0;
       display: none;
       width: var(--rail);
-      min-height: 326px;
-      padding: 24px 30px 28px;
+      min-height: 292px;
+      padding: 20px 28px 22px;
       background: var(--panel);
       border: 1px solid var(--line);
       box-shadow: 0 18px 38px rgba(0,0,0,.12);
@@ -399,7 +400,7 @@
     .application-layout {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
+      gap: 34px;
       align-items: start;
     }
 
@@ -408,42 +409,62 @@
     }
 
     .mega-heading {
-      margin: 0 0 12px;
-      color: var(--text);
-      font-size: 18px;
+      margin: 0 0 16px;
+      color: var(--blue);
+      font-size: 20px;
       line-height: 1;
       font-weight: 900;
       text-transform: none;
     }
 
-    .app-stack { display: grid; gap: 12px; }
+    .app-stack { display: grid; gap: 18px; }
 
     .app-card {
       display: grid;
-      gap: 8px;
+      gap: 12px;
       min-height: 0;
+      padding: 0;
+      border-bottom: 0;
       color: var(--text);
     }
 
     .app-card img {
       width: 100%;
-      height: 92px;
+      height: 124px;
       object-fit: cover;
-      border: 1px solid var(--line);
       background: var(--soft);
     }
 
     .app-card h4,
     .product-card h4 {
-      margin: 0 0 3px;
+      margin: 0;
       color: var(--text);
-      font-size: 14px;
-      line-height: 1.08;
+      font-size: 16px;
+      line-height: 1.1;
       font-weight: 900;
       text-transform: none;
     }
 
-    .app-card h4 { color: var(--blue); font-size: 15px; }
+    .app-card h4 {
+      color: var(--text);
+      font-size: 18px;
+    }
+
+    .app-card--compact {
+      grid-template-columns: 96px 1fr;
+      align-items: center;
+      gap: 12px;
+      padding-top: 2px;
+      border-top: 1px solid var(--line);
+    }
+
+    .app-card--compact img {
+      height: 64px;
+    }
+
+    .app-card--compact h4 {
+      font-size: 16px;
+    }
 
     .app-card p,
     .product-card p,
@@ -451,16 +472,16 @@
       display: none;
     }
 
-    .guide-panel { min-height: 326px; padding: 0; overflow: hidden; }
+    .guide-panel { min-height: 286px; padding: 0; overflow: hidden; }
 
     .guide-shell {
       display: grid;
       grid-template-columns: 330px 1fr;
-      min-height: 326px;
+      min-height: 286px;
     }
 
     .guide-menu {
-      padding: 20px 24px;
+      padding: 16px 22px;
       background: #fff;
       border-right: 1px solid var(--line);
     }
@@ -470,7 +491,7 @@
     .guide-main {
       display: flex;
       align-items: center;
-      min-height: 46px;
+      min-height: 42px;
       color: var(--text);
       border-bottom: 1px solid var(--line);
       font-size: 16px;
@@ -500,7 +521,7 @@
       bottom: 0;
       display: none;
       width: calc(var(--rail) - 330px);
-      padding: 22px 30px;
+      padding: 18px 26px;
       background: #fafafa;
     }
 
@@ -525,12 +546,12 @@
 
     .flyout-grid img {
       width: 230px;
-      height: 142px;
+      height: 128px;
       object-fit: cover;
       border: 1px solid var(--line);
     }
 
-    .flyout-links { display: grid; gap: 8px; }
+    .flyout-links { display: grid; gap: 7px; }
 
     .section-label {
       display: block;
@@ -572,14 +593,14 @@
 
     .product-card img {
       width: 100%;
-      height: 120px;
+      height: 112px;
       object-fit: cover;
       background: var(--soft);
     }
 
-    .product-card span {
+    .product-card > span {
       display: block;
-      padding: 12px 12px 14px;
+      padding: 10px 12px 12px;
     }
 
     .product-card--popular::before {
@@ -598,21 +619,21 @@
       text-transform: none;
     }
 
-    .product-actions {
+    .product-card .product-actions {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
-      margin-top: 12px;
+      margin-top: 16px;
       padding: 0;
     }
 
-    .product-actions a {
+    .product-card .product-actions a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 26px;
-      min-width: 56px;
-      padding: 0 10px;
+      height: 28px;
+      min-width: 62px;
+      padding: 0 12px;
       background: var(--blue);
       border: 2px solid var(--blue);
       color: #fff;
@@ -621,16 +642,16 @@
       text-transform: none;
     }
 
-    .faq-layout { grid-template-columns: 330px 1fr; }
-    .faq-layout .preview-media { width: 330px; height: 186px; }
+    .faq-layout { grid-template-columns: 300px 1fr; gap: 26px; }
+    .faq-layout .preview-media { width: 300px; height: 169px; }
     .faq-layout .link-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-auto-flow: column;
       grid-template-rows: repeat(5, auto);
-      column-gap: 32px;
-      row-gap: 4px;
+      column-gap: 30px;
+      row-gap: 2px;
     }
-    .faq-layout .mega-link { padding: 7px 0; font-size: 15px; }
+    .faq-layout .mega-link { padding: 6px 0; font-size: 15px; }
 
     .hero-shell { background: #fff; padding: 22px 0 0; }
 
@@ -708,8 +729,8 @@
     }
 
     .case-strip {
-      margin: 22px 0 0;
-      padding: 24px 0 26px;
+      margin: 16px 0 0;
+      padding: 14px 0 16px;
       border-top: 1px solid var(--line);
       text-align: center;
     }
@@ -740,12 +761,11 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 64px;
-      min-width: 520px;
-      padding: 0 34px;
+      min-height: 48px;
+      padding: 0 22px;
       background: var(--blue);
       color: #fff;
-      font-size: 24px;
+      font-size: 16px;
       line-height: 1;
       font-weight: 900;
       letter-spacing: .03em;
@@ -876,7 +896,7 @@
 
     .proof-grid {
       display: grid;
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 300px 1fr;
       gap: 28px;
       align-items: start;
     }
@@ -940,40 +960,69 @@
 
     .review-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       align-items: start;
     }
 
     .review-card {
-      min-height: 180px;
       padding: 18px;
       background: #fff;
       border: 1px solid var(--line);
     }
 
+    .review-card header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
     .review-card b {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 3px;
       color: var(--orange);
       font-size: 14px;
+      font-weight: 900;
+    }
+
+    .review-card strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.1;
       font-weight: 900;
     }
 
     .review-card p {
       margin: 0 0 12px;
       color: var(--text);
-      font-size: 15px;
-      line-height: 1.35;
+      font-size: 14px;
+      line-height: 1.42;
       font-weight: 800;
     }
 
     .review-card span {
       display: block;
       color: var(--muted);
-      font-size: 13px;
-      font-weight: 900;
+      font-size: 12px;
+      line-height: 1.25;
+      font-weight: 800;
       text-transform: none;
+    }
+
+    .review-photos {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .review-photos img {
+      width: 54px;
+      height: 54px;
+      object-fit: cover;
+      border: 1px solid var(--line);
     }
 
     .tape-section {
@@ -1371,7 +1420,7 @@
                   <div class="app-stack">
                     <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling" data-img="images/complete-wall-finish.jpg" data-title="Existing Buildings" data-text="Choose the right retrofit method for an existing building."><img src="images/complete-wall-finish.jpg" alt="Existing building retrofit"><span><h4>Existing Buildings</h4><p>Choose the right retrofit method.</p></span></a>
                     <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="New Construction" data-text="Pick the install path before panels go on."><img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction metal building"><span><h4>New Construction</h4><p>Pick the path before panels go on.</p></span></a>
-                    <a class="app-card mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real BlueTex applications and finished project examples."><img src="images/BT_blog_case_study_cover_system_after.webp" alt="BlueTex case study finished wall"><span><h4>Case Studies</h4><p>Real project examples.</p></span></a>
+                    <a class="app-card app-card--compact mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real BlueTex applications and finished project examples."><img src="images/BT_blog_case_study_cover_system_after.webp" alt="BlueTex case study finished wall"><span><h4>Case Studies</h4><p>Real project examples.</p></span></a>
                   </div>
                 </section>
               </div>
@@ -1491,9 +1540,26 @@
             <a class="google-link" href="https://www.google.com/maps/place/BlueTex%2BInsulation%2BFor%2BMetal%2BBuildings/%4033.1512073%2C-97.2944782%2C15z/data%3D%214m8%213m7%211s0x864dcdd415655ef1%3A0xa615271ecbd3ba94%218m2%213d33.1512073%214d-97.2944782%219m1%211b1%2116s%2Fg%2F11fmgrks9_?entry=ttu">Read BlueTex Google Reviews</a>
           </div>
           <div class="review-grid">
-            <div class="review-card"><b>★★★★★</b><p>"The product significantly reduces heat, making the area feel cooler instantly."</p><span>Customer review highlight</span></div>
-            <div class="review-card"><b>★★★★★</b><p>"Installation is straightforward and the provided tape is highly effective."</p><span>Customer review highlight</span></div>
-            <div class="review-card"><b>★★★★★</b><p>"After installation, the door is quieter, with less noise from outside."</p><span>Customer review highlight</span></div>
+            <div class="review-card">
+              <header><div><b>★★★★★</b><strong>Ryan Fitzgerald</strong><span>4 reviews &middot; 4 photos &middot; 2 months ago</span></div></header>
+              <p>"I ordered the Blue Tex insulation after originally buying a less robust product. Side-by-side there's no comparison. The Blue Tex is more hardy, thicker, and is a better product. You will definitely be satisfied by using this product."</p>
+              <div class="review-photos"><img src="images/review-ryan-fitzgerald.webp" alt="Ryan Fitzgerald BlueTex review photo"></div>
+            </div>
+            <div class="review-card">
+              <header><div><b>★★★★★</b><strong>Thomas Nye</strong><span>Local Guide &middot; 20 reviews &middot; 2 photos &middot; Edited 6 months ago</span></div></header>
+              <p>"My wife and I installed the door insulation in about three hours. It was a fairly easy job and they look great. We liked it so much we ordered it for our house garage door."</p>
+              <div class="review-photos"><img src="images/review-thomas-nye-1.webp" alt="Thomas Nye BlueTex roll-up door review photo"><img src="images/review-thomas-nye-2.webp" alt="Thomas Nye second BlueTex review photo"></div>
+            </div>
+            <div class="review-card">
+              <header><div><b>★★★★★</b><strong>Sandra Owen</strong><span>1 review &middot; 2 photos &middot; 2 months ago</span></div></header>
+              <p>"Great products, best prices and fast delivery! My husband purchased the Blue Tex 2mm Pro Roll Up Garage Door Kit. Easy installation."</p>
+              <div class="review-photos"><img src="images/review-sandra-owen-1.webp" alt="Sandra Owen BlueTex kit review photo"><img src="images/review-sandra-owen-2.webp" alt="Sandra Owen second BlueTex review photo"></div>
+            </div>
+            <div class="review-card">
+              <header><div><b>★★★★★</b><strong>Eric Inman</strong><span>4 reviews &middot; 2 photos &middot; 8 months ago</span></div></header>
+              <p>"I just completed the install and it was easy. It is sturdy, well constructed, and the included tapes are more than enough. I had questions before purchasing, left a message and my call was returned with all questions answered the same day."</p>
+              <div class="review-photos"><img src="images/review-eric-inman.webp" alt="Eric Inman BlueTex roll-up door review photo"></div>
+            </div>
           </div>
         </div>
       </section>
