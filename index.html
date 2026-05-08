@@ -624,6 +624,7 @@
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 2;
       display: inline-flex;
       align-items: center;
       height: 20px;
@@ -635,6 +636,17 @@
       text-transform: none;
     }
 
+    .product-card__main {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .product-card__main:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: -3px;
+    }
+
     .product-card .product-actions {
       display: flex;
       gap: 12px;
@@ -644,6 +656,8 @@
     }
 
     .product-card .product-actions a {
+      position: relative;
+      z-index: 2;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -1483,8 +1497,8 @@
               <div class="product-grid">
                 <a class="product-card" href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation"><img src="images/BTCoverRepairSampleBoxComponents.png" alt="Help me decide"><span><h4>Help Me Decide</h4><p>Start with the right product path.</p></span></a>
                 <a class="product-card" href="garage-door-insulation.html"><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation"><span><h4>Garage Door Insulation</h4><p>Roll up and residential doors.</p></span></a>
-                <div class="product-card product-card--popular"><img src="images/CopyofBlueTex2mm62inch700ProductThumbnail.png" alt="Pro 2mm foil white"><span><h4>Pro 2mm Foil/White</h4><p>Core foam roll.</p><span class="product-actions"><a href="https://bluetexinsulation.com/collections/frontpage/products/bluetex-pro-2mm-50-wide-foil-white-foam-insulation">50 in</a><a href="https://bluetexinsulation.com/products/bluetex-pro-2mm-super-wide-62-inch">62 in</a></span></span></div>
-                <div class="product-card"><img src="images/Oct2024BlueTex6mm62inchMainThumbnail.png" alt="Supreme 6mm foil white"><span><h4>Supreme 6mm Foil/White</h4><p>Thicker foam option.</p><span class="product-actions"><a href="https://bluetexinsulation.com/products/bluetex-6mm-supreme-50-wide">50 in</a><a href="https://bluetexinsulation.com/products/bluetex%E2%84%A2-supreme-6mm-62-wide-foil-white-foam-insulation-300-sq-ft">62 in</a></span></span></div>
+                <div class="product-card product-card--popular"><a class="product-card__main" href="https://bluetexinsulation.com/collections/frontpage/products/bluetex-pro-2mm-50-wide-foil-white-foam-insulation" aria-label="Pro 2mm Foil/White"></a><img src="images/CopyofBlueTex2mm62inch700ProductThumbnail.png" alt="Pro 2mm foil white"><span><h4>Pro 2mm Foil/White</h4><p>Core foam roll.</p><span class="product-actions"><a href="https://bluetexinsulation.com/collections/frontpage/products/bluetex-pro-2mm-50-wide-foil-white-foam-insulation">50 in</a><a href="https://bluetexinsulation.com/products/bluetex-pro-2mm-super-wide-62-inch">62 in</a></span></span></div>
+                <div class="product-card"><a class="product-card__main" href="https://bluetexinsulation.com/products/bluetex-6mm-supreme-50-wide" aria-label="Supreme 6mm Foil/White"></a><img src="images/Oct2024BlueTex6mm62inchMainThumbnail.png" alt="Supreme 6mm foil white"><span><h4>Supreme 6mm Foil/White</h4><p>Thicker foam option.</p><span class="product-actions"><a href="https://bluetexinsulation.com/products/bluetex-6mm-supreme-50-wide">50 in</a><a href="https://bluetexinsulation.com/products/bluetex%E2%84%A2-supreme-6mm-62-wide-foil-white-foam-insulation-300-sq-ft">62 in</a></span></span></div>
                 <a class="product-card" href="https://bluetexinsulation.com/pages/bluetex-vapor-barrier-white-tapes"><img src="images/3wideBRIGHTWHITEtape.png" alt="BlueTex tapes"><span><h4>Tapes</h4><p>Repair and seam tapes.</p></span></a>
                 <a class="product-card" href="https://bluetexinsulation.com/collections/fasteners?&view=ls"><img src="images/BlueTex4FootTermBarsMainImage_1.png" alt="Fasteners"><span><h4>Fasteners</h4><p>Screws, washers, TermBars.</p></span></a>
                 <a class="product-card" href="https://bluetexinsulation.com/products/double-sided-tape"><img src="images/BTEasyClipSet_1.png" alt="Double sided tape"><span><h4>Double Sided Tape</h4><p>4, 8, and 16 count options.</p></span></a>
