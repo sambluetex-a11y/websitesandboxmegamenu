@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TermBar Cover System | BlueTex Insulation</title>
+  <meta name="description" content="Cover old, stained, or torn insulation in large metal buildings. The BlueTex TermBar cover system installs over the existing layer for a clean bright interior with no demo and no contractor required.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #0011a7;
+      --blue-2: #3f62c5;
+      --navy: #002f6c;
+      --orange: #f17c02;
+      --text: #1b1b1b;
+      --muted: #65636a;
+      --line: #e6e6e7;
+      --panel: #ffffff;
+      --soft: #fafafa;
+      --page: #eeeeee;
+      --rail: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: Lato, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, video { display: block; max-width: 100%; }
+
+    .page { min-width: 1180px; }
+    .rail { width: var(--rail); margin: 0 auto; }
+
+    /* ---------- Header (mirrors index.html so the page feels native) ---------- */
+    .site-header { position: relative; z-index: 20; background: #fff; border-bottom: 1px solid var(--line); }
+    .announce { height: 32px; background: var(--navy); color: #fff; font-size: 14px; font-weight: 900; line-height: 32px; text-align: center; }
+    .announce a { color: var(--orange); margin-left: 8px; white-space: nowrap; }
+    .utility { display: grid; grid-template-columns: 178px 1fr 34px 136px 156px 162px 28px; gap: 18px; align-items: center; min-height: 78px; }
+    .logo img { width: 168px; height: auto; }
+    .search { display: grid; grid-template-columns: 1fr 98px; height: 44px; border: 2px solid #828186; background: #fff; }
+    .search input { min-width: 0; border: 0; padding: 0 18px; color: var(--text); font: 700 15px/1 Lato, Arial, sans-serif; outline: 0; }
+    .search button, .phone, .quote, .samples { border: 0; background: var(--navy); color: #fff; font: 900 13px/1 Lato, Arial, sans-serif; letter-spacing: .06em; }
+    .icon-btn { position: relative; width: 34px; height: 44px; color: var(--navy); }
+    .icon-btn--search::before { content: ""; position: absolute; top: 13px; left: 8px; width: 14px; height: 14px; border: 1.8px solid currentColor; border-radius: 50%; }
+    .icon-btn--search::after { content: ""; position: absolute; top: 28px; left: 22px; width: 10px; height: 1.8px; background: currentColor; transform: rotate(45deg); transform-origin: left center; }
+    .cart { position: relative; width: 28px; height: 44px; color: var(--navy); }
+    .cart::before { content: ""; position: absolute; top: 12px; left: 5px; width: 17px; height: 18px; border: 1.6px solid currentColor; border-radius: 3px 3px 7px 7px; }
+    .cart::after { content: ""; position: absolute; top: 9px; left: 10px; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+    .phone, .quote, .samples { display: inline-flex; align-items: center; justify-content: center; height: 40px; border-radius: 4px; }
+    .samples { background: var(--orange); }
+
+    .nav-wrap { position: relative; width: var(--rail); margin: 0 auto; }
+    .main-nav { display: grid; grid-template-columns: 255px 145px 145px 185px 185px; gap: 4px; align-items: stretch; justify-content: center; height: 60px; }
+    .nav-item { position: static; min-width: 0; }
+    .nav-label { display: flex; align-items: center; justify-content: center; height: 60px; padding: 0 6px; color: var(--blue); border-bottom: 3px solid transparent; font-size: 16px; line-height: 1.04; font-weight: 900; text-align: center; }
+    .nav-item:hover .nav-label, .nav-item:focus-within .nav-label { background: #fafafa; border-color: var(--orange); }
+    .nav-item.is-current .nav-label { border-color: var(--orange); }
+
+    /* ---------- Crumb ---------- */
+    .crumb { background: #fff; border-bottom: 1px solid var(--line); }
+    .crumb-row { padding: 14px 0; color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+    .crumb-row a { color: var(--blue); }
+    .crumb-row span { margin: 0 8px; color: var(--line); }
+
+    /* ============================================================
+       PAGE-SCOPED STYLES — TermBar Cover System
+       Prefix: .btx-termbar-*
+       ============================================================ */
+
+    .btx-termbar-page { background: var(--page); }
+    .btx-termbar-page section { padding: 0; }
+
+    /* shared section heading */
+    .btx-termbar-eyebrow {
+      display: inline-block;
+      margin: 0 0 10px;
+      padding: 4px 10px;
+      background: rgba(241,124,2,.12);
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .btx-termbar-h2 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 34px;
+      line-height: 1.05;
+      font-weight: 900;
+    }
+    .btx-termbar-lede {
+      max-width: 820px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    /* shared CTA buttons */
+    .btx-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .04em;
+      border: 2px solid var(--blue);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btx-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,17,167,.18); }
+    .btx-btn--orange { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .btx-btn--orange:hover { box-shadow: 0 6px 16px rgba(241,124,2,.22); }
+    .btx-btn--ghost { background: #fff; color: var(--blue); border-color: var(--blue); }
+
+    /* ---------- 1. HERO ---------- */
+    .btx-termbar-hero {
+      background: #0c0c0c;
+      color: #fff;
+      border-bottom: 4px solid var(--orange);
+    }
+    .btx-termbar-hero__rail {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 0;
+      min-height: 520px;
+      align-items: stretch;
+    }
+    .btx-termbar-hero__copy {
+      padding: 64px 40px 60px 0;
+      align-self: center;
+    }
+    .btx-termbar-hero__eyebrow {
+      display: inline-block;
+      margin: 0 0 18px;
+      padding: 6px 12px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .btx-termbar-hero__title {
+      margin: 0 0 18px;
+      font-size: 46px;
+      line-height: 1.04;
+      font-weight: 900;
+      letter-spacing: -.005em;
+      max-width: 580px;
+    }
+    .btx-termbar-hero__lede {
+      max-width: 540px;
+      margin: 0 0 30px;
+      color: #d8dde6;
+      font-size: 18px;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+    .btx-termbar-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+    .btx-termbar-hero__quote {
+      margin-left: 4px;
+      color: #ffe8c9;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      border-bottom: 1.5px solid rgba(255,232,201,.5);
+      padding-bottom: 2px;
+    }
+    .btx-termbar-hero__quote:hover { border-color: #fff; color: #fff; }
+    .btx-termbar-hero__media {
+      position: relative;
+      overflow: hidden;
+      background: #1b1b1b;
+    }
+    .btx-termbar-hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .btx-termbar-hero__caption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 8px 12px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ---------- 2. PROBLEM ---------- */
+    .btx-termbar-problem {
+      background: #fff;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .btx-termbar-problem__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      align-items: center;
+    }
+    .btx-termbar-problem__media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+    }
+    .btx-termbar-problem__media img { width: 100%; height: 100%; object-fit: cover; }
+    .btx-termbar-problem__media-tag {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 6px 10px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .btx-termbar-problem__list {
+      list-style: none;
+      counter-reset: problem;
+      margin: 0;
+      padding: 0;
+    }
+    .btx-termbar-problem__list li {
+      counter-increment: problem;
+      position: relative;
+      padding: 14px 0 14px 52px;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+    .btx-termbar-problem__list li:last-child { border-bottom: 0; }
+    .btx-termbar-problem__list li::before {
+      content: counter(problem, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 36px;
+      height: 28px;
+      color: var(--orange);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      border-right: 2px solid var(--orange);
+    }
+
+    /* ---------- 3. SOLUTION ---------- */
+    .btx-termbar-solution {
+      background: var(--soft);
+      padding: 64px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .btx-termbar-solution__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      align-items: center;
+    }
+    .btx-termbar-solution__media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      order: 2;
+    }
+    .btx-termbar-solution__media img { width: 100%; height: 100%; object-fit: cover; }
+    .btx-termbar-solution__copy { order: 1; }
+    .btx-termbar-solution__pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 22px;
+    }
+    .btx-termbar-solution__pill {
+      padding: 8px 14px;
+      background: #fff;
+      color: var(--navy);
+      border: 1.5px solid var(--navy);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+    .btx-termbar-solution__bullets {
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 0;
+    }
+    .btx-termbar-solution__bullets li {
+      position: relative;
+      padding: 6px 0 6px 28px;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .btx-termbar-solution__bullets li::before {
+      content: "";
+      position: absolute;
+      top: 13px;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      background: var(--orange);
+      clip-path: polygon(20% 50%, 0 70%, 40% 100%, 100% 30%, 80% 10%, 40% 60%);
+    }
+
+    /* ---------- 4. HOW IT WORKS ---------- */
+    .btx-termbar-steps {
+      background: #fff;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .btx-termbar-steps__head { text-align: center; margin-bottom: 36px; }
+    .btx-termbar-steps__head .btx-termbar-eyebrow { display: inline-block; }
+    .btx-termbar-steps__head .btx-termbar-h2 { margin-left: auto; margin-right: auto; }
+    .btx-termbar-steps__head .btx-termbar-lede { margin-left: auto; margin-right: auto; }
+    .btx-termbar-steps__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .btx-termbar-step {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--line);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btx-termbar-step:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,.10);
+    }
+    .btx-termbar-step__media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #f3f3f4;
+    }
+    .btx-termbar-step__media img { width: 100%; height: 100%; object-fit: cover; }
+    .btx-termbar-step__num {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .btx-termbar-step__body { padding: 18px 20px 22px; }
+    .btx-termbar-step__title {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 17px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+    .btx-termbar-step__text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    /* ---------- 5. SPECS ---------- */
+    .btx-termbar-specs {
+      background: #f4f5f7;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .btx-termbar-specs__head { margin-bottom: 32px; }
+    .btx-termbar-specs__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .btx-termbar-spec {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 16px;
+      padding: 22px 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--orange);
+    }
+    .btx-termbar-spec__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 24px;
+      font-weight: 900;
+    }
+    .btx-termbar-spec__title {
+      margin: 0 0 4px;
+      color: var(--navy);
+      font-size: 16px;
+      line-height: 1.15;
+      font-weight: 900;
+    }
+    .btx-termbar-spec__text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    /* ---------- 6. GALLERY (before/after) ---------- */
+    .btx-termbar-gallery {
+      background: #fff;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .btx-termbar-gallery__head { margin-bottom: 32px; }
+    .btx-termbar-gallery__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    .btx-termbar-gallery__item { display: flex; flex-direction: column; gap: 10px; }
+    .btx-ba {
+      --split: 50%;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: #ddd;
+      border: 1px solid var(--line);
+      cursor: col-resize;
+      user-select: none;
+    }
+    .btx-ba img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .btx-ba .btx-ba__after { clip-path: inset(0 0 0 var(--split)); }
+    .btx-ba__line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split);
+      z-index: 3;
+      width: 3px;
+      background: #fff;
+      box-shadow: 0 0 8px rgba(0,0,0,.45);
+      pointer-events: none;
+      transform: translateX(-50%);
+    }
+    .btx-ba__line::after {
+      content: "‹ ›";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: #fff;
+      color: #1b1b1b;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 12px rgba(0,0,0,.3);
+      font-size: 16px;
+      font-weight: 900;
+      transform: translate(-50%, -50%);
+    }
+    .btx-ba__label {
+      position: absolute;
+      top: 12px;
+      z-index: 4;
+      padding: 5px 9px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .btx-ba__label--before { left: 12px; }
+    .btx-ba__label--after { right: 12px; }
+    .btx-ba__range {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: col-resize;
+    }
+    .btx-termbar-gallery__caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .btx-termbar-gallery__caption span:last-child {
+      color: var(--orange);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- 7. VIDEO PLACEHOLDER ---------- */
+    .btx-termbar-video {
+      background: var(--navy);
+      padding: 64px 0;
+      color: #fff;
+    }
+    .btx-termbar-video__shell {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .btx-termbar-video__copy { color: #e6ebf5; }
+    .btx-termbar-video__copy h2 { margin: 0 0 14px; color: #fff; font-size: 30px; line-height: 1.08; font-weight: 900; }
+    .btx-termbar-video__copy p { margin: 0 0 18px; color: #c8d1e2; font-size: 17px; line-height: 1.55; font-weight: 600; }
+    .btx-termbar-video__list {
+      list-style: none;
+      margin: 0 0 22px;
+      padding: 0;
+    }
+    .btx-termbar-video__list li {
+      position: relative;
+      padding: 4px 0 4px 26px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .btx-termbar-video__list li::before {
+      content: "";
+      position: absolute;
+      top: 11px;
+      left: 0;
+      width: 14px;
+      height: 2px;
+      background: var(--orange);
+    }
+    .btx-termbar-video__player {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    .btx-termbar-video__poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.55);
+    }
+    .btx-termbar-video__play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: #fff;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      font-family: inherit;
+    }
+    .btx-termbar-video__play span:first-child {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 84px;
+      height: 84px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 30px;
+      border-radius: 50%;
+      box-shadow: 0 6px 24px rgba(241,124,2,.45);
+    }
+    .btx-termbar-video__play span:last-child {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .btx-termbar-video__chip {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 10px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- 8. FINAL CTA ---------- */
+    .btx-termbar-cta {
+      background: #fff;
+      padding: 56px 0 72px;
+    }
+    .btx-termbar-cta__bar {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 32px 32px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+      color: #fff;
+      border-left: 6px solid var(--orange);
+    }
+    .btx-termbar-cta__copy h2 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+    .btx-termbar-cta__copy p {
+      margin: 0;
+      color: rgba(255,255,255,.85);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .btx-termbar-cta__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 18px;
+      background: #fff;
+      color: var(--blue);
+      font-size: 14px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-align: center;
+      border: 2px solid #fff;
+      transition: transform .15s ease, background .15s ease, color .15s ease;
+    }
+    .btx-termbar-cta__btn:hover { transform: translateY(-2px); }
+    .btx-termbar-cta__btn--orange {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+    .btx-termbar-cta__btn--ghost {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,.6);
+    }
+    .btx-termbar-cta__btn--ghost:hover { background: rgba(255,255,255,.08); }
+
+    /* ---------- Responsive: collapse to single-column when viewport narrower than rail ---------- */
+    @media (max-width: 1180px) {
+      .page { min-width: 0; }
+      .rail { width: 100%; padding: 0 18px; }
+      .nav-wrap { width: 100%; }
+      .btx-termbar-hero__rail,
+      .btx-termbar-problem__grid,
+      .btx-termbar-solution__grid,
+      .btx-termbar-video__shell { grid-template-columns: 1fr; }
+      .btx-termbar-hero__copy { padding: 36px 0 28px; }
+      .btx-termbar-hero__title { font-size: 34px; }
+      .btx-termbar-solution__media { order: 0; }
+      .btx-termbar-solution__copy { order: 0; }
+      .btx-termbar-steps__grid { grid-template-columns: repeat(2, 1fr); }
+      .btx-termbar-specs__grid { grid-template-columns: repeat(2, 1fr); }
+      .btx-termbar-gallery__grid { grid-template-columns: 1fr; }
+      .btx-termbar-cta__bar { grid-template-columns: 1fr; text-align: left; }
+    }
+    @media (max-width: 640px) {
+      .btx-termbar-hero__title { font-size: 28px; }
+      .btx-termbar-h2 { font-size: 26px; }
+      .btx-termbar-steps__grid,
+      .btx-termbar-specs__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page btx-termbar-page">
+    <header class="site-header">
+      <div class="announce">Free shipping on orders $100+ in the contiguous USA <a href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box">Order the $100 Test Kit</a></div>
+      <div class="rail utility">
+        <a class="logo" href="index.html"><img src="images/bluetex-logo-med.png" alt="BlueTex Insulation"></a>
+        <form class="search" role="search" onsubmit="return false;">
+          <input type="search" placeholder="Search BlueTex products, guides, and help">
+          <button type="button">Search</button>
+        </form>
+        <a class="icon-btn icon-btn--search" href="https://bluetexinsulation.com/search" aria-label="Search"></a>
+        <a class="phone" href="tel:18005958772">1-800-595-8772</a>
+        <a class="quote" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers">Request A Quote</a>
+        <a class="samples" href="https://bluetexinsulation.com/pages/request-free-samples">Request Free Samples</a>
+        <a class="cart" href="https://bluetexinsulation.com/cart" aria-label="Cart"></a>
+      </div>
+
+      <div class="nav-wrap">
+        <nav class="main-nav" aria-label="Primary navigation">
+          <div class="nav-item is-current"><a class="nav-label" href="termbar-cover-system.html">Large Metal Building Repair<br>&amp; Cover System</a></div>
+          <div class="nav-item"><a class="nav-label" href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation">Applications</a></div>
+          <div class="nav-item"><a class="nav-label" href="https://bluetexinsulation.com/pages/install-guide">Install Guide</a></div>
+          <div class="nav-item"><a class="nav-label" href="https://bluetexinsulation.com/collections/all">Shop All Products</a></div>
+          <div class="nav-item"><a class="nav-label" href="https://bluetexinsulation.com/a/detective-faq">Common Questions</a></div>
+        </nav>
+      </div>
+    </header>
+
+    <nav class="crumb" aria-label="Breadcrumb">
+      <div class="rail crumb-row"><a href="index.html">Home</a><span>/</span><a href="index.html">Large Metal Building Repair</a><span>/</span>TermBar Cover System</div>
+    </nav>
+
+    <main>
+      <!-- 1. HERO -->
+      <section class="btx-termbar-hero" aria-label="TermBar cover system overview">
+        <div class="rail btx-termbar-hero__rail">
+          <div class="btx-termbar-hero__copy">
+            <span class="btx-termbar-hero__eyebrow">Cover &amp; Repair System</span>
+            <h1 class="btx-termbar-hero__title">Cover Your Old Insulation. No Demo. No Mess. No Contractor Required.</h1>
+            <p class="btx-termbar-hero__lede">Old metal building insulation usually does not fail because the fiberglass disappears. It fails because the original vapor barrier facing gets torn, stained, loose, or worn out. BlueTex goes directly over the existing insulation and creates a new clean interior surface.</p>
+            <div class="btx-termbar-hero__actions">
+              <a class="btx-btn btx-btn--orange" href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Complete Install Guide</a>
+              <a class="btx-btn" href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box">Order the $100 Test Kit</a>
+              <a class="btx-termbar-hero__quote" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers">Request a Quote &rarr;</a>
+            </div>
+          </div>
+          <div class="btx-termbar-hero__media">
+            <img src="images/final-roof-wall-look.jpg" alt="Finished BlueTex interior on a metal building roof and wall">
+            <span class="btx-termbar-hero__caption">Finished interior — no tear-out</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. THE PROBLEM -->
+      <section class="btx-termbar-problem" aria-labelledby="problem-h">
+        <div class="rail btx-termbar-problem__grid">
+          <div>
+            <span class="btx-termbar-eyebrow">The Problem</span>
+            <h2 id="problem-h" class="btx-termbar-h2">Old insulation does not fail. Its vapor barrier does.</h2>
+            <p class="btx-termbar-lede">When metal building insulation looks bad, the fiberglass core is rarely the real issue. It is the thin vinyl or paper facing that wears out. Once that facing fails, moisture gets through &mdash; and everything downhill from it gets worse.</p>
+            <ol class="btx-termbar-problem__list">
+              <li>Original facing tears, separates from the fiberglass, or stains over time.</li>
+              <li>Warm interior moisture passes through the failed facing.</li>
+              <li>Moisture moves through the fiberglass and reaches the cold metal panels.</li>
+              <li>Condensation forms on the back side of the roof or wall.</li>
+              <li>Insulation gets heavier, dirtier, sags, and looks worse every year.</li>
+            </ol>
+          </div>
+          <figure class="btx-termbar-problem__media">
+            <img src="images/before-sagging-insulation.jpg" alt="Old metal building insulation sagging with stained, torn vapor barrier facing">
+            <figcaption class="btx-termbar-problem__media-tag">Failed facing &middot; sagging fiberglass</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 3. THE SOLUTION -->
+      <section class="btx-termbar-solution" aria-labelledby="solution-h">
+        <div class="rail btx-termbar-solution__grid">
+          <figure class="btx-termbar-solution__media">
+            <img src="images/installing-termbars.jpg" alt="BlueTex installed over old insulation and mechanically attached with aluminum TermBars at the framing">
+          </figure>
+          <div class="btx-termbar-solution__copy">
+            <span class="btx-termbar-eyebrow">The Solution</span>
+            <h2 id="solution-h" class="btx-termbar-h2">Install over what you have. Lock it down with TermBars.</h2>
+            <div class="btx-termbar-solution__pills">
+              <span class="btx-termbar-solution__pill">No tear-out</span>
+              <span class="btx-termbar-solution__pill">No demolition</span>
+              <span class="btx-termbar-solution__pill">No spray foam</span>
+            </div>
+            <p class="btx-termbar-lede" style="margin-bottom:18px;">BlueTex covers the existing insulation in place. A new bright white facing replaces the failed one, and aluminum TermBars mechanically fasten the layer at every purlin and girt &mdash; the same framing the building was built on.</p>
+            <ul class="btx-termbar-solution__bullets">
+              <li>Existing insulation stays in the cavity, hidden and intact.</li>
+              <li>BlueTex 2mm Pro or 6mm Supreme becomes the new interior surface.</li>
+              <li>Aluminum TermBars mechanically clamp the layer at the framing.</li>
+              <li>Seams and edges sealed with BlueTex white repair tape.</li>
+            </ul>
+            <a class="btx-btn btx-btn--ghost" href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Read the Install Guide</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. HOW IT WORKS -->
+      <section class="btx-termbar-steps" aria-labelledby="steps-h">
+        <div class="rail">
+          <div class="btx-termbar-steps__head">
+            <span class="btx-termbar-eyebrow">How The System Works</span>
+            <h2 id="steps-h" class="btx-termbar-h2">A four-step retrofit you can run with a small crew.</h2>
+            <p class="btx-termbar-lede">No demolition phase. Most projects move directly from access setup to a finished interior in a single pass.</p>
+          </div>
+          <div class="btx-termbar-steps__grid">
+            <article class="btx-termbar-step">
+              <div class="btx-termbar-step__media">
+                <img src="images/before-sagging-insulation.jpg" alt="Old fiberglass insulation left in place between purlins">
+                <span class="btx-termbar-step__num">1</span>
+              </div>
+              <div class="btx-termbar-step__body">
+                <h3 class="btx-termbar-step__title">Leave the existing insulation in place</h3>
+                <p class="btx-termbar-step__text">Skip the tear-out. The old fiberglass stays in the cavity and keeps doing its R-value job.</p>
+              </div>
+            </article>
+            <article class="btx-termbar-step">
+              <div class="btx-termbar-step__media">
+                <img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="BlueTex roll being unrolled across the interior">
+                <span class="btx-termbar-step__num">2</span>
+              </div>
+              <div class="btx-termbar-step__body">
+                <h3 class="btx-termbar-step__title">Roll BlueTex across the interior</h3>
+                <p class="btx-termbar-step__text">2mm Pro or 6mm Supreme rolls cover the wall or roof in straight runs against the framing.</p>
+              </div>
+            </article>
+            <article class="btx-termbar-step">
+              <div class="btx-termbar-step__media">
+                <img src="images/installing-termbars.jpg" alt="Aluminum TermBars being mechanically fastened at the purlins">
+                <span class="btx-termbar-step__num">3</span>
+              </div>
+              <div class="btx-termbar-step__body">
+                <h3 class="btx-termbar-step__title">Fasten with aluminum TermBars</h3>
+                <p class="btx-termbar-step__text">TermBars and screws clamp BlueTex tight to every purlin and girt for a permanent mechanical hold.</p>
+              </div>
+            </article>
+            <article class="btx-termbar-step">
+              <div class="btx-termbar-step__media">
+                <img src="images/complete-wall-finish.jpg" alt="Finished bright white interior wall and ceiling after the cover system is installed">
+                <span class="btx-termbar-step__num">4</span>
+              </div>
+              <div class="btx-termbar-step__body">
+                <h3 class="btx-termbar-step__title">Tape seams &amp; finish</h3>
+                <p class="btx-termbar-step__text">Seal seams and edges with BlueTex white repair tape. Walk away with a bright, clean, finished interior.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. SPECS / ADVANTAGES -->
+      <section class="btx-termbar-specs" aria-labelledby="specs-h">
+        <div class="rail">
+          <div class="btx-termbar-specs__head">
+            <span class="btx-termbar-eyebrow">Key Advantages</span>
+            <h2 id="specs-h" class="btx-termbar-h2">Built for the realities of metal building work.</h2>
+            <p class="btx-termbar-lede">A short list of why building owners and contractors keep choosing the cover system over alternatives like full tear-outs or spray foam.</p>
+          </div>
+          <div class="btx-termbar-specs__grid">
+            <div class="btx-termbar-spec"><span class="btx-termbar-spec__icon">✓</span><div><h3 class="btx-termbar-spec__title">Tear-proof &amp; puncture-resistant</h3><p class="btx-termbar-spec__text">Far more durable than the original builder-grade vinyl facing.</p></div></div>
+            <div class="btx-termbar-spec"><span class="btx-termbar-spec__icon">★</span><div><h3 class="btx-termbar-spec__title">Bright white finished interior</h3><p class="btx-termbar-spec__text">Reflects light, lifts the look of the building, and reads as a finished space.</p></div></div>
+            <div class="btx-termbar-spec"><span class="btx-termbar-spec__icon">○</span><div><h3 class="btx-termbar-spec__title">No fumes, no off-gassing</h3><p class="btx-termbar-spec__text">Foam-and-foil construction. Nothing to cure, nothing to ventilate.</p></div></div>
+            <div class="btx-termbar-spec"><span class="btx-termbar-spec__icon">⌂</span><div><h3 class="btx-termbar-spec__title">No demolition mess</h3><p class="btx-termbar-spec__text">The existing insulation never comes down. No bagging, no dumpster runs.</p></div></div>
+            <div class="btx-termbar-spec"><span class="btx-termbar-spec__icon">☼</span><div><h3 class="btx-termbar-spec__title">Installs any time of year</h3><p class="btx-termbar-spec__text">Not weather-locked. No cure window. Hot summer or cold winter, it goes in.</p></div></div>
+            <div class="btx-termbar-spec"><span class="btx-termbar-spec__icon">⚒</span><div><h3 class="btx-termbar-spec__title">Simple tool list</h3><p class="btx-termbar-spec__text">Lift, screw gun, utility knife. No specialty equipment. No specialty trade.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. BEFORE / AFTER GALLERY -->
+      <section class="btx-termbar-gallery" aria-labelledby="gallery-h">
+        <div class="rail">
+          <div class="btx-termbar-gallery__head">
+            <span class="btx-termbar-eyebrow">Before / After</span>
+            <h2 id="gallery-h" class="btx-termbar-h2">Drag to see the difference.</h2>
+            <p class="btx-termbar-lede">Real cover-system retrofits across roof and wall projects. Same framing, same building &mdash; new interior surface.</p>
+          </div>
+          <div class="btx-termbar-gallery__grid">
+
+            <figure class="btx-termbar-gallery__item">
+              <div class="btx-ba" data-ba>
+                <img src="images/before-sagging-insulation.jpg" alt="Sagging stained insulation before the cover system">
+                <img class="btx-ba__after" src="images/final-roof-wall-look.jpg" alt="Bright clean BlueTex finished interior after install">
+                <span class="btx-ba__label btx-ba__label--before">Before</span>
+                <span class="btx-ba__label btx-ba__label--after">After</span>
+                <span class="btx-ba__line" aria-hidden="true"></span>
+                <input class="btx-ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after">
+              </div>
+              <figcaption class="btx-termbar-gallery__caption"><span>Roof &amp; wall retrofit — sagging fiberglass to finished interior</span><span>Drag to compare</span></figcaption>
+            </figure>
+
+            <figure class="btx-termbar-gallery__item">
+              <div class="btx-ba" data-ba>
+                <img src="images/repair-tape-before.png" alt="Torn vapor barrier facing before repair">
+                <img class="btx-ba__after" src="images/repair-tape-after.png" alt="Patched and sealed facing after BlueTex repair tape">
+                <span class="btx-ba__label btx-ba__label--before">Torn</span>
+                <span class="btx-ba__label btx-ba__label--after">Sealed</span>
+                <span class="btx-ba__line" aria-hidden="true"></span>
+                <input class="btx-ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after">
+              </div>
+              <figcaption class="btx-termbar-gallery__caption"><span>Vapor barrier repair — 6&quot; white repair tape</span><span>Drag to compare</span></figcaption>
+            </figure>
+
+            <figure class="btx-termbar-gallery__item">
+              <div class="btx-ba" data-ba>
+                <img src="images/before-sagging-insulation.jpg" alt="Old wall insulation before the cover system">
+                <img class="btx-ba__after" src="images/complete-wall-finish.jpg" alt="Bright white interior wall after cover system install">
+                <span class="btx-ba__label btx-ba__label--before">Before</span>
+                <span class="btx-ba__label btx-ba__label--after">After</span>
+                <span class="btx-ba__line" aria-hidden="true"></span>
+                <input class="btx-ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after">
+              </div>
+              <figcaption class="btx-termbar-gallery__caption"><span>Wall finish — full coverage with TermBars at the girts</span><span>Drag to compare</span></figcaption>
+            </figure>
+
+            <figure class="btx-termbar-gallery__item">
+              <div class="btx-ba" data-ba>
+                <img src="images/before-sagging-insulation.jpg" alt="Stained interior before BlueTex">
+                <img class="btx-ba__after" src="images/BT_blog_case_study_cover_system_after.webp" alt="Warehouse interior after BlueTex cover system">
+                <span class="btx-ba__label btx-ba__label--before">Before</span>
+                <span class="btx-ba__label btx-ba__label--after">After</span>
+                <span class="btx-ba__line" aria-hidden="true"></span>
+                <input class="btx-ba__range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after">
+              </div>
+              <figcaption class="btx-termbar-gallery__caption"><span>Warehouse case study — covering damaged insulation</span><span>Drag to compare</span></figcaption>
+            </figure>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. VIDEO PLACEHOLDER -->
+      <section class="btx-termbar-video" aria-labelledby="video-h">
+        <div class="rail btx-termbar-video__shell">
+          <div class="btx-termbar-video__copy">
+            <span class="btx-termbar-eyebrow" style="background:rgba(241,124,2,.18); color:#ffb56a;">Short Explainer Video</span>
+            <h2 id="video-h">Why Vapor Barriers Fail &mdash; And How The TermBar System Solves It.</h2>
+            <p>A short walkthrough on what is really going wrong inside a stained or sagging metal building, and the exact steps the cover system takes to fix it.</p>
+            <ul class="btx-termbar-video__list">
+              <li>Why the original vapor barrier facing fails first</li>
+              <li>What wet, dirty insulation actually looks like up close</li>
+              <li>How TermBars mechanically lock BlueTex to the framing</li>
+            </ul>
+            <a class="btx-btn btx-btn--orange" href="https://bluetexinsulation.com/blogs/case-studies">See Case Studies</a>
+          </div>
+          <div class="btx-termbar-video__player" role="img" aria-label="Video coming soon — TermBar cover system explainer">
+            <img class="btx-termbar-video__poster" src="images/termbars-install-photo.jpg" alt="">
+            <span class="btx-termbar-video__chip">Video coming soon</span>
+            <button class="btx-termbar-video__play" type="button" aria-label="Play TermBar explainer video (coming soon)" disabled>
+              <span aria-hidden="true">&#9658;</span>
+              <span>Explainer Coming Soon</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. FINAL CTA -->
+      <section class="btx-termbar-cta" aria-label="Next steps">
+        <div class="rail">
+          <div class="btx-termbar-cta__bar">
+            <div class="btx-termbar-cta__copy">
+              <h2>Ready to move on this?</h2>
+              <p>Pick the path that fits your project. Most owners start with the test kit.</p>
+            </div>
+            <a class="btx-termbar-cta__btn" href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Complete Install Guide</a>
+            <a class="btx-termbar-cta__btn btx-termbar-cta__btn--orange" href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box">Order a $100 Test Kit</a>
+            <a class="btx-termbar-cta__btn btx-termbar-cta__btn--ghost" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers">Request a Quote</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Before/After sliders, scoped to this page
+    document.querySelectorAll('[data-ba]').forEach((ba) => {
+      const range = ba.querySelector('.btx-ba__range');
+      if (!range) return;
+      const update = () => ba.style.setProperty('--split', `${range.value}%`);
+      range.addEventListener('input', update);
+      update();
+    });
+  </script>
+</body>
+</html>
