@@ -11,7 +11,7 @@
     :root {
       --blue: #0011a7;
       --blue-2: #3f62c5;
-      --navy: #15235c;
+      --navy: #002f6c;
       --orange: #d58a13;
       --text: #1b1b1b;
       --muted: #65636a;
@@ -426,6 +426,14 @@
       padding: 0;
       border-bottom: 0;
       color: var(--text);
+      transition: transform .18s ease, box-shadow .18s ease;
+      will-change: transform;
+    }
+
+    .app-card:hover,
+    .app-card:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.10);
     }
 
     .app-card img {
@@ -467,8 +475,7 @@
     }
 
     .app-card p,
-    .product-card p,
-    .faq-layout .mega-preview p {
+    .product-card p {
       display: none;
     }
 
@@ -589,6 +596,14 @@
       border: 1px solid var(--line);
       background: #fff;
       color: var(--text);
+      transition: transform .18s ease, box-shadow .18s ease;
+      will-change: transform;
+    }
+
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.10);
     }
 
     .product-card img {
@@ -761,14 +776,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
+      min-height: 42px;
+      padding: 0 18px;
       background: var(--blue);
       color: #fff;
-      font-size: 16px;
+      font-size: 13px;
       line-height: 1;
       font-weight: 900;
-      letter-spacing: .03em;
+      letter-spacing: .04em;
       text-transform: none;
     }
 
@@ -888,7 +903,7 @@
 
     .proof-section {
       margin-top: 38px;
-      padding: 34px 32px;
+      padding: 28px 32px;
       background: #f7f7f8;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -896,16 +911,21 @@
 
     .proof-grid {
       display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 28px;
-      align-items: start;
+      grid-template-columns: 320px 1fr;
+      gap: 22px;
+      align-items: stretch;
     }
 
     .review-summary {
+      display: flex;
+      flex-direction: column;
       padding: 24px;
       background: #fff;
       border: 1px solid var(--line);
+      height: 100%;
     }
+
+    .review-summary .google-link { margin-top: auto; align-self: flex-start; }
 
     .eyebrow {
       margin: 0 0 8px;
@@ -961,12 +981,14 @@
     .review-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      align-items: start;
+      gap: 12px;
+      align-items: stretch;
     }
 
     .review-card {
-      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      padding: 16px 18px;
       background: #fff;
       border: 1px solid var(--line);
     }
@@ -1014,13 +1036,14 @@
 
     .review-photos {
       display: flex;
-      gap: 6px;
-      margin-top: 12px;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 10px;
     }
 
     .review-photos img {
-      width: 54px;
-      height: 54px;
+      width: 92px;
+      height: 92px;
       object-fit: cover;
       border: 1px solid var(--line);
     }
@@ -1051,17 +1074,26 @@
 
     .tape-graphic {
       display: grid;
-      grid-template-columns: 540px 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 28px;
-      align-items: center;
+      align-items: stretch;
       margin-bottom: 24px;
       text-align: left;
     }
 
+    .tape-graphic .compare-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .tape-info-card {
+      display: flex;
+      flex-direction: column;
       padding: 28px;
       background: #f7f7f8;
       border: 1px solid var(--line);
+      height: 100%;
     }
 
     .tape-info-card h3 {
@@ -1236,11 +1268,23 @@
 
     .tape-group strong {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
       color: var(--blue);
       font-size: 28px;
       line-height: 1;
       font-weight: 900;
+      text-transform: none;
+    }
+
+    .tape-popular {
+      display: block;
+      margin: 0 0 12px;
+      color: var(--orange);
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .08em;
+      font-style: normal;
       text-transform: none;
     }
 
@@ -1420,7 +1464,7 @@
                   <div class="app-stack">
                     <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling" data-img="images/complete-wall-finish.jpg" data-title="Existing Buildings" data-text="Choose the right retrofit method for an existing building."><img src="images/complete-wall-finish.jpg" alt="Existing building retrofit"><span><h4>Existing Buildings</h4><p>Choose the right retrofit method.</p></span></a>
                     <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="New Construction" data-text="Pick the install path before panels go on."><img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction metal building"><span><h4>New Construction</h4><p>Pick the path before panels go on.</p></span></a>
-                    <a class="app-card app-card--compact mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real BlueTex applications and finished project examples."><img src="images/BT_blog_case_study_cover_system_after.webp" alt="BlueTex case study finished wall"><span><h4>Case Studies</h4><p>Real project examples.</p></span></a>
+                    <a class="app-card mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real BlueTex applications and finished project examples."><img src="images/BT_blog_case_study_cover_system_after.webp" alt="BlueTex case study finished wall"><span><h4>Case Studies</h4><p>Real project examples.</p></span></a>
                   </div>
                 </section>
               </div>
@@ -1593,7 +1637,7 @@
         <div class="tape-product-grid">
           <div class="tape-group tape-group--featured">
             <strong>Repair Tape</strong>
-            <span class="tape-badge">Most Popular</span>
+            <em class="tape-popular">Most popular</em>
             <span>Use 6&quot; tape for larger holes, torn facing, and visible repairs where more coverage helps. Use 4&quot; tape for smaller patches, multi-use repairs, stucco prep, and masking-style jobs.</span>
             <em>6&quot; white tape gives larger damaged areas more coverage. 4&quot; white tape is a handy repair width for smaller patches and multi-use jobs.</em>
             <div class="tape-products"><a href="https://bluetexinsulation.com/collections/new-collection/products/6-white-tape">6&quot; Repair Tape</a><a href="https://bluetexinsulation.com/products/4-white-tape">4&quot; Multi-Use Tape</a></div>
