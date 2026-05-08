@@ -142,6 +142,62 @@
       font-weight: 600;
     }
 
+    /* Hero video frame — uses a navy mat + orange accent rule */
+    .btx-termbar-hero-video {
+      margin: 28px 0 0;
+      padding: 14px;
+      background: var(--navy);
+      border: 1px solid var(--line);
+      box-shadow: 0 6px 24px rgba(0,0,0,.10);
+      position: relative;
+    }
+    .btx-termbar-hero-video::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--orange);
+    }
+    .btx-termbar-hero-video__frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+    .btx-termbar-hero-video__frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .btx-termbar-hero-video__chip {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+    }
+    .btx-termbar-hero-video__chip::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
     /* section dividers */
     .btx-termbar-rule {
       margin: 48px auto 0;
@@ -476,9 +532,12 @@
 
         <p>The BlueTex&trade; Cover/Repair System installs over the existing insulation and creates a new clean interior surface. The old insulation stays in place, and the inside of the building gets a bright white, durable vapor barrier surface.</p>
 
-        <figure class="btx-termbar-hero-image">
-          <img src="images/final-roof-wall-look.jpg" alt="Finished BlueTex bright white interior on a metal building roof and wall">
-          <figcaption class="btx-termbar-hero-caption">Finished BlueTex interior — installed over the existing insulation.</figcaption>
+        <figure class="btx-termbar-hero-video">
+          <div class="btx-termbar-hero-video__frame">
+            <span class="btx-termbar-hero-video__chip">Watch · TermBar System</span>
+            <video src="media/blue-tex-horizontal-ad.mp4" autoplay muted loop playsinline preload="metadata" controls poster="images/final-roof-wall-look.jpg" aria-label="BlueTex Cover/Repair System overview video"></video>
+          </div>
+          <figcaption class="btx-termbar-hero-caption">Short overview of the BlueTex Cover/Repair System installed over existing insulation.</figcaption>
         </figure>
       </article>
 
