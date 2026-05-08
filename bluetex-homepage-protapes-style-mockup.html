@@ -65,7 +65,7 @@
 
     .utility {
       display: grid;
-      grid-template-columns: 178px 1fr 34px 136px 156px 28px;
+      grid-template-columns: 178px 1fr 34px 136px 156px 162px 28px;
       gap: 18px;
       align-items: center;
       min-height: 78px;
@@ -92,7 +92,8 @@
 
     .search button,
     .phone,
-    .quote {
+    .quote,
+    .samples {
       border: 0;
       background: var(--navy);
       color: #fff;
@@ -186,12 +187,18 @@
     }
 
     .phone,
-    .quote {
+    .quote,
+    .samples {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       height: 40px;
       border-radius: 4px;
+    }
+
+    .samples {
+      background: var(--orange);
+      text-align: center;
     }
 
     .nav-wrap {
@@ -606,23 +613,36 @@
     .faq-layout .link-grid { grid-template-columns: 1fr; row-gap: 4px; }
     .faq-layout .mega-link { padding: 6px 0; font-size: 15px; }
 
-    .hero-shell { background: var(--page); padding: 18px 0 0; }
+    .hero-shell { background: #fff; padding: 22px 0 0; }
 
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 520px;
-      gap: 28px;
-      align-items: center;
-      padding: 28px 32px;
-      background: #fff;
+      position: relative;
+      min-height: 455px;
+      overflow: hidden;
+      background: #111;
       border: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.86) 34%, rgba(255,255,255,.18) 58%, rgba(255,255,255,0) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 520px;
+      padding: 86px 0 0 34px;
     }
 
     .hero h1 {
       max-width: 520px;
       margin: 0 0 12px;
       color: var(--text);
-      font-size: 34px;
+      font-size: 39px;
       line-height: 1.06;
       font-weight: 900;
       text-transform: uppercase;
@@ -631,10 +651,10 @@
     .hero p {
       max-width: 560px;
       margin: 0 0 20px;
-      color: var(--muted);
-      font-size: 17px;
+      color: #4f5057;
+      font-size: 18px;
       line-height: 1.45;
-      font-weight: 600;
+      font-weight: 800;
     }
 
     .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -660,18 +680,26 @@
     }
 
     .hero-video {
-      width: 520px;
-      height: 292px;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border: 1px solid var(--line);
       background: var(--soft);
+    }
+
+    .case-strip {
+      margin: 22px 0 0;
+      padding: 24px 0 26px;
+      border-top: 1px solid var(--line);
+      text-align: center;
     }
 
     .quick {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 0;
     }
 
     .quick a {
@@ -689,18 +717,155 @@
       text-transform: uppercase;
     }
 
-    .proof-section {
-      margin-top: 14px;
-      padding: 28px 30px;
+    .case-study-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      min-width: 520px;
+      padding: 0 34px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .content-zone { padding: 26px 0 46px; background: #fff; }
+
+    .topic-section {
+      padding-top: 22px;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 31px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .section-intro {
+      max-width: 980px;
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .topic-card {
+      display: grid;
+      grid-template-rows: 310px 1fr;
       background: #fff;
       border: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+      color: var(--text);
+    }
+
+    .topic-media {
+      position: relative;
+      overflow: hidden;
+      background: #f3f3f4;
+    }
+
+    .topic-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .topic-media span {
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
+      right: 30px;
+      color: #fff;
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,.45);
+    }
+
+    .topic-body {
+      padding: 24px 28px 30px;
+      border-top: 4px solid var(--orange);
+    }
+
+    .topic-body h3 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 24px;
+      line-height: 1.08;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .topic-body p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .topic-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .topic-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      background: var(--navy);
+      color: #fff;
+      border: 2px solid var(--navy);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .topic-actions a.secondary {
+      background: #fff;
+      color: var(--navy);
+    }
+
+    .proof-section {
+      margin-top: 38px;
+      padding: 34px 32px;
+      background: #f7f7f8;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .proof-grid {
       display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 34px;
-      align-items: stretch;
+      grid-template-columns: 360px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .review-summary {
+      padding: 24px;
+      background: #fff;
+      border: 1px solid var(--line);
     }
 
     .eyebrow {
@@ -713,8 +878,7 @@
       text-transform: uppercase;
     }
 
-    .proof-copy h2 {
-      max-width: 620px;
+    .review-summary h2 {
       margin: 0 0 10px;
       color: var(--text);
       font-size: 27px;
@@ -723,129 +887,206 @@
       text-transform: uppercase;
     }
 
-    .proof-copy p {
-      max-width: 680px;
-      margin: 0 0 16px;
+    .review-summary p {
+      margin: 0 0 18px;
       color: var(--muted);
       font-size: 16px;
       line-height: 1.45;
       font-weight: 700;
     }
 
-    .case-study-cta {
+    .stars {
+      display: block;
+      margin: 0 0 10px;
+      color: var(--orange);
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .google-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 24px;
+      min-height: 44px;
+      padding: 0 18px;
       background: var(--blue);
       color: #fff;
-      font-size: 17px;
-      line-height: 1;
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: .03em;
+      letter-spacing: .05em;
       text-transform: uppercase;
     }
 
-    .proof-points {
+    .review-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 18px;
+      gap: 14px;
+      align-items: start;
     }
 
-    .proof-point {
-      min-height: 74px;
-      padding: 11px 12px;
-      background: #f7f7f8;
+    .review-card {
+      min-height: 180px;
+      padding: 18px;
+      background: #fff;
       border: 1px solid var(--line);
     }
 
-    .proof-point b {
+    .review-card b {
       display: block;
-      margin-bottom: 3px;
-      color: var(--text);
+      margin-bottom: 10px;
+      color: var(--orange);
       font-size: 14px;
-      line-height: 1.1;
       font-weight: 900;
-      text-transform: uppercase;
     }
 
-    .proof-point span {
+    .review-card p {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .review-card span {
       display: block;
       color: var(--muted);
       font-size: 13px;
-      line-height: 1.22;
-      font-weight: 700;
-    }
-
-    .project-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px 18px;
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-    }
-
-    .project-list a,
-    .project-list span {
-      color: var(--blue);
-      font-size: 14px;
-      line-height: 1.15;
       font-weight: 900;
       text-transform: uppercase;
     }
 
-    .tape-proof {
-      display: grid;
-      grid-template-rows: auto 1fr;
-      gap: 14px;
-      padding-left: 26px;
-      border-left: 1px solid var(--line);
+    .tape-section {
+      margin-top: 38px;
+      text-align: center;
     }
 
-    .tape-proof img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border: 1px solid var(--line);
-      background: var(--soft);
-    }
-
-    .tape-proof h3 {
-      margin: 0 0 7px;
+    .tape-section h2 {
+      margin: 0 0 22px;
       color: var(--text);
-      font-size: 20px;
+      font-size: 38px;
       line-height: 1;
       font-weight: 900;
       text-transform: uppercase;
     }
 
-    .tape-proof p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.35;
-      font-weight: 700;
+    .tape-layout {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      align-items: start;
+      text-align: left;
     }
 
-    .tape-groups {
+    .compare-card {
+      padding: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    }
+
+    .before-after {
+      --split: 50%;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 887 / 576;
+      background: #eee;
+      border: 1px solid var(--line);
+    }
+
+    .before-after img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .before-after .after-img {
+      clip-path: inset(0 0 0 var(--split));
+    }
+
+    .slider-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split);
+      width: 2px;
+      background: #fff;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.18);
+      transform: translateX(-1px);
+    }
+
+    .slider-line::after {
+      content: "<>";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: #fff;
+      color: var(--text);
+      border-radius: 50%;
+      box-shadow: 0 2px 12px rgba(0,0,0,.18);
+      font-size: 14px;
+      font-weight: 900;
+      transform: translate(-50%, -50%);
+    }
+
+    .ba-label {
+      position: absolute;
+      top: 12px;
+      z-index: 2;
+      padding: 5px 9px;
+      background: rgba(21,35,92,.82);
+      color: #fff;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .ba-label--before { left: 12px; }
+    .ba-label--after { right: 12px; }
+
+    .compare-range {
+      width: 100%;
+      margin: 14px 0 0;
+      accent-color: var(--blue);
+    }
+
+    .compare-help {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .tape-copy {
       display: grid;
-      gap: 9px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .tape-group {
-      padding: 12px 13px;
+      min-height: 250px;
+      padding: 24px;
       background: #fff;
       border: 1px solid var(--line);
     }
 
     .tape-group strong {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       color: var(--blue);
-      font-size: 15px;
+      font-size: 25px;
       line-height: 1;
       font-weight: 900;
       text-transform: uppercase;
@@ -854,8 +1095,8 @@
     .tape-group span {
       display: block;
       color: var(--text);
-      font-size: 14px;
-      line-height: 1.25;
+      font-size: 18px;
+      line-height: 1.4;
       font-weight: 800;
     }
 
@@ -863,8 +1104,6 @@
       border-color: var(--orange);
       box-shadow: inset 4px 0 0 var(--orange);
     }
-
-    .content-zone { padding: 16px 0 42px; }
 
     .white-box {
       margin-bottom: 14px;
@@ -937,6 +1176,7 @@
         <a class="icon-btn icon-btn--search" href="https://bluetexinsulation.com/search" aria-label="Search"></a>
         <a class="phone" href="tel:18005958772">1-800-595-8772</a>
         <a class="quote" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers">Request A Quote</a>
+        <a class="samples" href="https://bluetexinsulation.com/pages/request-free-samples">Request Free Samples</a>
         <a class="cart" href="https://bluetexinsulation.com/cart" aria-label="Cart"></a>
       </div>
 
@@ -1052,45 +1292,16 @@
     <section class="hero-shell">
       <div class="rail">
         <div class="hero">
-          <div>
+          <video class="hero-video" src="media/BlueTexHorizontalAd-cropped.mp4" autoplay muted loop playsinline></video>
+          <div class="hero-content">
             <h1>Cover old insulation with a clean finished interior</h1>
             <p>BlueTex helps metal building owners choose the right product and install process for heat, condensation, and repair projects.</p>
             <div class="hero-actions"><a class="cta" href="large-metal-building-repair-cover-system.html">See The System</a><a class="cta cta--secondary" href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box">Order Test Kit</a></div>
           </div>
-          <video class="hero-video" src="media/BlueTexHorizontalAd-cropped.mp4" autoplay muted loop playsinline></video>
         </div>
-        <section class="proof-section" id="case-studies-before-after">
-          <div class="proof-grid">
-            <div class="proof-copy">
-              <p class="eyebrow">Real project proof</p>
-              <h2>Field-proven BlueTex results in working metal buildings</h2>
-              <p>BlueTex is more than a product listing. It is a system with visible transformations, real install photos, and finished interiors from large commercial projects, active shops, and specialty buildings.</p>
-              <a class="case-study-cta" href="https://bluetexinsulation.com/pages/case-studies-before-after">Case Studies - Before/After</a>
-              <div class="proof-points">
-                <div class="proof-point"><b>Before / After</b><span>Project photos and future sliders for clear visual proof.</span></div>
-                <div class="proof-point"><b>Known Projects</b><span>44,000 sq. ft. soccer center and Jay's 20,000 sq. ft. Chicago install.</span></div>
-                <div class="proof-point"><b>More Installs</b><span>Car racing team building plus additional field examples as they are added.</span></div>
-              </div>
-              <div class="project-list">
-                <a href="https://bluetexinsulation.com/blogs/case-studies">44,000 sq. ft. soccer center</a>
-                <a href="https://bluetexinsulation.com/blogs/case-studies">Jay's 20,000 sq. ft. Chicago project</a>
-                <a href="https://bluetexinsulation.com/blogs/case-studies">Car racing team building</a>
-                <span>Additional real projects coming</span>
-              </div>
-            </div>
-            <aside class="tape-proof" aria-label="Repair and seam tape">
-              <img src="images/3wideBRIGHTWHITEtape.png" alt="BlueTex white repair and seam tape">
-              <div>
-                <h3>Repair And Seam Tape</h3>
-                <p>Support products are grouped by job type so customers can quickly choose between repair coverage and clean seam finishing.</p>
-                <div class="tape-groups">
-                  <div class="tape-group tape-group--featured"><strong>Repair Tape</strong><span>6&quot; tape is the popular, unique repair-page product. 4&quot; tape supports smaller patches.</span></div>
-                  <div class="tape-group"><strong>Seam Tape</strong><span>3&quot; and 2&quot; tapes are grouped for clean seams, joints, and finish details.</span></div>
-                </div>
-              </div>
-            </aside>
-          </div>
-        </section>
+        <div class="case-strip">
+          <a class="case-study-cta" href="https://sambluetex-a11y.github.io/before-and-after-sliders/">Case Studies - Before/After</a>
+        </div>
         <div class="quick">
           <a href="large-metal-building-repair-cover-system.html">Cover / Repair</a>
           <a href="https://bluetexinsulation.com/collections/all">Browse All Products</a>
@@ -1101,18 +1312,64 @@
     </section>
 
     <main class="content-zone">
-      <section class="rail white-box">
-        <h2>BlueTex Mega Menu Prototype</h2>
-        <p>This version follows the BlueTex brand references: Lato typography, #0011a7 action blue, white/gray structure, compact product cards, and direct installer-focused language.</p>
-        <p>The five navigation buckets keep the structure from your original notes while reducing the height of each mega menu so users do not have to scroll to see the full Applications or Shop All Products panels.</p>
+      <section class="rail topic-section">
+        <h2 class="section-title">Existing Buildings &amp; Roll-Up Doors</h2>
+        <p class="section-intro">Two high-volume product lines for the most common projects we see. Pick the one that matches your building.</p>
+        <div class="topic-grid">
+          <article class="topic-card">
+            <div class="topic-media"><img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="BlueTex retrofit insulation in an existing metal building"><span>Retrofit insulation for an existing metal building interior</span></div>
+            <div class="topic-body">
+              <h3>Retrofit Existing Metal Buildings</h3>
+              <p>The smart insulation choice for metal buildings you do not heat and cool 24/7: garages, workshops, ag buildings, and commercial interiors.</p>
+              <div class="topic-actions"><a href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation">Install Guide</a><a class="secondary" href="https://bluetexinsulation.com/collections/all">Shop Products</a></div>
+            </div>
+          </article>
+          <article class="topic-card">
+            <div class="topic-media"><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="BlueTex insulated roll-up garage door"><span>Insulated roll-up garage door before and after temperature impact</span></div>
+            <div class="topic-body">
+              <h3>Insulate Roll-Up Doors</h3>
+              <p>A simple DIY upgrade for hot metal roll-up doors. Pre-cut kits are sized to your door for straightforward install and real summer heat reduction.</p>
+              <div class="topic-actions"><a href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Install Guide</a><a class="secondary" href="garage-door-insulation.html">Shop Kits</a></div>
+            </div>
+          </article>
+        </div>
       </section>
-      <section class="rail white-box">
-        <h2>Common Starting Points</h2>
-        <div class="mini-grid">
-          <a class="mini-card" href="large-metal-building-repair-cover-system.html"><img src="images/BT_blog_case_study_cover_system_after.webp" alt="Cover and repair"><b>Cover &amp; Repair</b></a>
-          <a class="mini-card" href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation"><img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing metal buildings"><b>Existing Metal Buildings</b></a>
-          <a class="mini-card" href="garage-door-insulation.html"><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation"><b>Garage Doors</b></a>
-          <a class="mini-card" href="radiant-barrier-products.html"><img src="images/BlueTexInsulation_Med.jpg" alt="Radiant barrier products"><b>Radiant Barrier</b></a>
+
+      <section class="proof-section" id="real-reviews">
+        <div class="rail proof-grid">
+          <div class="review-summary">
+            <p class="eyebrow">Real social proof</p>
+            <span class="stars">★★★★★</span>
+            <h2>Real BlueTex reviews from real buildings</h2>
+            <p>The live BlueTex site points customers to its Google Business Profile reviews and states customers consistently rate BlueTex at 5 stars after buying and installing BlueTex insulation.</p>
+            <a class="google-link" href="https://www.google.com/maps/place/BlueTex%2BInsulation%2BFor%2BMetal%2BBuildings/%4033.1512073%2C-97.2944782%2C15z/data%3D%214m8%213m7%211s0x864dcdd415655ef1%3A0xa615271ecbd3ba94%218m2%213d33.1512073%214d-97.2944782%219m1%211b1%2116s%2Fg%2F11fmgrks9_?entry=ttu">Read BlueTex Google Reviews</a>
+          </div>
+          <div class="review-grid">
+            <div class="review-card"><b>★★★★★</b><p>"The product significantly reduces heat, making the area feel cooler instantly."</p><span>Customer review highlight</span></div>
+            <div class="review-card"><b>★★★★★</b><p>"Installation is straightforward and the provided tape is highly effective."</p><span>Customer review highlight</span></div>
+            <div class="review-card"><b>★★★★★</b><p>"After installation, the door is quieter, with less noise from outside."</p><span>Customer review highlight</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rail tape-section" id="repair-seam-tape">
+        <h2>Repair And Seam Tape</h2>
+        <div class="tape-layout">
+          <div class="compare-card">
+            <div class="before-after" data-before-after>
+              <img src="images/repair-tape-before.png" alt="Before using 6 inch repair tape">
+              <img class="after-img" src="images/repair-tape-after.png" alt="After using 6 inch repair tape">
+              <span class="ba-label ba-label--before">Before</span>
+              <span class="ba-label ba-label--after">After</span>
+              <span class="slider-line" aria-hidden="true"></span>
+            </div>
+            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after repair tape comparison">
+            <p class="compare-help">Drag left or right to compare the 6&quot; repair tape patch.</p>
+          </div>
+          <div class="tape-copy">
+            <div class="tape-group tape-group--featured"><strong>Repair Tape</strong><span>6&quot; tape is the popular, unique repair-page product. 4&quot; tape supports smaller patches and repair coverage.</span></div>
+            <div class="tape-group"><strong>Seam Tape</strong><span>3&quot; and 2&quot; tapes are grouped for clean seams, joints, overlap lines, and finish details.</span></div>
+          </div>
         </div>
       </section>
     </main>
@@ -1160,6 +1417,15 @@
         panel.addEventListener('mouseleave', () => {
           if (defaultItem) setActive(defaultItem);
         });
+      });
+
+      document.querySelectorAll('.compare-card').forEach((card) => {
+        const comparison = card.querySelector('[data-before-after]');
+        const range = card.querySelector('.compare-range');
+        if (!comparison || !range) return;
+        const update = () => comparison.style.setProperty('--split', `${range.value}%`);
+        range.addEventListener('input', update);
+        update();
       });
     })();
   </script>
