@@ -1,0 +1,31 @@
+<div class="globo-formbuilder" data-id={{section.settings.form_id}} ></div>
+{% schema %}
+  {
+    "name": "Form",
+    "settings": [
+        {
+          "type": "select",
+          "id": "form_id",
+          "label": "Select form to display",
+          "default": "61826",
+          "options": [{"label":"BlueTex Sample Requests","value":"61826"},{"label":"Floating sample request","value":"61830"},{"label":"Contact Us Form","value":"64289"},{"label":"Warehouse Input BT Contractor","value":"101419"},{"label":"BlueTex Contractor Sample Form","value":"101686"}]
+        }
+    ],
+    "presets": [
+        {
+          "name": {
+            "en": "Form"
+          },
+          "category": {
+            "en": "Powerful Contact Form Builder"
+          }
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

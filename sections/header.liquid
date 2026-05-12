@@ -1,0 +1,222 @@
+<div data-section-id="{{ section.id }}" data-section-type="header-section">
+
+  {%- comment -%} ======= MOBILE BAR (< 990px) ======= {%- endcomment -%}
+  <div class="bt-mobile-bar">
+    <a href="#menu" class="toggle-menu menu-link bt-hamburger" aria-label="Open menu">
+      <span class="bt-hamburger-lines">
+        <span></span><span></span><span></span>
+      </span>
+    </a>
+
+    <a href="/" class="bt-mobile-logo">
+      {%- if section.settings.logo -%}
+        <img src="{{ section.settings.logo | img_url: '240x' }}"
+             alt="{{ section.settings.logo.alt | escape | default: shop.name }}"
+             height="36">
+      {%- else -%}
+        <span>{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <a href="/cart" class="bt-mobile-cart" aria-label="Cart">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <rect x="3" y="6" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M8 6V5a3 3 0 1 1 6 0v1" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      {%- if cart.item_count > 0 -%}
+        <span class="bt-mobile-cart-count">{{ cart.item_count }}</span>
+      {%- endif -%}
+    </a>
+  </div>
+
+  {%- comment -%} ======= DESKTOP HEADER (>= 990px) ======= {%- endcomment -%}
+  <div class="bt-site-header">
+
+    {%- comment -%} Utility bar: logo | search | phone | quote | samples | cart {%- endcomment -%}
+    <div class="bt-utility">
+
+      <a class="bt-logo" href="/">
+        {%- if section.settings.logo -%}
+          {%- assign image_default_width = section.settings.logo_max_width -%}
+          <img src="{{ section.settings.logo | img_url: '336x' }}"
+               alt="{{ section.settings.logo.alt | escape | default: shop.name }}"
+               width="{{ image_default_width }}"
+               height="auto"
+               style="max-width:{{ image_default_width }}px">
+        {%- else -%}
+          <span class="bt-shop-name">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+
+      <form class="bt-search" action="/search" method="get" role="search">
+        <input
+          type="search"
+          name="q"
+          placeholder="{{ section.settings.search_placeholder | default: 'Search BlueTex products, guides, and help' }}"
+          aria-label="Search"
+          value="{{ search.terms | escape }}"
+        >
+        <button type="submit">{{ section.settings.search_button_text | default: 'Search' }}</button>
+      </form>
+
+      <a class="bt-phone" href="{{ section.settings.phone_url | default: 'tel:18005958772' }}">
+        {{- section.settings.phone_number | default: '1-800-595-8772' -}}
+      </a>
+
+      <a class="bt-quote" href="{{ section.settings.quote_url | default: '/pages/request-a-quote' }}">
+        {{- section.settings.quote_text | default: 'Request A Quote' -}}
+      </a>
+
+      <a class="bt-samples" href="{{ section.settings.samples_url | default: '/pages/request-free-samples' }}">
+        {{- section.settings.samples_text | default: 'Request Free Samples' -}}
+      </a>
+
+      <a href="/cart" class="bt-icon-cart" id="CartButton" aria-label="Cart">
+        {%- if cart.item_count > 0 -%}
+          <span class="bt-cart-count" id="CartCount">{{ cart.item_count }}</span>
+        {%- else -%}
+          <span class="bt-cart-count" id="CartCount" style="display:none">0</span>
+        {%- endif -%}
+        <span class="visually-hidden">Cart</span>
+      </a>
+
+      {%- if settings.ajax_cart_enable -%}
+        {%- include 'cart-preview' -%}
+      {%- endif -%}
+
+    </div>
+
+    {%- comment -%} Mega nav {%- endcomment -%}
+    <div class="bt-nav-wrap">
+      {%- include 'bt-mega-menu' -%}
+    </div>
+
+  </div>
+
+</div>
+
+{%- comment -%} ======= MOBILE PANEL (existing theme drawer) ======= {%- endcomment -%}
+<nav id="menu" class="panel" role="navigation">
+  <div class="search">
+    {%- include 'search-bar' -%}
+  </div>
+  {%- include 'site-nav' -%}
+  <div class="account">
+    {%- if shop.customer_accounts_enabled -%}
+      {%- include 'accounts-nav' -%}
+    {%- endif -%}
+  </div>
+</nav>
+
+<style>
+  .site-logo.has-image { max-width: {{ section.settings.logo_max_width }}px; }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Utility Bar"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search BlueTex products, guides, and help"
+    },
+    {
+      "type": "text",
+      "id": "search_button_text",
+      "label": "Search button text",
+      "default": "Search"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number (display)",
+      "default": "1-800-595-8772"
+    },
+    {
+      "type": "text",
+      "id": "phone_url",
+      "label": "Phone number (href)",
+      "default": "tel:18005958772"
+    },
+    {
+      "type": "text",
+      "id": "quote_text",
+      "label": "Quote button label",
+      "default": "Request A Quote"
+    },
+    {
+      "type": "url",
+      "id": "quote_url",
+      "label": "Quote button URL"
+    },
+    {
+      "type": "text",
+      "id": "samples_text",
+      "label": "Samples button label",
+      "default": "Request Free Samples"
+    },
+    {
+      "type": "url",
+      "id": "samples_url",
+      "label": "Samples button URL"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 60,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo max width",
+      "default": 168
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": "Mobile menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "mega_menu",
+      "label": "Enable mega menu style (mobile)",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "scroll_lock",
+      "label": "Lock while scrolling",
+      "options": [
+        { "value": "util",   "label": "Top bar" },
+        { "value": "header", "label": "Header" },
+        { "value": "none",   "label": "None" }
+      ],
+      "default": "header"
+    }
+  ]
+}
+{% endschema %}

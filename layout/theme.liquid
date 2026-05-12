@@ -1,0 +1,182 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{ shop.locale }}"> <!--<![endif]-->
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.primary_accent_color }}">
+  <meta name="google-site-verification" content="ceqR7XPt9P-w0lvth22bUfqnYadogaRQUsCOV83-uNY" />
+
+  {% if template contains 'search' %}
+    <meta name="robots" content="noindex, follow">
+  {% endif %}
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KSKP738N');</script>
+<!-- End Google Tag Manager -->
+
+  {% if settings.favicon != blank %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {% endif %}
+  {% include 'social-meta-tags' %}
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11176519565"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11176519565');
+</script>
+  <title>
+    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+
+
+  {{ content_for_header }}
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  {{ 'bluetex-mega-menu.css' | asset_url | stylesheet_tag }}
+
+  {% if template contains 'customers' %}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% endif %}
+
+  <script>
+    window.StyleHatch = window.StyleHatch || {};
+    {% include 'js-language-strings' %}
+    StyleHatch.currencyFormat = {{ shop.money_format | json }};
+    StyleHatch.ajaxCartEnable = {{ settings.ajax_cart_enable }};
+    StyleHatch.cartData = {{ cart | json }};
+    // Post defer
+    window.addEventListener('DOMContentLoaded', function() {
+      (function( $ ) {
+      {% comment %}
+        Add JavaScript fuctionality that relies on jQuery here
+        this will allow jQuery to properly load before the calls are made
+      {% endcomment %}
+
+      {% if newHash %}
+        $(function() {
+          StyleHatch.updateHash('{{ newHash }}');
+        });
+      {% endif %}
+      {% if resetPassword %}
+        $(function() {
+          StyleHatch.resetPasswordSuccess();
+        });
+      {% endif %}
+      })(jq223);
+    });
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+  </script>
+  <script type="text/javascript">
+    window.lazySizesConfig = window.lazySizesConfig || {};
+    window.lazySizesConfig.loadMode = 1;
+  </script>
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'lazysizes.min.js' | asset_url }}"></script><![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
+  {% if settings.show_multiple_currencies %}
+    {% include 'currencies' %}
+  {% endif %}
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+{{ 'ndnapps-easyfaqs.css' | asset_url | stylesheet_tag }}
+{{ 'ndnapps-contactform-styles.css' | asset_url | stylesheet_tag }}
+{{ 'ndn-custom.css' | asset_url | stylesheet_tag }}
+{% assign nowts = "now" | date: "%s" %}{% assign metats = shop.metafields._ls_meta.check %}{% assign timediff = nowts | minus: metats %}{% if timediff < 604800 %}<script async="async" src="https://livesearch.okasconcepts.com/js/livesearch.init.min.js?v=2&shop=bluetex-insulation.myshopify.com"></script>{% endif %}
+{{ 'ndnapps-formbuilder-styles.css' | asset_url | stylesheet_tag }}
+<!-- Hotjar Tracking Code for https://bluetexinsulation.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2574019,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+  <meta name="facebook-domain-verification" content="1vcjcanyytrw7nxood27nke6g9kahw" />
+
+
+
+  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11176519565"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11176519565');
+</script>
+
+<!-- BEGIN MerchantWidget Code -->
+<script id='merchantWidgetScript'
+    src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
+    defer>
+</script>
+<script type="text/javascript">
+ merchantWidgetScript.addEventListener('load', function () {
+  merchantwidget.start({
+   position: 'RIGHT_BOTTOM'
+  });
+ });
+</script>
+<!-- END MerchantWidget Code -->
+</head>
+
+
+{% include 'globo.formbuilder.scripts' %}
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" data-template-directory="{{ template.directory }}" data-template="{{ template.name }}" >
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSKP738N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div id="page">
+    {% section 'promos' %}
+    {% include 'header-util' %}
+    {% section 'header' %}
+
+    <main class="main-content main-content--breadcrumb-{{ settings.show_breadcrumbs }}" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+  </div>
+  
+  <!-- District v3.3.0 -->
+<script src='{{ 'ndnapps-easyfaqs.js' | asset_url }}' defer='defer'></script>
+{{ 'ndnapps-contactform-script.js' | asset_url | script_tag }}
+{{ 'ndnapps-formbuilder-script.js' | asset_url | script_tag }}
+  {% render 'tracking-script' %}
+  {% if template contains 'video-accordion' %}
+  	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+  {% endif %}
+  {{ "//cdn.shopify.com/s/files/1/0644/2975/2553/t/2/assets/blue.js" | script_tag}}
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/44406935.js"></script>
+<!-- End of HubSpot Embed Code -->
+<script src="{{ 'bluetex-mega-menu.js' | asset_url }}" defer></script>
+</body>
+</html>

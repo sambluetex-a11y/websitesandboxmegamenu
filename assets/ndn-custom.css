@@ -1,0 +1,28 @@
+body #ndnapp-contactform-wrapper .help-block.with-errors {
+    color: #FFF;
+    margin-top: 0;
+    font-size: 12px;
+    text-align: left;
+    float: left;
+    display: block;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    background: red;
+    line-height: 16px;
+}
+body #ndnapp-contactform-wrapper .input-group .icon{top:11px;}
+.help-block.with-errors .list-unstyled{
+  margin:0;
+}
+.help-block.with-errors .list-unstyled li{
+  margin:1px;
+}
+.cm-article-title{
+  font-size: 28px;
+  margin-bottom: 0;
+}
+

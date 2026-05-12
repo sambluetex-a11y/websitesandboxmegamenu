@@ -1,0 +1,108 @@
+.comparison-wrapper {
+      max-width: 870px;
+      margin: auto;
+}
+.comparison-wrapper .table-header h2 {
+      text-align: center;
+      color: #004080;
+}
+.comparison-wrapper .table-header .description {
+      text-align: center;
+      margin-bottom: 20px;
+}
+.comparison-wrapper .product-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+}
+.comparison-wrapper .product-table th, 
+.comparison-wrapper .product-table td {
+      border: 1px solid #ddd;
+      text-align: center;
+      padding: 12px;
+}
+.comparison-wrapper .product-table th {
+    background: #f17c02;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    width: 33.33%;
+    padding: 15px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comparison-wrapper .product-table tr {
+    display: flex;
+    gap: 7px;
+    background: #fff !important;
+}
+.comparison-wrapper .product-table tr:nth-child(even) {
+      background: #f9f9f9;
+}
+.comparison-wrapper td {
+    width: 33.33%;
+    margin: 7px 0 0;
+    border: 0;
+    background: #002f6c;
+    color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 12px 23px;
+}
+.comparison-wrapper .info-section p {
+    font-weight: 600;
+    margin: 5px 0 0;
+    padding: 0;
+    font-size: 14px;
+    color: #002f6c;
+    line-height: 22px;
+
+}
+.comparison-wrapper .info-section h3 {
+    margin-bottom: 5px;
+    font-weight: 700 !important;
+    font-size: 30px;
+    color: #002f6c;
+    margin-top: 0 !important;
+}
+.comparison-wrapper .table-header h2 {
+    margin: 0 0 10px;
+    letter-spacing: 0;
+    font-size: 36px;
+    font-weight: 700 !important;
+}
+.comparison-wrapper {
+    display: block !important;
+    background: #fff !important;
+    padding: 10px 20px !important;
+}
+.comparision-table-image {
+    display: none;
+}
+h1.ls-collection-info-title {
+    font-size: 2rem !important;
+}
+h3.ls-card-title {
+   font-size: 1rem !important;
+}
+.product-title h3 {
+    font-size: 16px;
+    font-weight: 400;
+}
+@media only screen and (max-width: 767px) {
+.comparison-wrapper .table-header h2 {
+    font-size: 24px;
+    text-align: center;
+}
+.comparison-wrapper .info-section h3 {
+    font-size: 20px;
+}
+.comparison-wrapper .product-table {
+    width: 680px;
+}
+.comparison-wrapper .table-container {
+    overflow-x: scroll;
+}
+}

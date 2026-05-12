@@ -1,0 +1,10 @@
+{%- assign bt_announce = settings.bt_announce_text | default: 'Free shipping on orders $100+ in the contiguous USA' -%}
+{%- assign bt_link_text = settings.bt_announce_link_text | default: 'Order the $100 Test Kit' -%}
+{%- assign bt_link_url = settings.bt_announce_link_url | default: '/products/bluetex-cover-repair-system-sample-box' -%}
+
+<div class="bt-announce">
+  {{- bt_announce -}}
+  {%- if bt_link_text != blank -%}
+    <a href="{{ bt_link_url }}">{{- bt_link_text -}}</a>
+  {%- endif -%}
+</div>

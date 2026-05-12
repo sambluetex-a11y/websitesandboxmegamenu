@@ -1,0 +1,330 @@
+{% assign delimiter = "," %}
+{% assign tabs_str = "" %}
+{% assign tabs = section.blocks | map: 'settings' | map: 'tab' %}
+
+{% for tab in tabs %}
+    {% assign tabs_arr = tabs_str | split: delimiter %}
+    {% unless tabs_arr contains tab %}
+        {% assign tabs_str = tabs_str | append: delimiter | append: tab %}
+    {% endunless %}
+{% endfor %}
+{% assign unique_tabs = tabs_str | remove_first: delimiter | split: delimiter %}
+
+<div class="custom-content section-standard" data-section-id="{{ section.id }}" data-section-type="custom-content-section">
+  <div class="contain-full-width">
+    <div class="wrapper">
+      
+      
+      <div id="videoAccordionTabs">
+        {% for tab in unique_tabs %}
+        	<h3 class="tab" data-handle="{{tab | handleize }}">{{tab}}</h3>
+        {% endfor %}
+      </div>
+      
+      <div id="videoAccordion">
+        {% for tab in unique_tabs %}
+            <h3 class="tab">{{tab}}</h3>
+            <div class="tab-section" data-handle="{{tab | handleize }}">
+              {% for block in section.blocks %}
+                  {% if block.settings.tab == tab %}
+              		<div class="video-block">
+
+                      <div class="content" data-video-type="{{ block.settings.video_url.type }}" data-video-id="{{ block.settings.video_url.id }}">
+                        {% case block.settings.video_url.type %}
+                          {% when 'youtube' %}
+                            <iframe src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                          {% when 'vimeo' %}
+                            <iframe src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}?color={{ settings.primary_accent_color | remove: '#' }}&title=0&byline=0&portrait=0" width="850" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        {% endcase %}
+                      </div>
+                      {% if block.settings.title != blank %}
+                          <h5>{{ block.settings.title | escape }}</h5>
+                      {% endif %}
+              		</div>
+                  {% endif %}
+              {% endfor %}
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  
+  
+  window.addEventListener('DOMContentLoaded', function() {
+      (function( $ ) {
+        $(document).ready(function(){
+          
+          $("#videoAccordionTabs .tab").first().addClass('active');
+          $("#videoAccordion .tab").first().addClass('active');
+          $("#videoAccordion .tab").first().next().addClass('show');
+          
+          $("#videoAccordionTabs .tab").click(function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            var handle = $this.data('handle');
+			
+            if ($this.hasClass('active')) {
+            	return;
+            }
+            
+            $('#videoAccordionTabs .tab').removeClass('active');
+            $this.addClass('active');
+            
+            $(`#videoAccordion .tab-section`).removeClass("show");
+            $(`#videoAccordion .tab-section`).slideUp(250);
+            $(`#videoAccordion .tab-section[data-handle="${handle}"]`).addClass("show");
+            $(`#videoAccordion .tab-section[data-handle="${handle}"]`).slideToggle(250);
+          
+          });
+          
+          
+          $("#videoAccordion .tab").click(function(e) {
+            e.preventDefault();
+
+            var $this = $(this);
+
+            if (!$this.next().hasClass("show")) {
+              $('#videoAccordion .tab').removeClass('active');
+              $this.addClass('active');
+              
+              $this
+                .parent()
+                .find(".tab-section")
+                .removeClass("show");
+
+              $this
+                .parent()
+                .find(".tab-section")
+                .slideUp(250);  
+
+              $this.next().toggleClass("show");
+              $this.next().slideToggle(250);
+            }
+          }); 
+          
+          $("#videoAccordion .tab-section").hide();
+          $("#videoAccordion .tab-section").first().show().addClass('show');
+          
+        });
+      })(jq223);
+    });
+</script>
+
+<style>
+  #videoAccordionTabs {
+  	display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 30px;
+  }
+  #videoAccordionTabs .tab {
+    transition: background 0.3s ease;
+  	background: #FFF;
+    border: 1px solid #DDD;
+    padding: 8px 20px;
+    cursor: pointer;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin: 0 2px 0 0;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+  }
+  #videoAccordionTabs .tab:hover {
+  	background: rgba(0,26,120,0.15);
+    color: #000;
+  }
+  #videoAccordionTabs .tab.active {
+  	background: #001a78;
+    color: #FFF;
+  }
+  
+  @media only screen and (max-width: 991.5px) {
+    #videoAccordionTabs {
+    	display: none;
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    #videoAccordion .tab {
+    	display: none;
+    }
+    #videoAccordion .tab-section.show {
+		display: flex !important;
+      	align-items: flex-start;
+      justify-content: flex-start;
+    	grid-column-gap: 30px;
+      flex-wrap: wrap;
+    }
+    #videoAccordion .tab-section .video-block {
+    	flex-basis: calc(50% - 15px);
+    }
+  }
+  
+  #videoAccordion {
+  
+  }
+  #videoAccordion .tab {
+  	margin: 0;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #FFF;
+    background: #666;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    margin: 1px 0;
+  }
+  #videoAccordion .tab:hover {
+  	background: #777;
+    color: #FFF;
+  }
+  #videoAccordion .tab.active {
+  	background: #001a78;
+    color: #FFF;
+    margin-bottom: 30px;
+  }
+  #videoAccordion .tab-section {
+  
+  }
+  #videoAccordion .tab-section .video-block .content {
+  	margin-bottom: 15px;
+  }
+  #videoAccordion .tab-section .video-block h5 {
+  	margin-bottom: 30px;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Video Accordion",
+  "class": "video-section",
+  "settings": [
+  ],
+  "blocks": [
+	{
+		"type": "video-item",
+		"name": "Video Item",
+		"settings": [
+          {
+            "type": "text",
+            "id": "tab",
+            "label": "Tab Label",
+            "default": "Videos about Stuff"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Video"
+          },
+          {
+            "id": "video_url",
+            "type": "video_url",
+            "label": "Video link",
+            "accept": ["youtube", "vimeo"],
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+          }
+		]
+	}
+  ],
+  "presets": [
+    {
+      "name": "Video Accordion",
+      "category": "Video",
+	  "blocks": [
+		{
+          "type": "video-item",
+          "settings": 
+              {
+                "tab": "Tab 1",
+                "title": "Video 1",
+                "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+              }
+		},
+		{
+          "type": "video-item",
+          "settings": 
+              {
+			"tab": "Tab 2",
+			"title": "Video 2",
+			"video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+              }
+		},
+		{
+          "type": "video-item",
+          "settings": 
+              {
+			"tab": "Tab 3",
+			"title": "Video 3",
+			"video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+              }
+		},
+		{
+          "type": "video-item",
+          "settings": 
+              {
+			"tab": "Tab 1",
+			"title": "Video 4",
+			"video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+              }
+		},
+		{
+          "type": "video-item",
+          "settings": 
+              {
+			"tab": "Tab 2",
+			"title": "Video 5",
+			"video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+              }
+		},
+		{
+          "type": "video-item",
+          "settings": 
+              {
+			"tab": "Tab 3",
+			"title": "Video 6",
+			"video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+              }
+		},
+		{
+          "type": "video-item",
+          "settings": 
+              {
+			"tab": "Tab 1",
+			"title": "Video 7",
+			"video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+              }
+		},
+		{
+          "type": "video-item",
+          "settings": 
+              {
+			"tab": "Tab 2",
+			"title": "Video 8",
+			"video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+              }
+		},
+		{
+          "type": "video-item",
+          "settings": 
+              {
+			"tab": "Tab 3",
+			"title": "Video 9",
+			"video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+              }
+		}
+		
+	  ]
+    }
+  ]
+}
+{% endschema %}
