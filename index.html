@@ -409,12 +409,16 @@
     }
 
     .mega-heading {
-      margin: 0 0 16px;
+      margin: 0 0 12px;
+      padding: 6px 10px;
       color: var(--blue);
       font-size: 20px;
       line-height: 1;
       font-weight: 900;
       text-transform: none;
+      text-align: center;
+      background: var(--soft);
+      border-bottom: 2px solid var(--orange);
     }
 
     .app-stack { display: grid; gap: 18px; }
@@ -479,18 +483,27 @@
       display: none;
     }
 
-    .guide-panel { min-height: 286px; padding: 0; overflow: hidden; }
+    .guide-panel { }
 
     .guide-shell {
       display: grid;
-      grid-template-columns: 330px 1fr;
-      min-height: 286px;
+      grid-template-columns: 288px 200px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .guide-preview-img {
+      width: 288px;
+      height: 160px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      display: block;
     }
 
     .guide-menu {
-      padding: 16px 22px;
-      background: #fff;
-      border-right: 1px solid var(--line);
+      padding: 0;
+      background: transparent;
+      border: none;
     }
 
     .guide-item { position: static; }
@@ -521,19 +534,9 @@
     .guide-item:focus-within .guide-main,
     .guide-item.is-active .guide-main { color: var(--blue); }
 
-    .guide-flyout {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      display: none;
-      width: calc(var(--rail) - 330px);
-      padding: 18px 26px;
-      background: #fafafa;
-    }
+    .guide-flyout { display: none; }
 
-    .guide-item.is-active .guide-flyout,
-    .guide-item:focus-within .guide-flyout { display: block; }
+    .guide-flyout.is-active { display: block; }
 
     .flyout-title {
       margin: 0 0 14px;
@@ -542,20 +545,6 @@
       line-height: 1;
       font-weight: 900;
       text-transform: none;
-    }
-
-    .flyout-grid {
-      display: grid;
-      grid-template-columns: 230px 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .flyout-grid img {
-      width: 230px;
-      height: 128px;
-      object-fit: cover;
-      border: 1px solid var(--line);
     }
 
     .flyout-links { display: grid; gap: 7px; }
@@ -664,16 +653,16 @@
       height: 28px;
       min-width: 62px;
       padding: 0 12px;
-      background: var(--blue);
-      border: 2px solid var(--blue);
+      background: var(--orange);
+      border: 2px solid var(--orange);
       color: #fff;
       font-size: 11px;
       font-weight: 900;
       text-transform: none;
     }
 
-    .faq-layout { grid-template-columns: 300px 1fr; gap: 26px; }
-    .faq-layout .preview-media { width: 300px; height: 169px; }
+    .faq-layout { grid-template-columns: 360px 1fr; gap: 32px; }
+    .faq-layout .preview-media { width: 360px; height: 203px; }
     .faq-layout .link-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-auto-flow: column;
@@ -698,36 +687,27 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.86) 34%, rgba(255,255,255,.18) 58%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(to top right, rgba(0,0,0,.72) 0%, rgba(0,0,0,.28) 35%, rgba(0,0,0,0) 60%);
     }
 
     .hero-content {
-      position: relative;
+      position: absolute;
+      bottom: 28px;
+      left: 34px;
       z-index: 2;
-      width: 520px;
-      padding: 58px 0 0 34px;
+      max-width: 520px;
+      padding: 0;
     }
 
     .hero h1 {
       max-width: 520px;
-      margin: 0 0 12px;
-      color: var(--text);
+      margin: 0;
+      color: #fff;
       font-size: 36px;
       line-height: 1.06;
       font-weight: 900;
       text-transform: none;
     }
-
-    .hero p {
-      max-width: 560px;
-      margin: 0 0 20px;
-      color: #4f5057;
-      font-size: 18px;
-      line-height: 1.45;
-      font-weight: 800;
-    }
-
-    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .cta {
       display: inline-flex;
@@ -780,7 +760,7 @@
       padding: 0 14px;
       background: var(--orange);
       color: #fff;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 900;
       letter-spacing: .04em;
       text-align: center;
@@ -1418,7 +1398,7 @@
         </form>
         <a class="icon-btn icon-btn--search" href="https://bluetexinsulation.com/search" aria-label="Search"></a>
         <a class="phone" href="tel:18005958772">1-800-595-8772</a>
-        <a class="quote" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers">Request A Quote</a>
+        <a class="quote" href="https://bluetexinsulation.com/pages/request-a-quote">Request A Quote</a>
         <a class="samples" href="https://bluetexinsulation.com/pages/request-free-samples">Request Free Samples</a>
         <a class="cart" href="https://bluetexinsulation.com/cart" aria-label="Cart"></a>
       </div>
@@ -1436,12 +1416,12 @@
                 </a>
                 <div class="link-grid">
                   <a class="mega-link" href="large-metal-building-repair-cover-system.html" data-img="images/final-roof-wall-look.jpg" data-title="System Overview" data-text="See the cover system for old, stained, or torn insulation in large metal buildings.">System Overview</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings" data-img="images/installing-termbars.jpg" data-title="Install Guide" data-text="TermBar and retrofit install details for covering old insulation.">Install Guide</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/pages/covering-old-wall-insulation-in-metal-buildings" data-img="images/installing-termbars.jpg" data-title="Install Guide" data-text="TermBar and retrofit install details for covering old insulation.">Install Guide</a>
                   <a class="mega-link" href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box" data-img="images/BTCoverRepairSampleBoxComponents.png" data-title="Order Test Kit" data-text="Sample the system before a large order. The kit cost can be applied to a qualifying order.">Order Test Kit (Fully Refundable)</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers" data-img="images/BTCoverRepairSampleBoxComponents-1-.png" data-title="Request A Quote" data-text="Send project photos and dimensions for help sizing a larger job.">Request A Quote</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real BlueTex applications and finished project examples.">Case Studies</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/pages/request-a-quote" data-img="images/BTCoverRepairSampleBoxComponents-1-.png" data-title="Request A Quote" data-text="Send project photos and dimensions for help sizing a larger job.">Request A Quote</a>
+                  <a class="mega-link" href="termbar-case-studies.html" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real TermBar applications and finished project examples.">Case Studies</a>
                   <a class="mega-link" href="https://bluetexinsulation.com/blogs/case-studies/case-study-covering-up-damaged-warehouse-insulation-with-bluetex" data-img="images/before-sagging-insulation.jpg" data-title="Before/After Pictures" data-text="Before and after examples for damaged warehouse insulation.">Before/After Pictures</a>
-                  <a class="mega-link" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="Other Install Methods" data-text="Compare retrofit choices for red iron, tubular steel, wood frame, roof, and wall projects.">Other Install Methods</a>
+                  <a class="mega-link" href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="Other Install Methods" data-text="Compare retrofit choices for red iron, tubular steel, wood frame, roof, and wall projects.">Other Install Methods</a>
                 </div>
               </div>
             </div>
@@ -1470,7 +1450,6 @@
                   <div class="app-stack">
                     <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling" data-img="images/complete-wall-finish.jpg" data-title="Existing Buildings" data-text="Choose the right retrofit method for an existing building."><img src="images/complete-wall-finish.jpg" alt="Existing building retrofit"><span><h4>Existing Buildings</h4><p>Choose the right retrofit method.</p></span></a>
                     <a class="app-card mega-link" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png" data-title="New Construction" data-text="Pick the install path before panels go on."><img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction metal building"><span><h4>New Construction</h4><p>Pick the path before panels go on.</p></span></a>
-                    <a class="app-card mega-link" href="https://bluetexinsulation.com/blogs/case-studies" data-img="images/BT_blog_case_study_cover_system_after.webp" data-title="Case Studies" data-text="Real BlueTex applications and finished project examples."><img src="images/BT_blog_case_study_cover_system_after.webp" alt="BlueTex case study finished wall"><span><h4>Case Studies</h4><p>Real project examples.</p></span></a>
                   </div>
                 </section>
               </div>
@@ -1481,11 +1460,62 @@
             <a class="nav-label" href="https://bluetexinsulation.com/pages/install-guide">Install Guide</a>
             <div class="mega-panel guide-panel">
               <div class="guide-shell">
+                <div class="guide-preview">
+                  <img class="guide-preview-img" src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Install guide preview">
+                </div>
                 <div class="guide-menu">
-                  <div class="guide-item is-active"><a class="guide-main" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Garage Door Insulation</a><div class="guide-flyout"><h3 class="flyout-title">Garage Door Insulation</h3><div class="flyout-grid"><img src="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg" alt="Garage door insulation"><div class="flyout-links"><a href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Commercial Roll Up Door</a><a href="https://bluetexinsulation.com/products/bluetex-2mm-pro-roll-up-garage-door-kit">Roll Up Door Kits</a><a href="garage-door-insulation.html">Garage Door Overview</a><a href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit">Residential Panel Door Kits</a></div></div></div></div>
-                  <div class="guide-item"><a class="guide-main" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Existing / Retrofit</a><div class="guide-flyout"><h3 class="flyout-title">Existing / Retrofit</h3><div class="flyout-grid"><img src="images/quiz-Existing_Building_Already_Built_Answer.png" alt="Existing retrofit"><div class="flyout-links"><a href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Choose Existing Building Type</a><a href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation">Existing Metal Building Retrofit</a><a href="https://bluetexinsulation.com/pages/existing-construction-wood-framed-buildings-installation">Existing Wood Frame / Pole Barn</a><a href="https://bluetexinsulation.com/pages/insulating-non-conditioned-buildings-vs-conditioned-buildings">Conditioned Vs. Non-Conditioned</a></div></div></div></div>
-                  <div class="guide-item"><a class="guide-main" href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Covering / Repairing Old Insulation</a><div class="guide-flyout"><h3 class="flyout-title">Covering / Repairing Old Insulation</h3><div class="flyout-grid"><img src="images/installing-termbars.jpg" alt="TermBar system"><div class="flyout-links"><span class="section-label">TermBar System</span><a href="https://bluetexinsulation.com/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Covering Old Wall Insulation - Girts Visible</a><a href="https://bluetexinsulation.com/pages/repair-old-torn-ceiling-insulation-in-red-iron-metal-buildings">Covering Old Roof Insulation - Girts Visible</a><span class="section-label">Girts Hidden</span><a href="https://bluetexinsulation.com/pages/easyclip-roof-system-covers-hides-purlins">EasyClip Roof System - Covers/Hides Purlins</a><a href="https://bluetexinsulation.com/pages/covering-wall-insulation-girts-hidden">Covering Wall Insulation - Girts Hidden</a></div></div></div></div>
-                  <div class="guide-item"><a class="guide-main" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type">New Construction</a><div class="guide-flyout"><h3 class="flyout-title">New Construction</h3><div class="flyout-grid"><img src="images/quiz-Red_Iron_Style_PEMB_Answer.png" alt="New construction guide"><div class="flyout-links"><a href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type">Choose Building Type</a><a href="https://bluetexinsulation.com/pages/new-construction-metal-framed-buildings-installation">Metal Framed Buildings</a><a href="https://bluetexinsulation.com/pages/new-construction-wood-framed-buildings-installation">Wood Framed Buildings</a><a href="https://bluetexinsulation.com/pages/resource-page-installation-supplies">Installation Supplies</a></div></div></div></div>
+                  <div class="guide-item is-active" data-flyout="gd" data-img="images/IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg">
+                    <a class="guide-main" href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Garage Door Insulation</a>
+                  </div>
+                  <div class="guide-item" data-flyout="er" data-img="images/quiz-Existing_Building_Already_Built_Answer.png">
+                    <a class="guide-main" href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Existing / Retrofit</a>
+                  </div>
+                  <div class="guide-item" data-flyout="co" data-img="images/installing-termbars.jpg">
+                    <a class="guide-main" href="https://bluetexinsulation.com/pages/covering-old-wall-insulation-in-metal-buildings">Covering / Repairing Old Insulation</a>
+                  </div>
+                  <div class="guide-item" data-flyout="nc" data-img="images/quiz-Red_Iron_Style_PEMB_Answer.png">
+                    <a class="guide-main" href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type">New Construction</a>
+                  </div>
+                </div>
+                <div class="guide-detail">
+                  <div class="guide-flyout is-active" data-flyout-id="gd">
+                    <h3 class="flyout-title">Garage Door Insulation</h3>
+                    <div class="flyout-links">
+                      <a href="https://bluetexinsulation.com/blogs/installations/commercial-roll-up-garage-door-installation">Commercial Roll Up Door</a>
+                      <a href="https://bluetexinsulation.com/products/bluetex-2mm-pro-roll-up-garage-door-kit">Roll Up Door Kits</a>
+                      <a href="garage-door-insulation.html">Garage Door Overview</a>
+                      <a href="https://bluetexinsulation.com/products/bluetex-22-wide-pro-residential-garage-door-kit">Residential Panel Door Kits</a>
+                    </div>
+                  </div>
+                  <div class="guide-flyout" data-flyout-id="er">
+                    <h3 class="flyout-title">Existing / Retrofit</h3>
+                    <div class="flyout-links">
+                      <a href="https://bluetexinsulation.com/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Choose Existing Building Type</a>
+                      <a href="https://bluetexinsulation.com/pages/existing-construction-metal-framed-buildings-installation">Existing Metal Building Retrofit</a>
+                      <a href="https://bluetexinsulation.com/pages/existing-construction-wood-framed-buildings-installation">Existing Wood Frame / Pole Barn</a>
+                      <a href="https://bluetexinsulation.com/pages/insulating-non-conditioned-buildings-vs-conditioned-buildings">Conditioned Vs. Non-Conditioned</a>
+                    </div>
+                  </div>
+                  <div class="guide-flyout" data-flyout-id="co">
+                    <h3 class="flyout-title">Covering / Repairing Old Insulation</h3>
+                    <div class="flyout-links">
+                      <span class="section-label">TermBar System</span>
+                      <a href="https://bluetexinsulation.com/pages/covering-old-wall-insulation-in-metal-buildings">Covering Old Wall Insulation - Girts Visible</a>
+                      <a href="https://bluetexinsulation.com/pages/repair-old-torn-ceiling-insulation-in-red-iron-metal-buildings">Covering Old Roof Insulation - Girts Visible</a>
+                      <span class="section-label">Girts Hidden</span>
+                      <a href="https://bluetexinsulation.com/pages/easyclip-roof-system-covers-hides-purlins">EasyClip Roof System - Covers/Hides Purlins</a>
+                      <a href="https://bluetexinsulation.com/pages/covering-wall-insulation-girts-hidden">Covering Wall Insulation - Girts Hidden</a>
+                    </div>
+                  </div>
+                  <div class="guide-flyout" data-flyout-id="nc">
+                    <h3 class="flyout-title">New Construction</h3>
+                    <div class="flyout-links">
+                      <a href="https://bluetexinsulation.com/pages/new-construction-how-to-install-choose-your-building-type">Choose Building Type</a>
+                      <a href="https://bluetexinsulation.com/pages/new-construction-metal-framed-buildings-installation">Metal Framed Buildings</a>
+                      <a href="https://bluetexinsulation.com/pages/new-construction-wood-framed-buildings-installation">Wood Framed Buildings</a>
+                      <a href="https://bluetexinsulation.com/pages/resource-page-installation-supplies">Installation Supplies</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1540,18 +1570,16 @@
           <video class="hero-video" src="media/BlueTexHorizontalAd-cropped.mp4" autoplay muted loop playsinline></video>
           <div class="hero-content">
             <h1>Cover old insulation with a clean finished interior</h1>
-            <p>BlueTex helps metal building owners choose the right product and install process for heat, condensation, and repair projects.</p>
-            <div class="hero-actions"><a class="cta" href="termbar-cover-system.html">See The System</a><a class="cta cta--secondary" href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box">Order Test Kit</a></div>
           </div>
         </div>
         <div class="case-strip">
           <a class="case-study-cta" href="https://sambluetex-a11y.github.io/before-and-after-sliders/">Case Studies - Before/After</a>
         </div>
         <div class="quick">
-          <a href="large-metal-building-repair-cover-system.html">Cover / Repair</a>
-          <a href="https://bluetexinsulation.com/collections/all">Browse All Products</a>
-          <a href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation">Help Me Choose</a>
-          <a href="https://bluetexinsulation.com/pages/bluetex-metal-building-contractors-and-insulation-installers">Request A Quote</a>
+          <a href="https://bluetexinsulation.com/pages/help-me-choose-the-right-building-insulation">Application Overview</a>
+          <a href="https://bluetexinsulation.com/pages/install-guide">Install Guide</a>
+          <a href="https://bluetexinsulation.com/pages/request-a-quote">Request a Quote</a>
+          <a href="https://bluetexinsulation.com/products/bluetex-cover-repair-system-sample-box">Order Test Kit</a>
         </div>
       </div>
     </section>
@@ -1705,9 +1733,13 @@
 
       document.querySelectorAll('.guide-panel').forEach((panel) => {
         const items = Array.from(panel.querySelectorAll('.guide-item'));
-        const defaultItem = items[0];
+        const previewImg = panel.querySelector('.guide-preview-img');
+        const flyouts = Array.from(panel.querySelectorAll('.guide-flyout'));
+
         const setActive = (item) => {
           items.forEach((entry) => entry.classList.toggle('is-active', entry === item));
+          flyouts.forEach((f) => f.classList.toggle('is-active', f.dataset.flyoutId === item.dataset.flyout));
+          if (previewImg && item.dataset.img) previewImg.src = item.dataset.img;
         };
 
         items.forEach((item) => {
@@ -1717,9 +1749,8 @@
           trigger.addEventListener('focus', () => setActive(item));
         });
 
-        panel.addEventListener('mouseleave', () => {
-          if (defaultItem) setActive(defaultItem);
-        });
+        panel.addEventListener('mouseleave', () => { if (items[0]) setActive(items[0]); });
+        if (items[0]) setActive(items[0]);
       });
 
       document.querySelectorAll('.compare-card').forEach((card) => {
