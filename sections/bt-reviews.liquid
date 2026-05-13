@@ -1,0 +1,142 @@
+{% if section.settings.show_section %}
+<section class="bt-proof-section"
+  data-section-id="{{ section.id }}"
+  data-section-type="bt-reviews"
+  id="real-reviews"
+  {% if section.settings.enable_overrides %}style="--bt-sec-bg:{{ section.settings.sec_bg }};--bt-sec-heading:{{ section.settings.sec_heading }};--bt-sec-heading-size:{{ section.settings.sec_heading_size }}px;--bt-sec-body-size:{{ section.settings.sec_body_size }}px;"{% endif %}>
+  <div class="bt-rail bt-proof-grid">
+
+    <div class="bt-review-summary">
+      <p class="bt-eyebrow">{{ section.settings.eyebrow }}</p>
+      <span class="bt-stars">★★★★★</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+      <a class="bt-google-link" href="{{ section.settings.google_url }}">{{ section.settings.google_text }}</a>
+    </div>
+
+    <div class="bt-review-grid">
+
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% if block.settings.show_block %}
+          <div class="bt-review-card" {{ block.shopify_attributes }}>
+            <header>
+              <div>
+                <b>★★★★★</b>
+                <strong>{{ block.settings.reviewer_name }}</strong>
+                <span>{{ block.settings.reviewer_meta }}</span>
+              </div>
+            </header>
+            <p>{{ block.settings.quote }}</p>
+            {% if block.settings.photo_1 != blank or block.settings.photo_2 != blank %}
+            <div class="bt-review-photos">
+              {% if block.settings.photo_1 != blank %}<img src="{{ block.settings.photo_1 | img_url: '120x120' }}" alt="{{ block.settings.reviewer_name }} review photo" loading="lazy">{% endif %}
+              {% if block.settings.photo_2 != blank %}<img src="{{ block.settings.photo_2 | img_url: '120x120' }}" alt="{{ block.settings.reviewer_name }} review photo 2" loading="lazy">{% endif %}
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+
+        <div class="bt-review-card">
+          <header>
+            <div>
+              <b>★★★★★</b>
+              <strong>Ryan Fitzgerald</strong>
+              <span>4 reviews &middot; 4 photos &middot; 2 months ago</span>
+            </div>
+          </header>
+          <p>"I ordered the Blue Tex insulation after originally buying a less robust product. Side-by-side there&rsquo;s no comparison. The Blue Tex is more hardy, thicker, and is a better product. You will definitely be satisfied by using this product."</p>
+          <div class="bt-review-photos">
+            <img src="{{ 'review-ryan-fitzgerald.webp' | asset_url }}" alt="Ryan Fitzgerald review photo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="bt-review-card">
+          <header>
+            <div>
+              <b>★★★★★</b>
+              <strong>Thomas Nye</strong>
+              <span>Local Guide &middot; 20 reviews &middot; Edited 6 months ago</span>
+            </div>
+          </header>
+          <p>"My wife and I installed the door insulation in about three hours. It was a fairly easy job and they look great. We liked it so much we ordered it for our house garage door."</p>
+          <div class="bt-review-photos">
+            <img src="{{ 'review-thomas-nye-1.webp' | asset_url }}" alt="Thomas Nye review photo 1" loading="lazy">
+            <img src="{{ 'review-thomas-nye-2.webp' | asset_url }}" alt="Thomas Nye review photo 2" loading="lazy">
+          </div>
+        </div>
+
+        <div class="bt-review-card">
+          <header>
+            <div>
+              <b>★★★★★</b>
+              <strong>Sandra Owen</strong>
+              <span>1 review &middot; 2 photos &middot; 2 months ago</span>
+            </div>
+          </header>
+          <p>"Great products, best prices and fast delivery! My husband purchased the Blue Tex 2mm Pro Roll Up Garage Door Kit. Easy installation."</p>
+          <div class="bt-review-photos">
+            <img src="{{ 'review-sandra-owen-1.webp' | asset_url }}" alt="Sandra Owen review photo 1" loading="lazy">
+            <img src="{{ 'review-sandra-owen-2.webp' | asset_url }}" alt="Sandra Owen review photo 2" loading="lazy">
+          </div>
+        </div>
+
+        <div class="bt-review-card">
+          <header>
+            <div>
+              <b>★★★★★</b>
+              <strong>Eric Inman</strong>
+              <span>4 reviews &middot; 2 photos &middot; 8 months ago</span>
+            </div>
+          </header>
+          <p>"I just completed the install and it was easy. It is sturdy, well constructed, and the included tapes are more than enough. I had questions before purchasing, left a message and my call was returned with all questions answered the same day."</p>
+          <div class="bt-review-photos">
+            <img src="{{ 'review-eric-inman.webp' | asset_url }}" alt="Eric Inman review photo" loading="lazy">
+          </div>
+        </div>
+
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "BlueTex Reviews",
+  "settings": [
+    { "type": "checkbox", "id": "show_section", "label": "Show section", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "Real social proof" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real BlueTex reviews from real buildings" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Customers consistently rate BlueTex at 5 stars after buying and installing BlueTex insulation in their metal buildings and garage doors." },
+    { "type": "text", "id": "google_text", "label": "Google link text", "default": "Read BlueTex Google Reviews" },
+    { "type": "text", "id": "google_url", "label": "Google reviews URL", "default": "https://www.google.com/search?q=BlueTex+Insulation#lrd=0x864dcdd415655ef1:0xa615271ecbd3ba94,3,,,," },
+    { "type": "header", "content": "Style Overrides" },
+    { "type": "paragraph", "content": "By default this section uses your global BlueTex brand colors (Theme Settings → BlueTex Brand Colors). Enable below to customize this section individually." },
+    { "type": "checkbox", "id": "enable_overrides", "label": "Enable style overrides for this section", "default": false },
+    { "type": "color", "id": "sec_bg", "label": "Section background", "default": "#f7f7f8" },
+    { "type": "color", "id": "sec_heading", "label": "Heading color", "default": "#002f6c" },
+    { "type": "range", "id": "sec_heading_size", "min": 16, "max": 44, "step": 2, "unit": "px", "label": "Heading font size", "default": 28 },
+    { "type": "range", "id": "sec_body_size", "min": 14, "max": 22, "step": 1, "unit": "px", "label": "Body text font size", "default": 16 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "checkbox", "id": "show_block", "label": "Show this review", "default": true },
+        { "type": "text", "id": "reviewer_name", "label": "Reviewer name", "default": "Customer Name" },
+        { "type": "text", "id": "reviewer_meta", "label": "Meta line (reviews, photos, date)", "default": "1 review · 1 photo · 1 month ago" },
+        { "type": "textarea", "id": "quote", "label": "Review quote", "default": "\"Customer review text goes here.\"" },
+        { "type": "image_picker", "id": "photo_1", "label": "Review photo 1" },
+        { "type": "image_picker", "id": "photo_2", "label": "Review photo 2 (optional)" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "BlueTex Reviews", "category": "BlueTex" }]
+}
+{% endschema %}

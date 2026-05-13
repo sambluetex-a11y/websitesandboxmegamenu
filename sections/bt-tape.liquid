@@ -1,0 +1,134 @@
+{% if section.settings.show_section %}
+<section class="bt-tape-section"
+  data-section-id="{{ section.id }}"
+  data-section-type="bt-tape"
+  id="repair-seam-tape"
+  {% if section.settings.enable_overrides %}style="--bt-sec-bg:{{ section.settings.sec_bg }};--bt-sec-heading:{{ section.settings.sec_heading }};--bt-sec-heading-size:{{ section.settings.sec_heading_size }}px;--bt-sec-body-size:{{ section.settings.sec_body_size }}px;"{% endif %}>
+  <div class="bt-rail">
+    <h2>{{ section.settings.heading }}</h2>
+    <p class="bt-tape-intro">{{ section.settings.intro }}</p>
+
+    <div class="bt-tape-graphic">
+      {% if section.settings.show_compare %}
+      <div class="bt-compare-card">
+        <div class="bt-before-after" data-bt-compare>
+          {% if section.settings.before_image != blank %}
+            <img src="{{ section.settings.before_image | img_url: '600x' }}" alt="Before using repair tape">
+          {% else %}
+            <img src="{{ 'repair-tape-before.png' | asset_url }}" alt="Before using 6 inch repair tape">
+          {% endif %}
+          {% if section.settings.after_image != blank %}
+            <img class="bt-after-img" src="{{ section.settings.after_image | img_url: '600x' }}" alt="After using repair tape">
+          {% else %}
+            <img class="bt-after-img" src="{{ 'repair-tape-after.png' | asset_url }}" alt="After using 6 inch repair tape">
+          {% endif %}
+          <span class="bt-ba-label bt-ba-label--before">{{ section.settings.before_label | default: 'Before' }}</span>
+          <span class="bt-ba-label bt-ba-label--after">{{ section.settings.after_label | default: 'After' }}</span>
+          <span class="bt-slider-line" aria-hidden="true"></span>
+          <input class="bt-compare-range" type="range" min="0" max="100" value="50" aria-label="Reveal before and after repair tape comparison">
+        </div>
+        <p class="bt-compare-product-note">{{ section.settings.compare_note }}</p>
+        <p class="bt-compare-help">{{ section.settings.compare_help }}</p>
+      </div>
+      {% endif %}
+      {% if section.settings.show_info_card %}
+      <div class="bt-tape-info-card">
+        <h3>{{ section.settings.info_heading }}</h3>
+        <p>{{ section.settings.info_body }}</p>
+        <ul>
+          <li>{{ section.settings.bullet1 }}</li>
+          <li>{{ section.settings.bullet2 }}</li>
+          <li>{{ section.settings.bullet3 }}</li>
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="bt-tape-product-grid">
+      <div class="bt-tape-group bt-tape-group--featured">
+        <strong>{{ section.settings.repair_group_heading }}</strong>
+        {% if section.settings.repair_group_badge != blank %}<span class="bt-tape-badge">{{ section.settings.repair_group_badge }}</span>{% endif %}
+        <span>{{ section.settings.repair_group_desc }}</span>
+        <em>{{ section.settings.repair_group_note }}</em>
+        <div class="bt-tape-products">
+          <a href="{{ section.settings.repair_tape_6_url }}">{{ section.settings.repair_tape_6_label }}</a>
+          <a href="{{ section.settings.repair_tape_4_url }}">{{ section.settings.repair_tape_4_label }}</a>
+        </div>
+      </div>
+      <div class="bt-tape-group">
+        <strong>{{ section.settings.seam_group_heading }}</strong>
+        <span>{{ section.settings.seam_group_desc }}</span>
+        <em>{{ section.settings.seam_group_note }}</em>
+        <div class="bt-tape-products">
+          <a href="{{ section.settings.seam_tape_3_url }}">{{ section.settings.seam_tape_3_label }}</a>
+          <a href="{{ section.settings.seam_tape_2_url }}">{{ section.settings.seam_tape_2_label }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<script>
+(function() {
+  document.querySelectorAll('[data-bt-compare]').forEach(function(el) {
+    var range = el.querySelector('.bt-compare-range');
+    if (!range) return;
+    function update() { el.style.setProperty('--bt-split', range.value + '%'); }
+    range.addEventListener('input', update);
+    update();
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "BlueTex Tape Section",
+  "settings": [
+    { "type": "checkbox", "id": "show_section", "label": "Show section", "default": true },
+    { "type": "text", "id": "heading", "label": "Section heading", "default": "Repair And Seam Tape" },
+    { "type": "textarea", "id": "intro", "label": "Intro text", "default": "Start with the job. If the insulation facing is torn, punctured, or needs a larger patch, use repair tape. If the insulation is intact and you are joining edges or overlaps, use seam tape." },
+    { "type": "header", "content": "Before/After Comparison" },
+    { "type": "checkbox", "id": "show_compare", "label": "Show before/after slider", "default": true },
+    { "type": "image_picker", "id": "before_image", "label": "Before image (leave blank to use default)" },
+    { "type": "image_picker", "id": "after_image", "label": "After image (leave blank to use default)" },
+    { "type": "text", "id": "compare_note", "label": "Product note below slider", "default": "6\" white repair tape shown." },
+    { "type": "text", "id": "compare_help", "label": "Help text below slider", "default": "Drag left or right to compare the repair patch." },
+    { "type": "header", "content": "Info Card" },
+    { "type": "checkbox", "id": "show_info_card", "label": "Show info card", "default": true },
+    { "type": "text", "id": "info_heading", "label": "Info heading", "default": "Choose by problem, not by roll width" },
+    { "type": "textarea", "id": "info_body", "label": "Info body", "default": "The goal is to help the customer diagnose what they are fixing first, then send them to the tape that matches the job." },
+    { "type": "text", "id": "bullet1", "label": "Bullet 1", "default": "Large rips, holes, and damaged vapor barrier areas need a wider repair surface." },
+    { "type": "text", "id": "bullet2", "label": "Bullet 2", "default": "Clean overlaps and install seams need a narrower tape that is easy to run straight." },
+    { "type": "text", "id": "bullet3", "label": "Bullet 3", "default": "BlueTex white tapes are pressure activated, so firm pressure during install matters." },
+    { "type": "header", "content": "Repair Tape Group" },
+    { "type": "text", "id": "repair_group_heading", "label": "Group heading", "default": "Repair Tape" },
+    { "type": "text", "id": "repair_group_badge", "label": "Badge text (leave blank to hide)", "default": "Most Popular" },
+    { "type": "textarea", "id": "repair_group_desc", "label": "Group description", "default": "Use 6\" tape for larger holes, torn facing, and visible repairs where more coverage helps. Use 4\" tape for smaller patches, multi-use repairs, stucco prep, and masking-style jobs." },
+    { "type": "textarea", "id": "repair_group_note", "label": "Group note (italic)", "default": "6\" white tape gives larger damaged areas more coverage. 4\" white tape is a handy repair width for smaller patches and multi-use jobs." },
+    { "type": "text", "id": "repair_tape_6_label", "label": "6\" tape link label", "default": "6\" Repair Tape" },
+    { "type": "text", "id": "repair_tape_6_url", "label": "6\" tape URL", "default": "/products/6-white-tape" },
+    { "type": "text", "id": "repair_tape_4_label", "label": "4\" tape link label", "default": "4\" Multi-Use Tape" },
+    { "type": "text", "id": "repair_tape_4_url", "label": "4\" tape URL", "default": "/products/4-white-tape" },
+    { "type": "header", "content": "Seam Tape Group" },
+    { "type": "text", "id": "seam_group_heading", "label": "Group heading", "default": "Seam Tape" },
+    { "type": "textarea", "id": "seam_group_desc", "label": "Group description", "default": "Use seam tape when the insulation is already in place and you need to join seams, seal overlaps, finish edges, or keep the vapor barrier continuous across a clean joint." },
+    { "type": "textarea", "id": "seam_group_note", "label": "Group note (italic)", "default": "3\" white seam tape is the main interior seam tape. 2\" foil seam tape supports foil-side seams and narrower detail work." },
+    { "type": "text", "id": "seam_tape_3_label", "label": "3\" tape link label", "default": "3\" Seam Tape" },
+    { "type": "text", "id": "seam_tape_3_url", "label": "3\" tape URL", "default": "/products/foil-tape" },
+    { "type": "text", "id": "seam_tape_2_label", "label": "2\" tape link label", "default": "2\" Foil Seam Tape" },
+    { "type": "text", "id": "seam_tape_2_url", "label": "2\" tape URL", "default": "/products/2-foil-seam-tape" },
+    { "type": "header", "content": "Slider Labels" },
+    { "type": "text", "id": "before_label", "label": "\"Before\" label text", "default": "Before" },
+    { "type": "text", "id": "after_label", "label": "\"After\" label text", "default": "After" },
+    { "type": "header", "content": "Style Overrides" },
+    { "type": "paragraph", "content": "By default this section uses your global BlueTex brand colors (Theme Settings → BlueTex Brand Colors). Enable below to customize this section individually." },
+    { "type": "checkbox", "id": "enable_overrides", "label": "Enable style overrides for this section", "default": false },
+    { "type": "color", "id": "sec_bg", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "sec_heading", "label": "Heading color", "default": "#002f6c" },
+    { "type": "range", "id": "sec_heading_size", "min": 24, "max": 60, "step": 2, "unit": "px", "label": "Heading font size", "default": 38 },
+    { "type": "range", "id": "sec_body_size", "min": 14, "max": 22, "step": 1, "unit": "px", "label": "Body text font size", "default": 18 }
+  ],
+  "presets": [{ "name": "BlueTex Tape Section", "category": "BlueTex" }]
+}
+{% endschema %}

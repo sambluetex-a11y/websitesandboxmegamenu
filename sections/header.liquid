@@ -109,6 +109,17 @@
 </nav>
 
 <style>
+  :root {
+    {% if settings.bt_orange != blank %}--bt-orange: {{ settings.bt_orange }};{% endif %}
+    {% if settings.bt_navy != blank %}--bt-navy: {{ settings.bt_navy }};{% endif %}
+    {% if settings.bt_blue != blank %}--bt-blue: {{ settings.bt_blue }};{% endif %}
+    {% if settings.bt_text != blank %}--bt-text: {{ settings.bt_text }};{% endif %}
+    {% if settings.bt_muted != blank %}--bt-muted: {{ settings.bt_muted }};{% endif %}
+    {% if settings.bt_line != blank %}--bt-line: {{ settings.bt_line }};{% endif %}
+    {% if settings.bt_bg != blank %}--bt-panel: {{ settings.bt_bg }};{% endif %}
+  }
+</style>
+<style>
   .site-logo.has-image { max-width: {{ section.settings.logo_max_width }}px; }
 </style>
 
@@ -184,7 +195,7 @@
       "step": 10,
       "unit": "px",
       "label": "Logo max width",
-      "default": 168
+      "default": 170
     },
     {
       "type": "header",

@@ -1,0 +1,97 @@
+{% if section.settings.show_section %}
+<section class="bt-topic-section"
+  data-section-id="{{ section.id }}"
+  data-section-type="bt-topic"
+  {% if section.settings.enable_overrides %}style="--bt-sec-bg:{{ section.settings.sec_bg }};--bt-sec-heading:{{ section.settings.sec_heading }};--bt-sec-primary:{{ section.settings.sec_primary }};--bt-sec-primary-text:{{ section.settings.sec_primary_text }};--bt-sec-heading-size:{{ section.settings.sec_heading_size }}px;--bt-sec-body-size:{{ section.settings.sec_body_size }}px;"{% endif %}>
+  <div class="bt-rail">
+    <h2 class="bt-section-title">{{ section.settings.title }}</h2>
+    <p class="bt-section-intro">{{ section.settings.intro }}</p>
+    <div class="bt-topic-grid">
+
+      {% if section.settings.show_card1 %}
+      <article class="bt-topic-card">
+        <div class="bt-topic-media">
+          {% if section.settings.card1_image != blank %}
+            <img src="{{ section.settings.card1_image | img_url: '800x' }}" alt="{{ section.settings.card1_heading }}" loading="lazy">
+          {% else %}
+            <img src="{{ 'quiz-Existing_Building_Already_Built_Answer.png' | asset_url }}" alt="{{ section.settings.card1_heading }}" loading="lazy">
+          {% endif %}
+          <span>{{ section.settings.card1_caption }}</span>
+        </div>
+        <div class="bt-topic-body">
+          <h3>{{ section.settings.card1_heading }}</h3>
+          <p>{{ section.settings.card1_body }}</p>
+          <div class="bt-topic-actions">
+            <a href="{{ section.settings.card1_cta1_url }}">{{ section.settings.card1_cta1_text }}</a>
+            <a class="secondary" href="{{ section.settings.card1_cta2_url }}">{{ section.settings.card1_cta2_text }}</a>
+          </div>
+        </div>
+      </article>
+      {% endif %}
+
+      {% if section.settings.show_card2 %}
+      <article class="bt-topic-card">
+        <div class="bt-topic-media">
+          {% if section.settings.card2_image != blank %}
+            <img src="{{ section.settings.card2_image | img_url: '800x' }}" alt="{{ section.settings.card2_heading }}" loading="lazy">
+          {% else %}
+            <img src="{{ 'IMG_37653_c669f2aa-3dc2-4db2-b8b9-99d82b9bedd3.jpg' | asset_url }}" alt="{{ section.settings.card2_heading }}" loading="lazy">
+          {% endif %}
+          <span>{{ section.settings.card2_caption }}</span>
+        </div>
+        <div class="bt-topic-body">
+          <h3>{{ section.settings.card2_heading }}</h3>
+          <p>{{ section.settings.card2_body }}</p>
+          <div class="bt-topic-actions">
+            <a href="{{ section.settings.card2_cta1_url }}">{{ section.settings.card2_cta1_text }}</a>
+            <a class="secondary" href="{{ section.settings.card2_cta2_url }}">{{ section.settings.card2_cta2_text }}</a>
+          </div>
+        </div>
+      </article>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "BlueTex Topic Cards",
+  "settings": [
+    { "type": "checkbox", "id": "show_section", "label": "Show section", "default": true },
+    { "type": "text", "id": "title", "label": "Section title", "default": "Existing Buildings & Roll-Up Doors" },
+    { "type": "textarea", "id": "intro", "label": "Intro text", "default": "Two high-volume product lines for the most common projects we see. Pick the one that matches your building." },
+    { "type": "header", "content": "Card 1" },
+    { "type": "checkbox", "id": "show_card1", "label": "Show card 1", "default": true },
+    { "type": "image_picker", "id": "card1_image", "label": "Card 1 image (leave blank to use default)" },
+    { "type": "text", "id": "card1_heading", "label": "Heading", "default": "Retrofit Existing Metal Buildings" },
+    { "type": "text", "id": "card1_caption", "label": "Image caption", "default": "Retrofit insulation for an existing metal building interior" },
+    { "type": "textarea", "id": "card1_body", "label": "Body", "default": "The smart insulation choice for metal buildings you do not heat and cool 24/7: garages, workshops, ag buildings, and commercial interiors." },
+    { "type": "text", "id": "card1_cta1_text", "label": "Primary CTA text", "default": "Install Guide" },
+    { "type": "text", "id": "card1_cta1_url", "label": "Primary CTA URL", "default": "/pages/existing-construction-metal-framed-buildings-installation" },
+    { "type": "text", "id": "card1_cta2_text", "label": "Secondary CTA text", "default": "Shop Products" },
+    { "type": "text", "id": "card1_cta2_url", "label": "Secondary CTA URL", "default": "/collections/all" },
+    { "type": "header", "content": "Card 2" },
+    { "type": "checkbox", "id": "show_card2", "label": "Show card 2", "default": true },
+    { "type": "image_picker", "id": "card2_image", "label": "Card 2 image (leave blank to use default)" },
+    { "type": "text", "id": "card2_heading", "label": "Heading", "default": "Insulate Roll-Up Doors" },
+    { "type": "text", "id": "card2_caption", "label": "Image caption", "default": "Insulated roll-up garage door before and after temperature impact" },
+    { "type": "textarea", "id": "card2_body", "label": "Body", "default": "A simple DIY upgrade for hot metal roll-up doors. Pre-cut kits are sized to your door for straightforward install and real summer heat reduction." },
+    { "type": "text", "id": "card2_cta1_text", "label": "Primary CTA text", "default": "Install Guide" },
+    { "type": "text", "id": "card2_cta1_url", "label": "Primary CTA URL", "default": "/blogs/installations/commercial-roll-up-garage-door-installation" },
+    { "type": "text", "id": "card2_cta2_text", "label": "Secondary CTA text", "default": "Shop Kits" },
+    { "type": "text", "id": "card2_cta2_url", "label": "Secondary CTA URL", "default": "/products/bluetex-2mm-pro-roll-up-garage-door-kit" },
+    { "type": "header", "content": "Style Overrides" },
+    { "type": "paragraph", "content": "By default this section uses your global BlueTex brand colors (Theme Settings → BlueTex Brand Colors). Enable below to customize this section individually." },
+    { "type": "checkbox", "id": "enable_overrides", "label": "Enable style overrides for this section", "default": false },
+    { "type": "color", "id": "sec_bg", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "sec_heading", "label": "Card heading color", "default": "#002f6c" },
+    { "type": "color", "id": "sec_primary", "label": "Primary CTA color", "default": "#002f6c" },
+    { "type": "color", "id": "sec_primary_text", "label": "CTA text color", "default": "#ffffff" },
+    { "type": "range", "id": "sec_heading_size", "min": 16, "max": 40, "step": 2, "unit": "px", "label": "Card heading font size", "default": 24 },
+    { "type": "range", "id": "sec_body_size", "min": 14, "max": 22, "step": 1, "unit": "px", "label": "Body text font size", "default": 17 }
+  ],
+  "presets": [{ "name": "BlueTex Topic Cards", "category": "BlueTex" }]
+}
+{% endschema %}

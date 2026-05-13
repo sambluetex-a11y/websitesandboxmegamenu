@@ -1,0 +1,71 @@
+<section class="bt-hero-shell"
+  data-section-id="{{ section.id }}"
+  data-section-type="bt-hero"
+  {% if section.settings.enable_overrides %}style="--bt-sec-heading:{{ section.settings.sec_heading }};--bt-sec-primary:{{ section.settings.sec_primary }};--bt-sec-primary-text:{{ section.settings.sec_primary_text }};--bt-sec-heading-size:{{ section.settings.sec_heading_size }}px;--bt-sec-body-size:{{ section.settings.sec_body_size }}px;"{% endif %}>
+  <div class="bt-rail">
+    <div class="bt-hero">
+      <video class="bt-hero-video" src="{{ section.settings.video_filename | asset_url }}" autoplay muted loop playsinline></video>
+      <div class="bt-hero-content">
+        <h1>{{ section.settings.heading }}</h1>
+        {% if section.settings.show_cta_buttons %}
+        <div class="bt-hero-actions">
+          <a class="bt-cta" href="{{ section.settings.cta1_url }}">{{ section.settings.cta1_text }}</a>
+          <a class="bt-cta bt-cta--secondary" href="{{ section.settings.cta2_url }}">{{ section.settings.cta2_text }}</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% if section.settings.show_case_strip %}
+    <div class="bt-case-strip">
+      <a class="bt-case-study-cta" href="{{ section.settings.case_url }}">{{ section.settings.case_text }}</a>
+    </div>
+    {% endif %}
+    {% if section.settings.show_quick_links %}
+    <div class="bt-quick-links">
+      <a href="{{ section.settings.quick1_url }}">{{ section.settings.quick1_text }}</a>
+      <a href="{{ section.settings.quick2_url }}">{{ section.settings.quick2_text }}</a>
+      <a href="{{ section.settings.quick3_url }}">{{ section.settings.quick3_text }}</a>
+      <a href="{{ section.settings.quick4_url }}">{{ section.settings.quick4_text }}</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BlueTex Hero",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Cover old insulation with a clean finished interior" },
+    { "type": "text", "id": "video_filename", "label": "Video filename (upload to Shopify Files first)", "default": "BlueTexHorizontalAd-cropped.mp4" },
+    { "type": "header", "content": "Primary CTA" },
+    { "type": "checkbox", "id": "show_cta_buttons", "label": "Show CTA buttons", "default": true },
+    { "type": "text", "id": "cta1_text", "label": "Button 1 text", "default": "See The System" },
+    { "type": "text", "id": "cta1_url", "label": "Button 1 URL", "default": "/pages/termbar-cover-system" },
+    { "type": "text", "id": "cta2_text", "label": "Button 2 text", "default": "Order Test Kit" },
+    { "type": "text", "id": "cta2_url", "label": "Button 2 URL", "default": "/products/bluetex-cover-repair-system-sample-box" },
+    { "type": "header", "content": "Case Study Strip" },
+    { "type": "checkbox", "id": "show_case_strip", "label": "Show case study strip", "default": true },
+    { "type": "text", "id": "case_text", "label": "Link text", "default": "Case Studies — Before/After" },
+    { "type": "text", "id": "case_url", "label": "Link URL", "default": "/blogs/case-studies" },
+    { "type": "header", "content": "Quick Links (4 tiles)" },
+    { "type": "checkbox", "id": "show_quick_links", "label": "Show quick links", "default": true },
+    { "type": "text", "id": "quick1_text", "label": "Tile 1 text", "default": "System Overview" },
+    { "type": "text", "id": "quick1_url", "label": "Tile 1 URL", "default": "/pages/termbar-cover-system" },
+    { "type": "text", "id": "quick2_text", "label": "Tile 2 text", "default": "Install Guide" },
+    { "type": "text", "id": "quick2_url", "label": "Tile 2 URL", "default": "/pages/install-guide" },
+    { "type": "text", "id": "quick3_text", "label": "Tile 3 text", "default": "Request a Quote" },
+    { "type": "text", "id": "quick3_url", "label": "Tile 3 URL", "default": "/pages/request-a-quote" },
+    { "type": "text", "id": "quick4_text", "label": "Tile 4 text", "default": "Order Test Kit" },
+    { "type": "text", "id": "quick4_url", "label": "Tile 4 URL", "default": "/products/bluetex-cover-repair-system-sample-box" },
+    { "type": "header", "content": "Style Overrides" },
+    { "type": "paragraph", "content": "By default this section uses your global BlueTex brand colors (Theme Settings → BlueTex Brand Colors). Enable below to customize this section individually." },
+    { "type": "checkbox", "id": "enable_overrides", "label": "Enable style overrides for this section", "default": false },
+    { "type": "color", "id": "sec_heading", "label": "Heading text color", "default": "#ffffff" },
+    { "type": "color", "id": "sec_primary", "label": "CTA / quick link background color", "default": "#f17c02" },
+    { "type": "color", "id": "sec_primary_text", "label": "CTA / quick link text color", "default": "#ffffff" },
+    { "type": "range", "id": "sec_heading_size", "min": 20, "max": 60, "step": 2, "unit": "px", "label": "Heading font size", "default": 34 },
+    { "type": "range", "id": "sec_body_size", "min": 14, "max": 24, "step": 1, "unit": "px", "label": "Quick link tile font size", "default": 19 }
+  ],
+  "presets": [{ "name": "BlueTex Hero", "category": "BlueTex" }]
+}
+{% endschema %}
