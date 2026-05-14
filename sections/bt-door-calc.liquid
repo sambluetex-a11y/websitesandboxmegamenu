@@ -1,0 +1,479 @@
+<div id="btcalc">
+  <main aria-label="BlueTex roll-up garage door material calculator">
+
+    <section class="btcalc-sec">
+      <div class="btcalc-sec-head">
+        <div class="btcalc-snum">1</div>
+        <p class="btcalc-stitle">Garage Door Sizes</p>
+      </div>
+      <form data-btcalc-form novalidate>
+        <div class="btcalc-door-grid-labels" aria-hidden="true">
+          <span>Door Width (ft)</span>
+          <span>Door Height (ft)</span>
+          <span>Qty</span>
+        </div>
+        <div data-btcalc-rows></div>
+        <div class="btcalc-input-actions">
+          <button class="btcalc-secondary-button" type="button" data-btcalc-add-row>
+            + Add Another Size
+          </button>
+          <button class="btcalc-primary-button" type="button" data-btcalc-calc>
+            Calculate Materials
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <div data-btcalc-results style="display:none">
+      <div data-btcalc-summary></div>
+      <div data-btcalc-details></div>
+    </div>
+
+  </main>
+</div>
+
+<style>
+#btcalc {
+  --btcalc-ab:      #001b48;
+  --btcalc-sb:      #f1f5f9;
+  --btcalc-sd:      #cbd5e1;
+  --btcalc-sc:      #1e293b;
+  --btcalc-rh:      #001b48;
+  --btcalc-sn:      #001b48;
+  --btcalc-bg-p:    #ffffff;
+  --btcalc-bg-s:    #f3f4f6;
+  --btcalc-tx-p:    #111827;
+  --btcalc-tx-s:    #6b7280;
+  --btcalc-bd-l:    #e5e7eb;
+  --btcalc-bd-m:    #d1d5db;
+  --btcalc-success: #15803d;
+  --btcalc-warn:    #b91c1c;
+  --btcalc-rmd:     6px;
+  --btcalc-rlg:     8px;
+  box-sizing: border-box;
+  color: var(--btcalc-sc);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 720px;
+  margin: 0 0 2rem;
+}
+
+#btcalc *, #btcalc *::before, #btcalc *::after { box-sizing: border-box; }
+
+#btcalc button,
+#btcalc input { font: inherit; }
+
+/* ── Step 1 section ─────────────────────────────────────────────────────────── */
+
+#btcalc .btcalc-sec {
+  background: var(--btcalc-sb);
+  border: 1.5px solid var(--btcalc-sd);
+  border-radius: var(--btcalc-rlg);
+  margin-bottom: 0.5rem;
+  padding: 0.65rem 0.9rem;
+}
+
+#btcalc .btcalc-sec-head {
+  align-items: center;
+  display: flex;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+#btcalc .btcalc-snum {
+  align-items: center;
+  background: var(--btcalc-sn);
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  height: 21px;
+  justify-content: center;
+  width: 21px;
+}
+
+#btcalc .btcalc-stitle {
+  color: var(--btcalc-sc);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* ── Door row grid ──────────────────────────────────────────────────────────── */
+
+#btcalc .btcalc-door-grid-labels,
+#btcalc .btcalc-door-row {
+  display: grid;
+  gap: 7px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 74px;
+}
+
+#btcalc .btcalc-door-grid-labels {
+  color: var(--btcalc-sc);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  opacity: 0.75;
+}
+
+#btcalc .btcalc-door-row {
+  margin-bottom: 8px;
+}
+
+#btcalc .btcalc-field label {
+  color: var(--btcalc-sc);
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 3px;
+  opacity: 0.85;
+}
+
+#btcalc .btcalc-input-shell {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+#btcalc .btcalc-input-shell span {
+  color: var(--btcalc-sc);
+  font-size: 12px;
+  opacity: 0.55;
+  pointer-events: none;
+  position: absolute;
+  right: 8px;
+}
+
+#btcalc input[type="number"] {
+  background: #ffffff;
+  border: 1.5px solid var(--btcalc-sd);
+  border-radius: var(--btcalc-rmd);
+  color: var(--btcalc-sc);
+  font-size: 14px;
+  min-height: 36px;
+  padding: 6px 28px 6px 8px;
+  width: 100%;
+}
+
+#btcalc .btcalc-qty-field input[type="number"] {
+  padding-left: 6px;
+  padding-right: 6px;
+  text-align: center;
+}
+
+#btcalc input:focus {
+  border-color: var(--btcalc-ab);
+  outline: none;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────────── */
+
+#btcalc .btcalc-input-actions {
+  display: grid;
+  gap: 7px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  margin-top: 4px;
+}
+
+#btcalc .btcalc-primary-button,
+#btcalc .btcalc-secondary-button {
+  align-items: center;
+  border-radius: var(--btcalc-rlg);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 6px;
+  justify-content: center;
+  min-height: 40px;
+  padding: 8px 12px;
+}
+
+#btcalc .btcalc-primary-button {
+  background: var(--btcalc-ab);
+  border: 1.5px solid var(--btcalc-ab);
+  color: #ffffff;
+}
+
+#btcalc .btcalc-primary-button:hover { opacity: 0.88; }
+
+#btcalc .btcalc-secondary-button {
+  background: #ffffff;
+  border: 1.5px solid var(--btcalc-sd);
+  color: var(--btcalc-sc);
+}
+
+#btcalc .btcalc-secondary-button:hover {
+  background: #f8fafc;
+  border-color: var(--btcalc-ab);
+}
+
+/* ── Result panels ──────────────────────────────────────────────────────────── */
+
+#btcalc [data-btcalc-summary],
+#btcalc [data-btcalc-details] { display: grid; gap: 0.5rem; }
+
+#btcalc .btcalc-res-panel {
+  background: var(--btcalc-bg-p);
+  border: 1px solid var(--btcalc-bd-m);
+  border-radius: var(--btcalc-rlg);
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+#btcalc .btcalc-res-ph {
+  align-items: center;
+  background: var(--btcalc-rh);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 15px;
+}
+
+#btcalc .btcalc-res-ph .btcalc-snum {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.28);
+}
+
+#btcalc .btcalc-rpt {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+}
+
+#btcalc .btcalc-rsep {
+  color: rgba(255,255,255,.55);
+  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#btcalc .btcalc-rps {
+  color: rgba(255,255,255,.85);
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+#btcalc .btcalc-res-pb { background: var(--btcalc-bg-p); padding: 3px 0; }
+
+#btcalc .btcalc-sum-row {
+  align-items: center;
+  border-bottom: 0.5px solid var(--btcalc-bd-l);
+  display: flex;
+  font-size: 13px;
+  justify-content: space-between;
+  padding: 7px 15px;
+}
+
+#btcalc .btcalc-sum-row:last-child { border-bottom: 0; }
+
+#btcalc .btcalc-sk { color: var(--btcalc-tx-s); flex-shrink: 0; padding-right: 12px; }
+#btcalc .btcalc-sv { color: var(--btcalc-tx-p); font-weight: 500; text-align: right; }
+
+/* ── Hero result ─────────────────────────────────────────────────────────────── */
+
+#btcalc .btcalc-hero-result {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(120px, 0.9fr);
+}
+
+#btcalc .btcalc-hero-result > div { padding: 10px 13px; }
+
+#btcalc .btcalc-hero-result > div:first-child {
+  border-right: 0.5px solid var(--btcalc-bd-l);
+}
+
+#btcalc .btcalc-tiny-label {
+  color: var(--btcalc-tx-s);
+  font-size: 11px;
+  margin-bottom: 3px;
+}
+
+#btcalc .btcalc-big-value {
+  color: var(--btcalc-tx-p);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+}
+
+#btcalc .btcalc-ps { color: var(--btcalc-tx-s); font-size: 12px; display: block; margin-top: 4px; }
+
+#btcalc .btcalc-callout {
+  background: #eff6ff;
+  border-left: 4px solid var(--btcalc-ab);
+}
+
+#btcalc .btcalc-callout .btcalc-tiny-label,
+#btcalc .btcalc-callout .btcalc-big-value,
+#btcalc .btcalc-callout small { color: var(--btcalc-ab); }
+
+#btcalc .btcalc-callout small { display: block; font-size: 11px; font-weight: 700; margin-top: 4px; opacity: 0.75; }
+
+/* ── Status badges ───────────────────────────────────────────────────────────── */
+
+#btcalc .btcalc-status {
+  border-radius: 5px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+
+#btcalc .btcalc-status--ok   { background: #f0fdf4; color: var(--btcalc-success); }
+#btcalc .btcalc-status--warn { background: #fef2f2; color: var(--btcalc-warn); }
+
+/* ── Warning list ─────────────────────────────────────────────────────────────── */
+
+#btcalc .btcalc-warning-list {
+  background: #fef2f2;
+  border-top: 0.5px solid #fecaca;
+  padding: 8px 15px;
+}
+
+#btcalc .btcalc-warning-list p {
+  color: var(--btcalc-warn);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* ── Shopping list ────────────────────────────────────────────────────────────── */
+
+#btcalc .btcalc-shopping-list { background: var(--btcalc-bg-p); padding: 8px 9px 0; }
+
+#btcalc .btcalc-sli {
+  align-items: center;
+  background: var(--btcalc-bg-s);
+  border: 0.5px solid var(--btcalc-bd-l);
+  border-radius: var(--btcalc-rmd);
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+  padding: 8px 10px;
+}
+
+#btcalc .btcalc-thumb {
+  align-items: center;
+  background: #dde2ec;
+  border: 0.5px solid #c5cbd8;
+  border-radius: 5px;
+  display: flex;
+  flex-shrink: 0;
+  height: 44px;
+  justify-content: center;
+  overflow: hidden;
+  width: 44px;
+}
+
+#btcalc .btcalc-thumb img { display: block; height: 44px; object-fit: cover; width: 44px; }
+
+#btcalc .btcalc-sli-info { flex: 1; min-width: 0; }
+
+#btcalc .btcalc-sli-label {
+  color: var(--btcalc-tx-p);
+  font-size: 14px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#btcalc .btcalc-sli-sub,
+#btcalc .btcalc-sli-price {
+  color: var(--btcalc-tx-s);
+  font-size: 11px;
+  line-height: 1.3;
+  margin-top: 1px;
+}
+
+#btcalc .btcalc-sli-qty {
+  color: var(--btcalc-ab);
+  flex-shrink: 0;
+  font-size: 17px;
+  font-weight: 700;
+  min-width: 48px;
+  text-align: right;
+}
+
+/* ── Add to Cart button ────────────────────────────────────────────────────────── */
+
+#btcalc .btcalc-cart-actions { padding: 4px 9px 10px; }
+
+#btcalc .btcalc-aamb {
+  background: var(--btcalc-ab);
+  border: 0;
+  border-radius: var(--btcalc-rmd);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 11px;
+  width: 100%;
+}
+
+#btcalc .btcalc-aamb:hover:not(:disabled) { opacity: 0.88; }
+
+#btcalc .btcalc-aamb:disabled { cursor: not-allowed; opacity: 0.5; }
+
+/* ── Empty state ──────────────────────────────────────────────────────────────── */
+
+#btcalc .btcalc-empty-state {
+  color: var(--btcalc-tx-s);
+  font-size: 13px;
+  padding: 12px 15px;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 560px) {
+  #btcalc .btcalc-door-grid-labels { display: none; }
+
+  #btcalc .btcalc-door-row,
+  #btcalc .btcalc-input-actions {
+    grid-template-columns: 1fr;
+  }
+
+  #btcalc .btcalc-door-row {
+    background: #ffffff;
+    border: 1px solid var(--btcalc-sd);
+    border-radius: var(--btcalc-rmd);
+    padding: 0.55rem 0.65rem;
+  }
+
+  #btcalc .btcalc-hero-result { grid-template-columns: 1fr; }
+
+  #btcalc .btcalc-hero-result > div:first-child {
+    border-bottom: 0.5px solid var(--btcalc-bd-l);
+    border-right: 0;
+  }
+
+  #btcalc .btcalc-rpt { font-size: 16px; }
+  #btcalc .btcalc-rps { font-size: 13px; }
+
+  #btcalc .btcalc-sum-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  #btcalc .btcalc-sv { text-align: left; }
+
+  #btcalc .btcalc-sli { align-items: flex-start; }
+  #btcalc .btcalc-sli-label { white-space: normal; }
+}
+</style>
+
+{{ 'bt-door-calc.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Garage Door Calculator",
+  "presets": [{ "name": "Garage Door Calculator", "category": "BlueTex" }]
+}
+{% endschema %}
