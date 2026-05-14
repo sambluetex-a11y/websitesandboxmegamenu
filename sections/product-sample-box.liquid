@@ -1,0 +1,519 @@
+<div class="product-template" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-ProductSection data-section-type="product-template" data-enable-history-state="true" data-enable-swatch="{% if section.settings.variant_style == 'dropdowns' %}false{% else %}true{% endif %}">
+  <section class="single-product" itemscope itemtype="http://schema.org/Product">
+    <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+    <meta itemprop="image" content="{{ product.featured_image.src | img_url: '1024x1024' }}">
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    <div class="wrapper">
+
+      <header class="content-util">
+      {% include 'breadcrumb' %}
+      {% include 'social-icons' %}
+      </header>
+
+      <header class="product-header">
+        <div class="product-jump-container"></div>
+      </header>
+
+      <div class="grid">
+        <div class="product-images thumbnails-placement-{{ section.settings.thumbnails_placement }}">
+          <div class="images-container">
+            {% include 'product-featured-image' %}
+            {%- unless product.images.size == 1 or section.settings.thumbnails_placement == 'hide' -%}
+              {%- if section.settings.thumbnails_placement contains 'side' -%}
+                {% include 'product-thumbnails' %}
+              {%- endif -%}
+              {% include 'product-thumbnails-slider' %}
+            {%- endunless -%}
+          </div>
+        </div>
+
+        <aside class="product-aside">
+          <div class="purchase-box {% if section.settings.product_box_padding %}padding-box{% endif %}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+            <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+            <div id="AddToCartForm-{{ section.id }}" data-AddToCartForm class="form-vertical product-form product-form-{{ section.id }}" {% if section.settings.show_payment_button %}data-dynamic-checkout="true"{% endif %} data-section="{{ section.id }}">
+              {% include 'product-form' %}
+            </div>
+
+            <div class="samplebox-refund-callout">
+              <p><strong>$100 credit applied to any order of $500 or more.</strong></p>
+              <p>Stackable — one $100 credit per $500 spent. Order multiple boxes for larger jobs.</p>
+            </div>
+
+            <div class="samplebox-below-cta">
+              <a href="/pages/covering-old-wall-insulation-in-metal-buildings">Install Guide &rarr;</a>
+              <a href="/pages/request-a-quote">Request a Quote &rarr;</a>
+            </div>
+          </div>
+
+          {% if section.settings.trust_badge %}
+            <div class="trust-badge">
+              {%- assign image = section.settings.trust_badge -%}
+              {% assign image_widths = '295,394,590,700,800,1000,1200,1500,1800,2000,2400' %}
+              {% include 'theme-rias' %}
+              <img class="trust-badge--image lazyload"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                style="max-width: {{ image.width }}px;"
+                data-src="{{ image_url_pattern }}"
+                data-widths="[{{ image_widths }}]"
+                data-aspectratio="{{ image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ image.alt | escape }}">
+            </div>
+            <style>
+              {%- assign padding = 1 | divided_by: image.aspect_ratio | times: 100 | append: '%' -%}
+              #ProductSection-{{ section.id }} aside.product-aside .trust-badge:before {
+                padding-bottom: {{ padding }};
+              }
+            </style>
+          {% endif %}
+
+          {%- assign description_parts = product.description | split: '<!-- split -->' -%}
+          <div class="description rte" itemprop="description">
+            {% render 'product-description-tabs', product: product %}
+          </div>
+          <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+          {% if section.settings.show_share_buttons %}
+            {% include 'social-share' %}
+          {% endif %}
+        </aside>
+      </div>
+
+      {%- if description_parts.size > 1 -%}
+        <div class="additional-description rte">
+          {%- for description_part in description_parts -%}
+            {%- unless forloop.first -%}{{ description_part }}{%- endunless -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="product-reviews"></div>
+
+    </div>
+
+    {% comment %} ── Custom marketing content ── {% endcomment %}
+    <div class="wrapper samplebox-marketing">
+
+      <h2 class="samplebox-headline">Test It Before You Commit to the Full Project</h2>
+
+      <div class="samplebox-usecases">
+        <div class="samplebox-usecase">
+          <h3>Building Owners &amp; Decision-Makers</h3>
+          <p>See the finished product installed in your own building before signing off on a large project. The sample covers 150 sq ft — enough for a real panel section to prove the look and performance.</p>
+        </div>
+        <div class="samplebox-usecase">
+          <h3>In-House Crews</h3>
+          <p>Gauge install difficulty, tool requirements, and labor time before committing the full crew to a building-wide job. Train on the actual materials with no risk.</p>
+        </div>
+      </div>
+
+      <div class="samplebox-contents">
+        <h3>What&rsquo;s In the Box</h3>
+        <ul>
+          <li>20 ft of 50-inch BlueTex PRO 2mm insulation</li>
+          <li>4 &times; 48-inch aluminum TermBars</li>
+          <li>15 &times; #10 hex-head screws</li>
+          <li>30 ft roll of 3-inch white vapor barrier seam tape</li>
+          <li>6 &times; EasyClips</li>
+        </ul>
+      </div>
+
+      <div class="samplebox-video">
+        <h3>See It Installed</h3>
+        <div class="samplebox-video-wrap">
+          {%- assign _video_url = section.settings.video_url | default: 'https://www.youtube.com/watch?v=9pq8mILcZWQ' -%}
+          {%- assign video_id = _video_url | split: 'v=' | last | split: '&' | first -%}
+          {%- if video_id != blank -%}
+            <iframe
+              src="https://www.youtube.com/embed/{{ video_id }}"
+              title="BlueTex Cover/Repair System install video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  {% comment %} Related products / product collection blocks {% endcomment %}
+  {% for block in section.blocks %}
+    <div class="product-block-container" {{ block.shopify_attributes }}>
+      {% case block.type %}
+        {% when 'related_products' %}
+          <div class="block-container">
+            {% include 'related-products' %}
+          </div>
+        {% when 'product_collection' %}
+          {%- assign collection_count = '4' -%}
+          <div class="simple-collection layout-{{ collection_count }}">
+            <div class="wrapper">
+              <header>
+                {% if block.settings.title != blank %}
+                  <h4>{{ block.settings.title | escape }}</h4>
+                {% endif %}
+                {% if block.settings.button_link != blank and block.settings.button_label != blank %}
+                  <a href="{{ block.settings.button_link }}" class="button outline">{{ block.settings.button_label | escape }}</a>
+                {% endif %}
+              </header>
+              <div class="product-container">
+                {%- assign block_collection = collections[block.settings.collection] -%}
+                {%- assign product_limit = collection_count -%}
+                {% for product in block_collection.products limit: product_limit %}
+                  {% include 'product-grid-item' %}
+                {% else %}
+                  {% for i in (1..product_limit) %}
+                    {% include 'placeholder-product-grid-item' %}
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+      {% endcase %}
+    </div>
+  {% endfor %}
+
+</div>
+
+{% unless product.empty? %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+{% endunless %}
+
+{%- if section.settings.size_guide_page != blank -%}
+<div id="product-size-guide-content-{{ section.id }}" class="popup-page mfp-hide">
+  <div class="rte">{{ pages[section.settings.size_guide_page].content }}</div>
+</div>
+{%- endif -%}
+
+<style>
+/* ── Refund callout & below-cart links ───────────────────────────────────────── */
+.samplebox-refund-callout {
+  background: #eff6ff;
+  border-left: 4px solid #001b48;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 14px 0 10px;
+  padding: 10px 14px;
+}
+.samplebox-refund-callout p { margin: 0 0 4px; }
+.samplebox-refund-callout p:last-child { margin-bottom: 0; }
+
+.samplebox-below-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.samplebox-below-cta a {
+  color: #001b48;
+  text-decoration: none;
+}
+.samplebox-below-cta a:hover { text-decoration: underline; }
+
+/* ── Marketing section ───────────────────────────────────────────────────────── */
+.samplebox-marketing {
+  border-top: 1px solid #e5e7eb;
+  margin-top: 48px;
+  padding-top: 40px;
+  padding-bottom: 48px;
+}
+
+.samplebox-headline {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 28px;
+  text-align: center;
+}
+
+/* ── Use case cards ──────────────────────────────────────────────────────────── */
+.samplebox-usecases {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 32px;
+}
+.samplebox-usecase {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 22px 24px;
+}
+.samplebox-usecase h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.samplebox-usecase p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Box contents ────────────────────────────────────────────────────────────── */
+.samplebox-contents {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  padding: 22px 24px;
+}
+.samplebox-contents h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.samplebox-contents ul {
+  list-style: disc;
+  margin: 0;
+  padding-left: 22px;
+}
+.samplebox-contents ul li {
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* ── YouTube video ───────────────────────────────────────────────────────────── */
+.samplebox-video h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.samplebox-video-wrap {
+  border-radius: 8px;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+.samplebox-video-wrap iframe {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+@media (max-width: 799px) {
+  .samplebox-usecases { grid-template-columns: 1fr; }
+  .samplebox-headline { font-size: 22px; }
+  .samplebox-marketing { margin-top: 32px; padding-top: 28px; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Sample Box Product",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product form settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendors",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "variant_style",
+      "label": "Product variant style",
+      "options": [
+        { "value": "dropdowns", "label": "Dropdowns" },
+        { "value": "buttons",   "label": "Buttons"   },
+        { "value": "swatches",  "label": "Swatches"  }
+      ],
+      "default": "dropdowns"
+    },
+    {
+      "type": "checkbox",
+      "id": "variant_swatch_images",
+      "label": "Show swatch images",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "variant_swatch_shape",
+      "label": "Swatch shape",
+      "options": [
+        { "value": "circle", "label": "Circle" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "checkbox",
+      "id": "variant_swatch_soldout",
+      "label": "Disable sold out swatches",
+      "default": true
+    },
+    {
+      "type": "page",
+      "id": "size_guide_page",
+      "label": "Size guide content"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_quantity_enable",
+      "label": "Show quantity selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_button",
+      "label": "Show dynamic checkout button",
+      "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_box_padding",
+      "label": "Show product details background",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Image settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_image_slider",
+      "label": "Enable image slider",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show slider dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show previous and next arrows",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "thumbnails_placement",
+      "label": "Thumbnails placement",
+      "options": [
+        { "value": "side--left", "label": "Left"  },
+        { "value": "side",       "label": "Right" },
+        { "value": "below",      "label": "Below" },
+        { "value": "hide",       "label": "Hide"  }
+      ],
+      "default": "side"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_thumb_slider",
+      "label": "Group thumbnails",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_featured_zoom_enable",
+      "label": "Enable zoom",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "product_featured_lightbox_enable",
+      "label": "Enable lightbox",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Additional options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_jump",
+      "label": "Show previous and next links",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "trust_badge",
+      "label": "Checkout badge image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_buttons",
+      "label": "Show social sharing buttons",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Install video"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "YouTube video URL",
+      "default": "https://www.youtube.com/watch?v=9pq8mILcZWQ",
+      "info": "Paste the full YouTube URL. Defaults to the TermBar cover system install video."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "related_products",
+      "name": "Related products",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "related_products_title",
+          "label": "Heading",
+          "default": "Related Products"
+        }
+      ]
+    },
+    {
+      "type": "product_collection",
+      "name": "Product collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sample Box Product",
+      "category": "BlueTex"
+    }
+  ]
+}
+{% endschema %}
