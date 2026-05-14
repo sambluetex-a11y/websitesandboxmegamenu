@@ -1,32 +1,81 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    BlueTex Mobile Safety Net
-   Loaded AFTER bluetex-mega-menu.css so it can win on tie specificity.
-   Scoped to .bt-* classes — does not touch Shopify/Dawn core or product pages.
-   Desktop above 990px is untouched.
+   Loaded AFTER bluetex-mega-menu.css so it wins on tie specificity.
+   Scoped to .bt-* classes and #menu.panel — does not touch Shopify/Dawn core
+   or product pages. Desktop above 990px is untouched.
    ───────────────────────────────────────────────────────────────────────────── */
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   1. MOBILE DRAWER MENU — visible only when the :target drawer is open
+   1. MOBILE DRAWER — override District theme's #menu.panel for BlueTex use
+      District uses #menu.panel { background: $siteBorderColor (dark);
+      color: $siteBorderTextColor (white); } — selectors with #menu have
+      specificity (1,1,0) and beat plain .bt-* classes. Everything in this
+      section is prefixed with #menu.panel so it wins.
    ════════════════════════════════════════════════════════════════════════════ */
 
-.bt-mobile-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 12px 16px 32px;
+#menu.panel {
   background: #ffffff;
+  color: var(--bt-text, #111827);
+  width: min(86vw, 360px);
+  left: calc(-1 * min(86vw, 360px));
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Lato", sans-serif;
 }
 
-/* Top CTA strip */
-.bt-mobile-actions {
+/* Wider drawer → page shifts further when opened */
+html.panel-open #page,
+body.panel-open #page {
+  transform: translateX(min(86vw, 360px));
+  -webkit-transform: translateX(min(86vw, 360px));
+}
+
+/* Default link color inside drawer = dark, not white */
+#menu.panel a { color: var(--bt-text, #111827); }
+#menu.panel a:hover,
+#menu.panel a:focus {
+  background-color: transparent;
+  color: var(--bt-blue, #002f6c);
+}
+
+/* Drawer's search bar — make sure it's readable on the new white background */
+#menu.panel .search { padding: 12px 16px 4px; }
+#menu.panel .search input[type="search"],
+#menu.panel .search input[type="text"] {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  color: var(--bt-text, #111827);
+  padding: 10px 12px;
+  width: 100%;
+}
+
+/* Account links inside drawer */
+#menu.panel .account { padding: 8px 16px 24px; border-top: 1px solid #e5e7eb; margin-top: 12px; }
+#menu.panel .account a { display: block; min-height: 44px; padding: 10px 4px; }
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   2. MOBILE MENU CONTENT — .bt-mobile-menu inside #menu.panel
+   ════════════════════════════════════════════════════════════════════════════ */
+
+#menu.panel .bt-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px 8px;
+  background: #ffffff;
+  color: var(--bt-text, #111827);
+}
+
+/* ── Top CTA strip ───────────────────────────────────────────────────────── */
+
+#menu.panel .bt-mobile-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   margin-bottom: 16px;
 }
-.bt-mobile-cta {
+
+#menu.panel .bt-mobile-cta {
   align-items: center;
   border-radius: 6px;
   display: flex;
@@ -37,30 +86,42 @@
   padding: 8px 10px;
   text-align: center;
   text-decoration: none;
+  line-height: 1.2;
 }
-.bt-mobile-cta--quote {
-  background: var(--bt-orange, #f47920);
-  color: #ffffff;
-  grid-column: 1 / -1; /* full-width primary CTA */
-}
-.bt-mobile-cta--samples {
-  background: var(--bt-navy, #001b48);
-  color: #ffffff;
-}
-.bt-mobile-cta--call {
-  background: #ffffff;
-  border: 1.5px solid var(--bt-navy, #001b48);
-  color: var(--bt-navy, #001b48);
-}
-.bt-mobile-cta:hover,
-.bt-mobile-cta:focus { text-decoration: none; opacity: 0.92; }
 
-/* Accordion groups */
-.bt-mm-group {
+#menu.panel .bt-mobile-cta--quote {
+  background: var(--bt-orange, #ed7016);
+  color: #ffffff;
+  grid-column: 1 / -1;
+}
+#menu.panel .bt-mobile-cta--quote:hover,
+#menu.panel .bt-mobile-cta--quote:focus { color: #ffffff; background: var(--bt-orange, #ed7016); }
+
+#menu.panel .bt-mobile-cta--samples {
+  background: var(--bt-navy, #002f6c);
+  color: #ffffff;
+}
+#menu.panel .bt-mobile-cta--samples:hover,
+#menu.panel .bt-mobile-cta--samples:focus { color: #ffffff; background: var(--bt-navy, #002f6c); }
+
+#menu.panel .bt-mobile-cta--call {
+  background: #ffffff;
+  border: 1.5px solid var(--bt-navy, #002f6c);
+  color: var(--bt-navy, #002f6c);
+}
+#menu.panel .bt-mobile-cta--call:hover,
+#menu.panel .bt-mobile-cta--call:focus { color: var(--bt-navy, #002f6c); background: #f8fafc; }
+
+/* ── Accordion groups ────────────────────────────────────────────────────── */
+
+#menu.panel .bt-mm-group {
   border-bottom: 1px solid #e5e7eb;
 }
-.bt-mm-group > summary {
+
+/* Robust marker suppression — Safari, Chrome, Firefox, iOS */
+#menu.panel .bt-mm-group > summary {
   align-items: center;
+  background: transparent;
   color: var(--bt-text, #111827);
   cursor: pointer;
   display: flex;
@@ -68,55 +129,125 @@
   font-weight: 700;
   justify-content: space-between;
   list-style: none;
+  list-style-type: none;
   min-height: 52px;
   padding: 12px 4px;
   position: relative;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.bt-mm-group > summary::-webkit-details-marker { display: none; }
-.bt-mm-group > summary::after {
+#menu.panel .bt-mm-group > summary::-webkit-details-marker { display: none; }
+#menu.panel .bt-mm-group > summary::marker { display: none; content: ""; }
+
+/* Consistent chevron indicator — same for every group */
+#menu.panel .bt-mm-group > summary::after {
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   content: "";
   display: inline-block;
-  height: 8px;
+  flex-shrink: 0;
+  height: 9px;
   margin-left: 12px;
   transform: rotate(45deg);
-  transition: transform 0.15s ease;
-  width: 8px;
+  transition: transform 0.18s ease;
+  width: 9px;
+  opacity: 0.6;
 }
-.bt-mm-group[open] > summary::after { transform: rotate(-135deg); }
+#menu.panel .bt-mm-group[open] > summary::after {
+  transform: rotate(-135deg);
+  opacity: 0.9;
+}
 
-.bt-mm-links {
+/* Sub-link rows — tappable, visibly distinct from the summary */
+#menu.panel .bt-mm-links {
   display: flex;
   flex-direction: column;
-  padding: 4px 0 12px;
+  padding: 4px 0 14px;
 }
-.bt-mm-links a {
+#menu.panel .bt-mm-links a {
+  background: transparent;
   color: var(--bt-text, #111827);
   display: block;
   font-size: 15px;
   font-weight: 500;
+  line-height: 1.35;
   min-height: 44px;
-  padding: 10px 4px 10px 16px;
+  padding: 10px 8px 10px 16px;
   text-decoration: none;
+  border-radius: 4px;
 }
-.bt-mm-links a:active,
-.bt-mm-links a:hover { color: var(--bt-blue, #1e40af); text-decoration: none; }
-.bt-mm-label {
-  color: var(--bt-muted, #6b7280);
+#menu.panel .bt-mm-links a:hover,
+#menu.panel .bt-mm-links a:focus,
+#menu.panel .bt-mm-links a:active {
+  background: #f3f4f6;
+  color: var(--bt-blue, #002f6c);
+}
+#menu.panel .bt-mm-label {
+  color: #6b7280;
   display: block;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  margin: 14px 0 4px 4px;
+  margin: 12px 0 2px 8px;
   text-transform: uppercase;
 }
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   2. RESPONSIVE FIXES — Tablet + Mobile (≤989px)
-   These target the actual squeezed grids/images/widths — no overflow:hidden
-   "fix" is needed because we're fixing the real cause.
+   3. BEFORE/AFTER SLIDER — touch-action and explicit slider image rules
+      The native <input type="range"> handles touch, but only if no parent
+      claims the gesture via touch-action. We also re-state the absolute-
+      positioning image properties so nothing below can override them.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* Let the slider own horizontal gestures */
+.bt-before-after,
+.bt-compare-card {
+  touch-action: none;
+}
+.bt-compare-range {
+  touch-action: none;
+  /* opacity:0 in original CSS is fine, but explicitly raise z-index so
+     nothing decorative can intercept the touch */
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: col-resize;
+  pointer-events: auto;
+}
+
+/* Re-state slider image positioning so no defensive rule below can break it */
+.bt-before-after > img,
+.bt-before-after .bt-after-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* Larger handle for fat fingers on small screens */
+@media (max-width: 749px) {
+  .bt-slider-line { width: 4px; }
+  .bt-slider-line::after {
+    width: 52px;
+    height: 52px;
+    font-size: 16px;
+  }
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   4. RESPONSIVE FIXES — Tablet + Mobile (≤989px)
+   Target the actual squeezed grids/images/widths — overflow:clip stays as a
+   final safety net only.
    ════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 989px) {
@@ -125,7 +256,8 @@
   .bt-hero h1 { font-size: 34px; line-height: 1.15; }
   .bt-hero { min-height: 320px; }
   .bt-hero-content { padding: 18px 20px; min-width: 0; }
-  .bt-hero img, .bt-hero video, .bt-hero-video { max-width: 100%; height: auto; }
+  .bt-hero-shell video,
+  .bt-hero-video { max-width: 100%; height: auto; }
 
   /* --- Quick links (was 4-col) -------------------------------------------- */
   .bt-quick-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -137,14 +269,18 @@
   .bt-review-photos { flex-wrap: wrap; }
   .bt-review-photos img { max-width: 100%; height: auto; }
 
-  /* --- Tape section (was 540px | 1fr  +  2-col product grid) -------------- */
+  /* --- Tape section (was 540px | 1fr  +  2-col product grid)
+         IMPORTANT: do NOT add a blanket .bt-tape-section img rule here —
+         it would break the absolutely-positioned .bt-before-after slider.
+         Targeted selectors only. */
   .bt-tape-graphic { grid-template-columns: 1fr; gap: 18px; }
   .bt-tape-product-grid { grid-template-columns: 1fr; gap: 14px; }
   .bt-tape-products { grid-template-columns: 1fr; gap: 8px; }
   .bt-tape-group { min-height: auto; }
-  .bt-compare-card,
-  .bt-before-after { max-width: 100%; }
-  .bt-before-after img { max-width: 100%; height: auto; }
+  .bt-tape-info-card img,
+  .bt-tape-group img,
+  .bt-tape-products img { max-width: 100%; height: auto; }
+  .bt-compare-card { max-width: 100%; }
 
   /* --- Topic cards (was 2-col with 310px image rows) ---------------------- */
   .bt-topic-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -154,19 +290,17 @@
   .bt-topic-actions { flex-wrap: wrap; gap: 8px; }
   .bt-topic-actions a { min-height: 44px; display: inline-flex; align-items: center; }
 
-  /* --- Mega menu defensive (it's hidden at <=989, but make sure) ---------- */
+  /* --- Mega menu defensive (already hidden at <=989, just belt and braces) */
   .bt-mega-panel, .bt-main-nav { display: none !important; }
 
   /* --- Section rails: horizontal padding so content doesn't kiss edges --- */
   .bt-rail { padding-left: 20px; padding-right: 20px; max-width: 100%; }
 
-  /* --- Universal image/video bounds inside BlueTex sections --------------- */
-  .bt-hero-shell img, .bt-hero-shell video,
+  /* --- Image bounds for non-slider images inside BlueTex sections --------- */
+  .bt-hero-shell img,
   .bt-proof-section img,
-  .bt-tape-section img,
   .bt-topic-section img,
-  .bt-app-card img, .bt-product-card img,
-  .bt-mega-preview img, .bt-guide-preview-img { max-width: 100%; height: auto; }
+  .bt-app-card img, .bt-product-card img { max-width: 100%; height: auto; }
 
   /* --- Prevent narrow-column letter-by-letter word breaking -------------- */
   .bt-hero-content, .bt-topic-body, .bt-tape-info-card,
@@ -189,7 +323,7 @@
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   3. RESPONSIVE FIXES — Mobile only (≤749px)
+   5. RESPONSIVE FIXES — Mobile only (≤749px)
    ════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 749px) {
@@ -211,17 +345,12 @@
   .bt-tape-info-card p,
   .bt-review-card p { font-size: 16px; line-height: 1.55; }
 
-  /* Before/After slider: bigger handle on touch devices */
-  .bt-slider-line { width: 4px; }
-  .bt-compare-range { height: 48px; }
-
-  /* Comparison/tables — only scroll horizontally as a last resort */
   .bt-tape-section table { font-size: 14px; }
 }
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   4. RESPONSIVE FIXES — Small mobile (≤479px)
+   6. RESPONSIVE FIXES — Small mobile (≤479px)
    ════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 479px) {
@@ -232,16 +361,13 @@
 
   .bt-rail { padding-left: 16px; padding-right: 16px; }
 
-  .bt-mobile-actions { grid-template-columns: 1fr; }
-  .bt-mobile-cta--quote { grid-column: auto; }
+  #menu.panel .bt-mobile-actions { grid-template-columns: 1fr; }
+  #menu.panel .bt-mobile-cta--quote { grid-column: auto; }
 }
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   5. FINAL SAFETY GUARD
-   Body-level overflow guard — only on mobile, only as last-resort net.
-   The real fixes are the grid/image/width rules above.
-   overflow-x: clip is preferred over hidden (no scroll-container side effects).
+   7. FINAL SAFETY GUARD — last resort, only on mobile
    ════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 989px) {
