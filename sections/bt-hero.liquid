@@ -1,10 +1,13 @@
-<section class="bt-hero-shell"
+<section class="bt-hero-shell{% if section.settings.video_only_mode %} bt-hero-shell--video-only{% endif %}"
   data-section-id="{{ section.id }}"
   data-section-type="bt-hero"
   {% if section.settings.enable_overrides %}style="--bt-sec-heading:{{ section.settings.sec_heading }};--bt-sec-primary:{{ section.settings.sec_primary }};--bt-sec-primary-text:{{ section.settings.sec_primary_text }};--bt-sec-heading-size:{{ section.settings.sec_heading_size }}px;--bt-sec-body-size:{{ section.settings.sec_body_size }}px;"{% endif %}>
   <div class="bt-rail">
     <div class="bt-hero">
-      <video class="bt-hero-video" src="{{ section.settings.video_filename | asset_url }}" autoplay muted loop playsinline></video>
+      <video class="bt-hero-video"
+             src="{% if section.settings.video_filename contains '://' %}{{ section.settings.video_filename }}{% else %}{{ section.settings.video_filename | asset_url }}{% endif %}"
+             autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
+      {% unless section.settings.video_only_mode %}
       <div class="bt-hero-content">
         <h1>{{ section.settings.heading }}</h1>
         {% if section.settings.show_cta_buttons %}
@@ -14,6 +17,7 @@
         </div>
         {% endif %}
       </div>
+      {% endunless %}
     </div>
     {% if section.settings.show_case_strip %}
     <div class="bt-case-strip">
@@ -31,12 +35,24 @@
   </div>
 </section>
 
+<style>
+  /* Video-only hero — hides text overlay + dark gradient, crops the video
+     so any logo/text baked into the source frames is pushed off-screen. */
+  .bt-hero-shell--video-only .bt-hero::before { display: none; }
+  .bt-hero-shell--video-only .bt-hero-content { display: none; }
+  .bt-hero-shell--video-only .bt-hero-video {
+    transform: scale(1.45);
+    transform-origin: 50% 55%;
+  }
+</style>
+
 {% schema %}
 {
   "name": "BlueTex Hero",
   "settings": [
+    { "type": "checkbox", "id": "video_only_mode", "label": "Video only (hide overlay text + crop logo)", "default": true },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Cover old insulation with a clean finished interior" },
-    { "type": "text", "id": "video_filename", "label": "Video filename (upload to Shopify Files first)", "default": "BlueTexHorizontalAd-cropped.mp4" },
+    { "type": "text", "id": "video_filename", "label": "Video filename or external URL", "info": "Upload to Shopify Files and paste filename, or paste a full https:// URL.", "default": "https://cdn.shopify.com/videos/c/o/v/3adb229500184c13b62dc1fa6f0f18ff.mp4" },
     { "type": "header", "content": "Primary CTA" },
     { "type": "checkbox", "id": "show_cta_buttons", "label": "Show CTA buttons", "default": true },
     { "type": "text", "id": "cta1_text", "label": "Button 1 text", "default": "See The System" },
