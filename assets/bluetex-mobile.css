@@ -1,0 +1,249 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   BlueTex Mobile Safety Net
+   Loaded AFTER bluetex-mega-menu.css so it can win on tie specificity.
+   Scoped to .bt-* classes — does not touch Shopify/Dawn core or product pages.
+   Desktop above 990px is untouched.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   1. MOBILE DRAWER MENU — visible only when the :target drawer is open
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.bt-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 12px 16px 32px;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Lato", sans-serif;
+}
+
+/* Top CTA strip */
+.bt-mobile-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.bt-mobile-cta {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 48px;
+  padding: 8px 10px;
+  text-align: center;
+  text-decoration: none;
+}
+.bt-mobile-cta--quote {
+  background: var(--bt-orange, #f47920);
+  color: #ffffff;
+  grid-column: 1 / -1; /* full-width primary CTA */
+}
+.bt-mobile-cta--samples {
+  background: var(--bt-navy, #001b48);
+  color: #ffffff;
+}
+.bt-mobile-cta--call {
+  background: #ffffff;
+  border: 1.5px solid var(--bt-navy, #001b48);
+  color: var(--bt-navy, #001b48);
+}
+.bt-mobile-cta:hover,
+.bt-mobile-cta:focus { text-decoration: none; opacity: 0.92; }
+
+/* Accordion groups */
+.bt-mm-group {
+  border-bottom: 1px solid #e5e7eb;
+}
+.bt-mm-group > summary {
+  align-items: center;
+  color: var(--bt-text, #111827);
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  justify-content: space-between;
+  list-style: none;
+  min-height: 52px;
+  padding: 12px 4px;
+  position: relative;
+}
+.bt-mm-group > summary::-webkit-details-marker { display: none; }
+.bt-mm-group > summary::after {
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  content: "";
+  display: inline-block;
+  height: 8px;
+  margin-left: 12px;
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  width: 8px;
+}
+.bt-mm-group[open] > summary::after { transform: rotate(-135deg); }
+
+.bt-mm-links {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0 12px;
+}
+.bt-mm-links a {
+  color: var(--bt-text, #111827);
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  min-height: 44px;
+  padding: 10px 4px 10px 16px;
+  text-decoration: none;
+}
+.bt-mm-links a:active,
+.bt-mm-links a:hover { color: var(--bt-blue, #1e40af); text-decoration: none; }
+.bt-mm-label {
+  color: var(--bt-muted, #6b7280);
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 14px 0 4px 4px;
+  text-transform: uppercase;
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   2. RESPONSIVE FIXES — Tablet + Mobile (≤989px)
+   These target the actual squeezed grids/images/widths — no overflow:hidden
+   "fix" is needed because we're fixing the real cause.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 989px) {
+
+  /* --- Hero ---------------------------------------------------------------- */
+  .bt-hero h1 { font-size: 34px; line-height: 1.15; }
+  .bt-hero { min-height: 320px; }
+  .bt-hero-content { padding: 18px 20px; min-width: 0; }
+  .bt-hero img, .bt-hero video, .bt-hero-video { max-width: 100%; height: auto; }
+
+  /* --- Quick links (was 4-col) -------------------------------------------- */
+  .bt-quick-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+  /* --- Reviews (was 300px | 1fr  and 2-col card grid) --------------------- */
+  .bt-proof-grid { grid-template-columns: 1fr; gap: 18px; }
+  .bt-review-grid { grid-template-columns: 1fr; gap: 14px; }
+  .bt-review-card { min-width: 0; }
+  .bt-review-photos { flex-wrap: wrap; }
+  .bt-review-photos img { max-width: 100%; height: auto; }
+
+  /* --- Tape section (was 540px | 1fr  +  2-col product grid) -------------- */
+  .bt-tape-graphic { grid-template-columns: 1fr; gap: 18px; }
+  .bt-tape-product-grid { grid-template-columns: 1fr; gap: 14px; }
+  .bt-tape-products { grid-template-columns: 1fr; gap: 8px; }
+  .bt-tape-group { min-height: auto; }
+  .bt-compare-card,
+  .bt-before-after { max-width: 100%; }
+  .bt-before-after img { max-width: 100%; height: auto; }
+
+  /* --- Topic cards (was 2-col with 310px image rows) ---------------------- */
+  .bt-topic-grid { grid-template-columns: 1fr; gap: 18px; }
+  .bt-topic-card { grid-template-rows: auto 1fr; }
+  .bt-topic-media { aspect-ratio: 16 / 10; height: auto; }
+  .bt-topic-media img { width: 100%; height: 100%; object-fit: cover; }
+  .bt-topic-actions { flex-wrap: wrap; gap: 8px; }
+  .bt-topic-actions a { min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* --- Mega menu defensive (it's hidden at <=989, but make sure) ---------- */
+  .bt-mega-panel, .bt-main-nav { display: none !important; }
+
+  /* --- Section rails: horizontal padding so content doesn't kiss edges --- */
+  .bt-rail { padding-left: 20px; padding-right: 20px; max-width: 100%; }
+
+  /* --- Universal image/video bounds inside BlueTex sections --------------- */
+  .bt-hero-shell img, .bt-hero-shell video,
+  .bt-proof-section img,
+  .bt-tape-section img,
+  .bt-topic-section img,
+  .bt-app-card img, .bt-product-card img,
+  .bt-mega-preview img, .bt-guide-preview-img { max-width: 100%; height: auto; }
+
+  /* --- Prevent narrow-column letter-by-letter word breaking -------------- */
+  .bt-hero-content, .bt-topic-body, .bt-tape-info-card,
+  .bt-review-card, .bt-review-summary,
+  .bt-mobile-menu, .bt-mm-links a, .bt-mm-group summary {
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+  }
+
+  /* --- CTA buttons: comfortable tap targets ------------------------------- */
+  .bt-cta, .bt-cta--secondary, .bt-case-study-cta, .bt-google-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   3. RESPONSIVE FIXES — Mobile only (≤749px)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 749px) {
+  .bt-hero h1 { font-size: 30px; }
+  .bt-hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+  .bt-hero-actions .bt-cta,
+  .bt-hero-actions .bt-cta--secondary { width: 100%; min-height: 48px; text-align: center; }
+
+  .bt-quick-links { grid-template-columns: 1fr; gap: 10px; }
+  .bt-quick-links a { min-height: 56px; padding: 12px 16px; }
+
+  .bt-section-title { font-size: 28px; line-height: 1.2; }
+  .bt-section-intro { font-size: 16px; line-height: 1.55; }
+
+  .bt-topic-card h3,
+  .bt-tape-group h3,
+  .bt-review-summary h3 { font-size: 22px; line-height: 1.25; }
+  .bt-topic-body p,
+  .bt-tape-info-card p,
+  .bt-review-card p { font-size: 16px; line-height: 1.55; }
+
+  /* Before/After slider: bigger handle on touch devices */
+  .bt-slider-line { width: 4px; }
+  .bt-compare-range { height: 48px; }
+
+  /* Comparison/tables — only scroll horizontally as a last resort */
+  .bt-tape-section table { font-size: 14px; }
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   4. RESPONSIVE FIXES — Small mobile (≤479px)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 479px) {
+  .bt-hero h1 { font-size: 26px; }
+  .bt-section-title { font-size: 24px; }
+  .bt-topic-card h3,
+  .bt-tape-group h3 { font-size: 20px; }
+
+  .bt-rail { padding-left: 16px; padding-right: 16px; }
+
+  .bt-mobile-actions { grid-template-columns: 1fr; }
+  .bt-mobile-cta--quote { grid-column: auto; }
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   5. FINAL SAFETY GUARD
+   Body-level overflow guard — only on mobile, only as last-resort net.
+   The real fixes are the grid/image/width rules above.
+   overflow-x: clip is preferred over hidden (no scroll-container side effects).
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 989px) {
+  body { overflow-x: clip; }
+}

@@ -1,0 +1,109 @@
+{% comment %}
+  BlueTex mobile drawer menu — flattened mirror of bt-mega-menu.liquid.
+  Markup only. All styling lives in assets/bluetex-mobile.css.
+  Uses native <details> for accordion — works without JS.
+{% endcomment %}
+
+<nav class="bt-mobile-menu" aria-label="Mobile navigation">
+
+  {% comment %} ── Top CTAs — easy to reach without expanding anything ── {% endcomment %}
+  <div class="bt-mobile-actions">
+    <a class="bt-mobile-cta bt-mobile-cta--quote"   href="/pages/request-a-quote">Request a Quote</a>
+    <a class="bt-mobile-cta bt-mobile-cta--samples" href="/products/bluetex-cover-repair-system-sample-box">Order Test Kit</a>
+    <a class="bt-mobile-cta bt-mobile-cta--call"    href="tel:18005958772">Call 1-800-595-8772</a>
+  </div>
+
+  {% comment %} ── Panel 1: Large Metal Building Repair & Cover System ── {% endcomment %}
+  <details class="bt-mm-group">
+    <summary>Large Metal Building Repair &amp; Cover System</summary>
+    <div class="bt-mm-links">
+      <a href="/pages/termbar-cover-system">System Overview</a>
+      <a href="/pages/covering-old-wall-insulation-in-metal-buildings">Install Guide</a>
+      <a href="/products/bluetex-cover-repair-system-sample-box">Order Test Kit (Fully Refundable)</a>
+      <a href="/pages/request-a-quote">Request A Quote</a>
+      <a href="/pages/termbar-case-studies">TermBar Case Studies</a>
+      <a href="/pages/bluetex-install-photos">Before/After Pictures</a>
+      <a href="/pages/red-iron-building-insulation-how-to-retrofit-roof-in-existing-red-iron-buildings">Other Install Methods</a>
+    </div>
+  </details>
+
+  {% comment %} ── Panel 2: Applications ── {% endcomment %}
+  <details class="bt-mm-group">
+    <summary>Applications</summary>
+    <div class="bt-mm-links">
+      <span class="bt-mm-label">Metal Buildings</span>
+      <a href="/pages/existing-construction-metal-framed-buildings-installation">Existing Metal Building Retrofit</a>
+      <a href="/pages/termbar-cover-system">Large Building Wall And Roof Repair</a>
+      <span class="bt-mm-label">Doors</span>
+      <a href="/pages/garage-door-insulation">Roll Up Doors</a>
+      <a href="/products/bluetex-22-wide-pro-residential-garage-door-kit">Residential Doors</a>
+      <span class="bt-mm-label">Other Applications</span>
+      <a href="/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Existing Buildings</a>
+      <a href="/pages/new-construction-how-to-install-choose-your-building-type">New Construction</a>
+    </div>
+  </details>
+
+  {% comment %} ── Panel 3: Install Guide ── {% endcomment %}
+  <details class="bt-mm-group">
+    <summary>Install Guide</summary>
+    <div class="bt-mm-links">
+      <span class="bt-mm-label">Garage Door Insulation</span>
+      <a href="/pages/garage-door-insulation">Commercial Roll Up Door</a>
+      <a href="/products/bluetex-2mm-pro-roll-up-garage-door-kit">Roll Up Door Kits</a>
+      <a href="/products/bluetex-22-wide-pro-residential-garage-door-kit">Residential Panel Door Kits</a>
+      <span class="bt-mm-label">Existing / Retrofit</span>
+      <a href="/pages/existing-retrofit-construction-how-to-install-choose-your-buidling">Choose Existing Building Type</a>
+      <a href="/pages/existing-construction-metal-framed-buildings-installation">Existing Metal Building Retrofit</a>
+      <a href="/pages/existing-construction-wood-framed-buildings-installation">Existing Wood Frame / Pole Barn</a>
+      <a href="/pages/insulating-non-conditioned-buildings-vs-conditioned-buildings">Conditioned Vs. Non-Conditioned</a>
+      <span class="bt-mm-label">Covering / Repairing Old Insulation</span>
+      <a href="/pages/covering-old-wall-insulation-in-metal-buildings">Covering Old Wall Insulation — Girts Visible</a>
+      <a href="/pages/repair-old-torn-ceiling-insulation-in-red-iron-metal-buildings">Covering Old Roof Insulation — Girts Visible</a>
+      <a href="/pages/easyclip-roof-system-covers-hides-purlins">EasyClip Roof System — Covers/Hides Purlins</a>
+      <a href="/pages/covering-wall-insulation-girts-hidden">Covering Wall Insulation — Girts Hidden</a>
+      <span class="bt-mm-label">New Construction</span>
+      <a href="/pages/new-construction-how-to-install-choose-your-building-type">Choose Building Type</a>
+      <a href="/pages/new-construction-metal-framed-buildings-installation">Metal Framed Buildings</a>
+      <a href="/pages/new-construction-wood-framed-buildings-installation">Wood Framed Buildings</a>
+      <a href="/pages/resource-page-installation-supplies">Installation Supplies</a>
+    </div>
+  </details>
+
+  {% comment %} ── Panel 4: Shop All Products ── {% endcomment %}
+  <details class="bt-mm-group">
+    <summary>Shop All Products</summary>
+    <div class="bt-mm-links">
+      <a href="/pages/help-me-choose-the-right-building-insulation">Help Me Decide</a>
+      <a href="/pages/garage-door-insulation">Garage Door Insulation</a>
+      <span class="bt-mm-label">Pro 2mm Foil/White</span>
+      <a href="/collections/frontpage/products/bluetex-pro-2mm-50-wide-foil-white-foam-insulation">Pro 2mm — 50&Prime; Wide</a>
+      <a href="/products/bluetex-pro-2mm-super-wide-62-inch">Pro 2mm — 62&Prime; Wide</a>
+      <span class="bt-mm-label">Supreme 6mm Foil/White</span>
+      <a href="/products/bluetex-6mm-supreme-50-wide">Supreme 6mm — 50&Prime; Wide</a>
+      <a href="/products/bluetex-supreme-6mm-62-wide-foil-white-foam-insulation-300-sq-ft">Supreme 6mm — 62&Prime; Wide</a>
+      <span class="bt-mm-label">Other</span>
+      <a href="/pages/bluetex-vapor-barrier-white-tapes">Tapes</a>
+      <a href="/collections/fasteners">Fasteners</a>
+      <a href="/products/double-sided-tape">Double Sided Tape</a>
+      <a href="/pages/radiant-barrier-products">Radiant Barrier Products</a>
+      <a href="/collections/all">Shop All Products</a>
+    </div>
+  </details>
+
+  {% comment %} ── Panel 5: Common Questions ── {% endcomment %}
+  <details class="bt-mm-group">
+    <summary>Common Questions</summary>
+    <div class="bt-mm-links">
+      <a href="/pages/r-value-of-bluetex-insulation">R-Value — All About It</a>
+      <a href="/pages/moisture-in-metal-buildings-causes/1000">Moisture/Condensation Causes — Part 1</a>
+      <a href="/pages/moisture-in-metal-buildings-prevention/1000">Moisture/Condensation Prevention — Part 2</a>
+      <a href="/pages/insulating-non-conditioned-buildings-vs-conditioned-buildings">Conditioned Vs. Non-Conditioned Buildings</a>
+      <a href="/pages/bubble-foil-fails">Bubble Foil vs. BlueTex</a>
+      <a href="/pages/existing-construction-wood-framed-buildings-installation">Can I Paint Or Cover BlueTex?</a>
+      <a href="/pages/bluetex-metal-building-contractors-and-insulation-installers">Contractor/Installer Pricing</a>
+      <a href="/pages/warranty">Lifetime Warranty</a>
+      <a href="/a/detective-faq">Other FAQ</a>
+    </div>
+  </details>
+
+</nav>

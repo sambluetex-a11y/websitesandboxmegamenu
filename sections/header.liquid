@@ -95,12 +95,12 @@
 
 </div>
 
-{%- comment -%} ======= MOBILE PANEL (existing theme drawer) ======= {%- endcomment -%}
+{%- comment -%} ======= MOBILE PANEL (existing theme drawer mechanics, BlueTex content) ======= {%- endcomment -%}
 <nav id="menu" class="panel" role="navigation">
   <div class="search">
     {%- include 'search-bar' -%}
   </div>
-  {%- include 'site-nav' -%}
+  {%- include 'bt-mobile-menu' -%}
   <div class="account">
     {%- if shop.customer_accounts_enabled -%}
       {%- include 'accounts-nav' -%}
