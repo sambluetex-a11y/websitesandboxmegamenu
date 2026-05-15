@@ -413,6 +413,12 @@
   border: 1px solid var(--bt-line);
   display: block;
 }
+.bt-guide-preview-text {
+  width: 360px;
+  margin: 10px 0 0;
+  color: var(--bt-text);
+  font: 400 14px/1.45 Lato, Arial, sans-serif;
+}
 
 .bt-guide-item { position: static; }
 

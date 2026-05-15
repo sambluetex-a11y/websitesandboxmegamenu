@@ -29,12 +29,23 @@
   document.querySelectorAll('.bt-guide-panel').forEach((panel) => {
     const items      = Array.from(panel.querySelectorAll('.bt-guide-item'));
     const previewImg = panel.querySelector('.bt-guide-preview-img');
+    const previewTxt = panel.querySelector('.bt-guide-preview-text');
     const flyouts    = Array.from(panel.querySelectorAll('.bt-guide-flyout'));
+
+    const setPreview = (img, text) => {
+      if (previewImg && img) previewImg.src = img;
+      if (previewTxt) previewTxt.textContent = text || '';
+    };
 
     const setActive = (item) => {
       items.forEach((e) => e.classList.toggle('is-active', e === item));
       flyouts.forEach((f) => f.classList.toggle('is-active', f.dataset.flyoutId === item.dataset.flyout));
-      if (previewImg && item.dataset.img) previewImg.src = item.dataset.img;
+      const activeFlyout = panel.querySelector('.bt-guide-flyout[data-flyout-id="' + item.dataset.flyout + '"]');
+      const firstLink = activeFlyout ? activeFlyout.querySelector('a[data-img]') : null;
+      setPreview(
+        (firstLink && firstLink.dataset.img) || item.dataset.img,
+        firstLink && firstLink.dataset.text
+      );
     };
 
     items.forEach((item) => {
@@ -42,6 +53,11 @@
       if (!trigger) return;
       trigger.addEventListener('mouseenter', () => setActive(item));
       trigger.addEventListener('focus',      () => setActive(item));
+    });
+
+    panel.querySelectorAll('.bt-flyout-links a').forEach((link) => {
+      link.addEventListener('mouseenter', () => setPreview(link.dataset.img, link.dataset.text));
+      link.addEventListener('focus',      () => setPreview(link.dataset.img, link.dataset.text));
     });
 
     panel.addEventListener('mouseleave', () => { if (items[0]) setActive(items[0]); });
