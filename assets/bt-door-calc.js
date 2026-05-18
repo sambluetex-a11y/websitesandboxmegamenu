@@ -1,4 +1,4 @@
-/* BlueTex Garage Door Material Calculator — Shopify embed
+/* BlueTex Garage Door Material Calculator - Shopify embed
    Calculation logic ported exactly from calculator.js + app.js.
    Scoped to #btcalc; no ES-module dependencies. */
 

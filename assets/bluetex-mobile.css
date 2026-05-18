@@ -1,15 +1,15 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    BlueTex Mobile Safety Net
    Loaded AFTER bluetex-mega-menu.css so it wins on tie specificity.
-   Scoped to .bt-* classes and #menu.panel — does not touch Shopify/Dawn core
+   Scoped to .bt-* classes and #menu.panel - does not touch Shopify/Dawn core
    or product pages. Desktop above 990px is untouched.
    ───────────────────────────────────────────────────────────────────────────── */
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   1. MOBILE DRAWER — override District theme's #menu.panel for BlueTex use
+   1. MOBILE DRAWER - override District theme's #menu.panel for BlueTex use
       District uses #menu.panel { background: $siteBorderColor (dark);
-      color: $siteBorderTextColor (white); } — selectors with #menu have
+      color: $siteBorderTextColor (white); } - selectors with #menu have
       specificity (1,1,0) and beat plain .bt-* classes. Everything in this
       section is prefixed with #menu.panel so it wins.
    ════════════════════════════════════════════════════════════════════════════ */
@@ -37,7 +37,7 @@ body.panel-open #page {
   color: var(--bt-blue, #002f6c);
 }
 
-/* Drawer's search bar — make sure it's readable on the new white background */
+/* Drawer's search bar - make sure it's readable on the new white background */
 #menu.panel .search { padding: 12px 16px 4px; }
 #menu.panel .search input[type="search"],
 #menu.panel .search input[type="text"] {
@@ -55,7 +55,7 @@ body.panel-open #page {
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   2. MOBILE MENU CONTENT — .bt-mobile-menu inside #menu.panel
+   2. MOBILE MENU CONTENT - .bt-mobile-menu inside #menu.panel
    ════════════════════════════════════════════════════════════════════════════ */
 
 #menu.panel .bt-mobile-menu {
@@ -118,7 +118,7 @@ body.panel-open #page {
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* Robust marker suppression — Safari, Chrome, Firefox, iOS */
+/* Robust marker suppression - Safari, Chrome, Firefox, iOS */
 #menu.panel .bt-mm-group > summary {
   align-items: center;
   background: transparent;
@@ -139,7 +139,7 @@ body.panel-open #page {
 #menu.panel .bt-mm-group > summary::-webkit-details-marker { display: none; }
 #menu.panel .bt-mm-group > summary::marker { display: none; content: ""; }
 
-/* Consistent chevron indicator — same for every group */
+/* Consistent chevron indicator - same for every group */
 #menu.panel .bt-mm-group > summary::after {
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
@@ -158,7 +158,7 @@ body.panel-open #page {
   opacity: 0.9;
 }
 
-/* Sub-link rows — tappable, visibly distinct from the summary */
+/* Sub-link rows - tappable, visibly distinct from the summary */
 #menu.panel .bt-mm-links {
   display: flex;
   flex-direction: column;
@@ -194,7 +194,7 @@ body.panel-open #page {
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   3. BEFORE/AFTER SLIDER — touch-action and explicit slider image rules
+   3. BEFORE/AFTER SLIDER - touch-action and explicit slider image rules
       The native <input type="range"> handles touch, but only if no parent
       claims the gesture via touch-action. We also re-state the absolute-
       positioning image properties so nothing below can override them.
@@ -245,8 +245,8 @@ body.panel-open #page {
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   4. RESPONSIVE FIXES — Tablet + Mobile (≤989px)
-   Target the actual squeezed grids/images/widths — overflow:clip stays as a
+   4. RESPONSIVE FIXES - Tablet + Mobile (≤989px)
+   Target the actual squeezed grids/images/widths - overflow:clip stays as a
    final safety net only.
    ════════════════════════════════════════════════════════════════════════════ */
 
@@ -270,7 +270,7 @@ body.panel-open #page {
   .bt-review-photos img { max-width: 100%; height: auto; }
 
   /* --- Tape section (was 540px | 1fr  +  2-col product grid)
-         IMPORTANT: do NOT add a blanket .bt-tape-section img rule here —
+         IMPORTANT: do NOT add a blanket .bt-tape-section img rule here -
          it would break the absolutely-positioned .bt-before-after slider.
          Targeted selectors only. */
   .bt-tape-graphic { grid-template-columns: 1fr; gap: 18px; }
@@ -323,7 +323,7 @@ body.panel-open #page {
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   5. RESPONSIVE FIXES — Mobile only (≤749px)
+   5. RESPONSIVE FIXES - Mobile only (≤749px)
    ════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 749px) {
@@ -350,7 +350,7 @@ body.panel-open #page {
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   6. RESPONSIVE FIXES — Small mobile (≤479px)
+   6. RESPONSIVE FIXES - Small mobile (≤479px)
    ════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 479px) {
@@ -367,7 +367,7 @@ body.panel-open #page {
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   7. FINAL SAFETY GUARD — last resort, only on mobile
+   7. FINAL SAFETY GUARD - last resort, only on mobile
    ════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 989px) {

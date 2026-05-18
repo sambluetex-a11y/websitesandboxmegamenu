@@ -25,7 +25,7 @@
     });
   });
 
-  // Guide flyout swap (panel 3 — Install Guide)
+  // Guide flyout swap (panel 3 - Install Guide)
   document.querySelectorAll('.bt-guide-panel').forEach((panel) => {
     const items      = Array.from(panel.querySelectorAll('.bt-guide-item'));
     const previewImg = panel.querySelector('.bt-guide-preview-img');
