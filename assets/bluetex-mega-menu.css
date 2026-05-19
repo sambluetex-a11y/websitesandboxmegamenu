@@ -455,8 +455,11 @@
 
 .bt-flyout-title {
   margin: 0 0 14px;
-  color: var(--bt-text);
-  font: 900 20px/1 Lato, Arial, sans-serif;
+  padding: 10px 14px;
+  color: #fff;
+  background: var(--bt-navy);
+  border-bottom: 3px solid var(--bt-orange);
+  font: 900 20px/1.15 Lato, Arial, sans-serif;
   text-transform: none;
 }
 .bt-flyout-links { display: grid; gap: 7px; }
