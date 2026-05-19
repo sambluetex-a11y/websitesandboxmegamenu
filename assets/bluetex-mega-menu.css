@@ -463,7 +463,7 @@
   font: 900 20px/1.15 Lato, Arial, sans-serif;
   text-transform: none;
 }
-.bt-flyout-links { display: grid; gap: 7px; }
+.bt-flyout-links { display: grid; gap: 7px; padding-left: 32px; }
 .bt-section-label {
   display: block;
   margin-top: 4px;
