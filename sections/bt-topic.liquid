@@ -10,6 +10,7 @@
 
       {% if section.settings.show_card1 %}
       <article class="bt-topic-card">
+        <h3 class="bt-topic-card-title">{{ section.settings.card1_heading }}</h3>
         <div class="bt-topic-media">
           {% if section.settings.card1_image != blank %}
             <img src="{{ section.settings.card1_image | img_url: '800x' }}" alt="{{ section.settings.card1_heading }}" loading="lazy">
@@ -19,7 +20,6 @@
           <span>{{ section.settings.card1_caption }}</span>
         </div>
         <div class="bt-topic-body">
-          <h3>{{ section.settings.card1_heading }}</h3>
           <p>{{ section.settings.card1_body }}</p>
           <div class="bt-topic-actions">
             <a href="{{ section.settings.card1_cta1_url }}">{{ section.settings.card1_cta1_text }}</a>
@@ -31,6 +31,7 @@
 
       {% if section.settings.show_card2 %}
       <article class="bt-topic-card">
+        <h3 class="bt-topic-card-title">{{ section.settings.card2_heading }}</h3>
         <div class="bt-topic-media">
           {% if section.settings.card2_image != blank %}
             <img src="{{ section.settings.card2_image | img_url: '800x' }}" alt="{{ section.settings.card2_heading }}" loading="lazy">
@@ -40,7 +41,6 @@
           <span>{{ section.settings.card2_caption }}</span>
         </div>
         <div class="bt-topic-body">
-          <h3>{{ section.settings.card2_heading }}</h3>
           <p>{{ section.settings.card2_body }}</p>
           <div class="bt-topic-actions">
             <a href="{{ section.settings.card2_cta1_url }}">{{ section.settings.card2_cta1_text }}</a>
@@ -67,7 +67,7 @@
     { "type": "image_picker", "id": "card1_image", "label": "Card 1 image (leave blank to use default)" },
     { "type": "text", "id": "card1_heading", "label": "Heading", "default": "Retrofit Existing Metal Buildings" },
     { "type": "text", "id": "card1_caption", "label": "Image caption", "default": "REFLECT Heat & Control Condensation" },
-    { "type": "textarea", "id": "card1_body", "label": "Body", "default": "Cover old, torn insulation with a clean finished interior." },
+    { "type": "textarea", "id": "card1_body", "label": "Body", "default": "Add a clean interior layer that reflects heat and helps control condensation." },
     { "type": "text", "id": "card1_cta1_text", "label": "Primary CTA text", "default": "Install Guide" },
     { "type": "text", "id": "card1_cta1_url", "label": "Primary CTA URL", "default": "/pages/existing-construction-metal-framed-buildings-installation" },
     { "type": "text", "id": "card1_cta2_text", "label": "Secondary CTA text", "default": "Shop Products" },
