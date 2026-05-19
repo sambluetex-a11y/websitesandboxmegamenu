@@ -191,6 +191,15 @@ body.panel-open #page {
   margin: 12px 0 2px 8px;
   text-transform: uppercase;
 }
+#menu.panel .bt-mm-badge {
+  display: inline;
+  margin-left: 4px;
+  color: #f17c02;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+}
 
 
 /* ════════════════════════════════════════════════════════════════════════════

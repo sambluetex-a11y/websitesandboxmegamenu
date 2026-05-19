@@ -481,6 +481,14 @@
 }
 .bt-flyout-links a:hover,
 .bt-flyout-links a:focus { color: var(--bt-blue); }
+.bt-flyout-badge {
+  display: inline;
+  margin-left: 4px;
+  color: var(--bt-orange);
+  font: 700 12px/1 Lato, Arial, sans-serif;
+  letter-spacing: .02em;
+  vertical-align: baseline;
+}
 
 /* ------ Panel 4: Product grid ------ */
 .bt-product-grid {
