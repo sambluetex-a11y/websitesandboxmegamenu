@@ -105,14 +105,21 @@
 </nav>
 
 <style>
+  {%- comment -%}
+    BlueTex CSS variables — single source of truth.
+    Brand-specific colors (Navy, Orange) live in Theme Settings → Colors → BlueTex brand.
+    Other colors and typography flow from District's native Colors / Typography panels.
+  {%- endcomment -%}
+  {%- assign bt_body_font = settings.typography_body_font -%}
+  {%- assign bt_heading_font = settings.typography_headings_font -%}
   :root {
-    {% if settings.bt_orange != blank %}--bt-orange: {{ settings.bt_orange }};{% endif %}
     {% if settings.bt_navy != blank %}--bt-navy: {{ settings.bt_navy }};{% endif %}
-    {% if settings.bt_blue != blank %}--bt-blue: {{ settings.bt_blue }};{% endif %}
-    {% if settings.bt_text != blank %}--bt-text: {{ settings.bt_text }};{% endif %}
-    {% if settings.bt_muted != blank %}--bt-muted: {{ settings.bt_muted }};{% endif %}
-    {% if settings.bt_line != blank %}--bt-line: {{ settings.bt_line }};{% endif %}
-    {% if settings.bt_bg != blank %}--bt-panel: {{ settings.bt_bg }};{% endif %}
+    {% if settings.bt_orange != blank %}--bt-orange: {{ settings.bt_orange }};{% endif %}
+    {% if settings.primary_accent_color != blank %}--bt-blue: {{ settings.primary_accent_color }};{% endif %}
+    {% if settings.primary_text_color != blank %}--bt-text: {{ settings.primary_text_color }};{% endif %}
+    {% if settings.content_box_background_color != blank %}--bt-panel: {{ settings.content_box_background_color }};{% endif %}
+    {% if bt_body_font %}--bt-font-body: {{ bt_body_font.family }}, {{ bt_body_font.fallback_family | default: 'Arial' }}, sans-serif;{% endif %}
+    {% if bt_heading_font %}--bt-font-headings: {{ bt_heading_font.family }}, {{ bt_heading_font.fallback_family | default: 'Arial' }}, sans-serif;{% endif %}
   }
 </style>
 <style>

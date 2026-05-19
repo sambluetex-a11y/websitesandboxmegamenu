@@ -58,6 +58,26 @@
       },
       {
         "type": "header",
+        "content": "BlueTex brand"
+      },
+      {
+        "type": "paragraph",
+        "content": "Navy and Orange are BlueTex-specific brand colors used by mega menu, hero, and topic sections. The standard Primary Accent above is used as Blue (links, search button)."
+      },
+      {
+        "type": "color",
+        "id": "bt_navy",
+        "label": "Navy - headings, primary buttons",
+        "default": "#002f6c"
+      },
+      {
+        "type": "color",
+        "id": "bt_orange",
+        "label": "Orange - CTAs, accents, badges",
+        "default": "#f17c02"
+      },
+      {
+        "type": "header",
         "content": "Top bar"
       },
       {
@@ -697,26 +717,6 @@
         "id": "bt_announce_link_url",
         "label": "Announce bar link URL"
       }
-    ]
-  },
-  {
-    "name": "BlueTex Brand Colors",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Brand Colors"
-      },
-      {
-        "type": "paragraph",
-        "content": "Site-wide defaults for all BlueTex custom sections. Individual sections can override these in their own Style Overrides settings."
-      },
-      { "type": "color", "id": "bt_orange", "label": "Orange - CTAs, accents, badges", "default": "#f17c02" },
-      { "type": "color", "id": "bt_navy", "label": "Navy - headings, primary buttons", "default": "#002f6c" },
-      { "type": "color", "id": "bt_blue", "label": "Blue - links, search button", "default": "#0011a7" },
-      { "type": "color", "id": "bt_text", "label": "Body text", "default": "#1b1b1b" },
-      { "type": "color", "id": "bt_muted", "label": "Muted / secondary text", "default": "#65636a" },
-      { "type": "color", "id": "bt_line", "label": "Borders and dividers", "default": "#e6e6e7" },
-      { "type": "color", "id": "bt_bg", "label": "Default section background", "default": "#ffffff" }
     ]
   }
 ]
