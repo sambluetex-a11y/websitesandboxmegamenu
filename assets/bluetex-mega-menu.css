@@ -393,8 +393,10 @@
 .bt-app-card h4 {
   margin: 0;
   color: var(--bt-text);
-  font: 900 18px/1.1 Lato, Arial, sans-serif;
+  font: 900 18px/1.2 Lato, Arial, sans-serif;
   text-transform: none;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .bt-app-card p { display: none; }
 
