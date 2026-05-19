@@ -357,13 +357,12 @@
   margin: 0 0 12px;
   padding: 10px 14px;
   color: #fff;
-  font: 900 18px/1.15 Lato, Arial, sans-serif;
+  font: 900 18px/1 Lato, Arial, sans-serif;
   text-align: center;
   background: var(--bt-navy);
   border-bottom: 3px solid var(--bt-orange);
   text-transform: none;
   letter-spacing: .02em;
-  word-wrap: break-word;
 }
 
 .bt-app-stack { display: grid; gap: 18px; }
