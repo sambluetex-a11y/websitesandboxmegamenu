@@ -456,8 +456,8 @@
 .bt-flyout-title {
   display: inline-block;
   width: auto;
-  margin: 0 0 14px;
-  padding: 10px 14px;
+  margin: 0 0 6px;
+  padding: 6px 14px;
   color: #fff;
   background: var(--bt-navy);
   font: 900 20px/1.15 Lato, Arial, sans-serif;
